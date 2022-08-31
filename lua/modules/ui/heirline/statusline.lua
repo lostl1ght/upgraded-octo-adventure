@@ -8,9 +8,6 @@ local heirline = require('heirline.utils')
 local devicons = require('nvim-web-devicons')
 local hydra = require('hydra.statusline')
 
-vim.o.showmode = false
-vim.o.laststatus = 3
-
 local os_sep = package.config:sub(1, 1)
 
 -- Flexible components priorities
@@ -40,7 +37,7 @@ local ReadOnly = {
 local NormalModeIndicator = {
   Space,
   {
-    init = heirline.pick_child_on_condition,
+    fallthrough = false,
     ReadOnly,
     {
       provider = icons.circle,
@@ -62,7 +59,7 @@ local HydraActive = {
     return colors.hydra[hydra.get_color()]
   end, {
     {
-      init = heirline.pick_child_on_condition,
+      fallthrough = false,
       ReadOnly,
       { provider = icons.circle },
     },
@@ -81,7 +78,7 @@ local VimModeNormal = {
     return self.mode == 'normal' or not conditions.is_active()
   end,
   {
-    init = heirline.pick_child_on_condition,
+    fallthrough = false,
     HydraActive,
     NormalModeIndicator,
   },
@@ -96,7 +93,7 @@ local VimModeActive = {
     return mode_colors[self.mode].bg
   end, {
     {
-      init = heirline.pick_child_on_condition,
+      fallthrough = false,
       ReadOnly,
       { provider = icons.circle },
     },
@@ -261,7 +258,7 @@ end
 
 local FileNameBlock = {
   {
-    init = heirline.pick_child_on_condition,
+    fallthrough = false,
     HydraHint,
     {
       condition = function()
@@ -502,8 +499,8 @@ local statusline = {
     self.current_path = current_path -- The opened file path relevant to pwd.
     self.filename = filename
 
-    heirline.pick_child_on_condition(self)
   end,
+  fallthrough = false,
   hl = hl.StatusLine,
   HelpBufferStatusline,
   ActiveStatusline,
