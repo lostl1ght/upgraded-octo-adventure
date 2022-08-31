@@ -84,7 +84,7 @@ vim.api.nvim_create_autocmd('User', {
 })
 
 local winbar = {
-    init = heirline.pick_child_on_condition,
+    fallthrough = false,
     {
         condition = function()
             return conditions.buffer_matches {

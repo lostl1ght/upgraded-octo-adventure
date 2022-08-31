@@ -1,5 +1,7 @@
 local Hydra = require('hydra')
 local cmd = require('hydra.keymap-util').cmd
+local pcmd = require('hydra.keymap-util').pcmd
+
 local buffers = Hydra({
   name = 'Buffers',
   heads = {
@@ -31,13 +33,13 @@ local git = Hydra({
       border = 'rounded',
     },
     on_enter = function()
-      vim.cmd('mkview')
+      pcmd('mkview', 'E32')
       vim.cmd('silent! %foldopen!')
       gitsigns.toggle_linehl(true)
     end,
     on_exit = function()
       local cursor_pos = vim.api.nvim_win_get_cursor(0)
-      vim.cmd('loadview')
+      pcmd('loadview', "E32")
       vim.api.nvim_win_set_cursor(0, cursor_pos)
       vim.cmd('normal zv')
       gitsigns.toggle_linehl(false)
@@ -104,7 +106,6 @@ local lsp = Hydra({
 })
 
 local splits = require('smart-splits')
-local pcmd = require('hydra.keymap-util').pcmd
 
 local window_hint = [[
 ^^^^^^^^^^^^     Move      ^^    Size   ^^   ^^     Split
