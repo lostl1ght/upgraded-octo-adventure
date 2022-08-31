@@ -30,6 +30,13 @@ nmap({
     end,
     opts(noremap),
   },
+  {
+    '<leader>l',
+    function()
+      require('modules.ui.hydra.lsp'):activate()
+    end,
+    opts(noremap),
+  },
 })
 
 nmap({
@@ -38,4 +45,11 @@ nmap({
   { 'ga', cmd('Lspsaga code_action'), opts(noremap, 'LSP: code action') },
   { 'gp', cmd('Lspsaga preview_definition'), opts(noremap, 'LSP: preview definition') },
   { 'K', cmd('Lspsaga hover_doc'), opts(noremap, 'LSP: hover') },
+  {
+    'gf',
+    function()
+      require('modules.lsp.utils').lsp_formatting(0)
+    end,
+    opts(noremap, 'Lsp: format'),
+  },
 })
