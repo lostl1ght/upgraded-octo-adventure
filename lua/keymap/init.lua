@@ -13,12 +13,13 @@ nmap({
   { '<Leader>pS', cmd('PackerStatus'), opts(noremap, 'Packer: status') },
 })
 
+local hydra = require('modules.ui.hydra')
 nmap({
   {
     '<leader>b',
     function()
       if #vim.fn.getbufinfo({ buflisted = true }) > 1 then
-        require('modules.ui.hydra').buffers:activate()
+        hydra.buffers:activate()
       end
     end,
     opts(noremap, 'Hydra: buffers'),
@@ -26,28 +27,28 @@ nmap({
   {
     '<leader>w',
     function()
-      require('modules.ui.hydra').windows:activate()
+      hydra.windows:activate()
     end,
     opts(noremap, 'Hydra: windows'),
   },
   {
     '<leader>l',
     function()
-      require('modules.ui.hydra').lsp:activate()
+      hydra.lsp:activate()
     end,
     opts(noremap, 'Hydra: lsp'),
   },
   {
     '<leader>g',
     function()
-      require('modules.ui.hydra').git:activate()
+      hydra.git:activate()
     end,
     opts(noremap, 'Hydra: git'),
   },
   {
     '<leader>f',
     function()
-      require('modules.ui.hydra').telescope:activate()
+      hydra.telescope:activate()
     end,
     opts(noremap, 'Hydra: telescope'),
   },
@@ -56,11 +57,12 @@ nmap({
 xmap({
   '<leader>g',
   function()
-    require('modules.ui.hydra').git:activate()
+    hydra.git:activate()
   end,
   opts(noremap, 'Hydra: git'),
 })
 
+local lsp = require('modules.lsp.lspconfig')
 nmap({
   { 'gd', cmd('Lspsaga lsp_finder'), opts(noremap, 'LSP: goto definition') },
   { 'gr', cmd('Lspsaga rename'), opts(noremap, 'LSP: rename') },
@@ -70,7 +72,7 @@ nmap({
   {
     'gf',
     function()
-      require('modules.lsp.lspconfig').lsp_formatting(0)
+      lsp.lsp_formatting(0)
     end,
     opts(noremap, 'Lsp: format'),
   },
