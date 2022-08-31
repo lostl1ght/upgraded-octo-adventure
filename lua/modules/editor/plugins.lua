@@ -25,3 +25,5 @@ plugin({ 'karb94/neoscroll.nvim', config = conf.neoscroll })
 plugin({ 'kylechui/nvim-surround', tag = '*', config = conf.surround })
 
 plugin({ 'tversteeg/registers.nvim' })
+
+plugin({ 'numToStr/Comment.nvim', config = conf.comment })
