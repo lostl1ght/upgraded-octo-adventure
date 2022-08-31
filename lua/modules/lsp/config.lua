@@ -12,14 +12,6 @@ function config.lspsaga()
   lspconfig.saga()
 end
 
-function config.fidget()
-  require('fidget').setup({
-    window = {
-      relative = 'editor',
-    },
-  })
-end
-
 function config.null_ls()
   local null = require('null-ls')
   null.setup({

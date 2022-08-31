@@ -18,3 +18,7 @@ plugin({ 'szw/vim-maximizer' })
 plugin({ 'mrjones2014/smart-splits.nvim', requires = 'kwkarlwang/bufresize.nvim', config = conf.smart_splits })
 
 plugin({ 'sindrets/winshift.nvim', config = conf.winshift })
+
+plugin({ 'glepnir/dashboard-nvim', config = conf.dashboard })
+
+plugin({ 'vigoux/notifier.nvim', config = conf.notifier })
