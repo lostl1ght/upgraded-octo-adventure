@@ -110,4 +110,12 @@ function config.notifier()
   require('notifier').setup()
 end
 
+function config.dressing()
+  require('dressing').setup({
+    input = {
+      relative = 'win',
+    },
+  })
+end
+
 return config

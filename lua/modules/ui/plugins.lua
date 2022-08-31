@@ -22,3 +22,5 @@ plugin({ 'sindrets/winshift.nvim', config = conf.winshift })
 plugin({ 'glepnir/dashboard-nvim', config = conf.dashboard })
 
 plugin({ 'vigoux/notifier.nvim', config = conf.notifier })
+
+plugin({ 'stevearc/dressing.nvim', config = conf.dressing })
