@@ -1,16 +1,16 @@
 require('keymap.config')
 local key = require('core.keymap')
-local nmap = key.nmap
+local nmap, xmap = key.nmap, key.xmap
 local noremap = key.noremap
 local opts = key.new_opts
 local cmd = key.cmd
 
 nmap({
-  { '<Leader>pu', cmd('PackerUpdate'), opts(noremap) },
-  { '<Leader>pi', cmd('PackerInstall'), opts(noremap) },
-  { '<Leader>pc', cmd('PackerCompile'), opts(noremap) },
-  { '<Leader>ps', cmd('PackerSync'), opts(noremap) },
-  { '<Leader>pS', cmd('PackerStatus'), opts(noremap) },
+  { '<Leader>pu', cmd('PackerUpdate'), opts(noremap, 'Packer: update') },
+  { '<Leader>pi', cmd('PackerInstall'), opts(noremap, 'Packer: install') },
+  { '<Leader>pc', cmd('PackerCompile'), opts(noremap, 'Packer: compile') },
+  { '<Leader>ps', cmd('PackerSync'), opts(noremap, 'Packer: sync') },
+  { '<Leader>pS', cmd('PackerStatus'), opts(noremap, 'Packer: status') },
 })
 
 nmap({
@@ -21,22 +21,37 @@ nmap({
         require('modules.ui.hydra.buffer'):activate()
       end
     end,
-    opts(noremap),
+    opts(noremap, 'Hydra: buffers'),
   },
   {
     '<leader>w',
     function()
       require('modules.ui.hydra.window'):activate()
     end,
-    opts(noremap),
+    opts(noremap, 'Hydra: windows'),
   },
   {
     '<leader>l',
     function()
       require('modules.ui.hydra.lsp'):activate()
     end,
-    opts(noremap),
+    opts(noremap, 'Hydra: lsp'),
   },
+  {
+    '<leader>g',
+    function()
+      require('modules.ui.hydra.git'):activate()
+    end,
+    opts(noremap, 'Hydra: git'),
+  },
+})
+
+xmap({
+  '<leader>g',
+  function()
+    require('modules.ui.hydra.git'):activate()
+  end,
+  opts(noremap, 'Hydra: git'),
 })
 
 nmap({
