@@ -18,7 +18,7 @@ nmap({
     '<leader>b',
     function()
       if #vim.fn.getbufinfo({ buflisted = true }) > 1 then
-        require('modules.ui.hydra.buffer'):activate()
+        require('modules.ui.hydra').buffers:activate()
       end
     end,
     opts(noremap, 'Hydra: buffers'),
@@ -26,21 +26,21 @@ nmap({
   {
     '<leader>w',
     function()
-      require('modules.ui.hydra.window'):activate()
+      require('modules.ui.hydra').windows:activate()
     end,
     opts(noremap, 'Hydra: windows'),
   },
   {
     '<leader>l',
     function()
-      require('modules.ui.hydra.lsp'):activate()
+      require('modules.ui.hydra').lsp:activate()
     end,
     opts(noremap, 'Hydra: lsp'),
   },
   {
     '<leader>g',
     function()
-      require('modules.ui.hydra.git'):activate()
+      require('modules.ui.hydra').git:activate()
     end,
     opts(noremap, 'Hydra: git'),
   },
@@ -49,7 +49,7 @@ nmap({
 xmap({
   '<leader>g',
   function()
-    require('modules.ui.hydra.git'):activate()
+    require('modules.ui.hydra').git:activate()
   end,
   opts(noremap, 'Hydra: git'),
 })

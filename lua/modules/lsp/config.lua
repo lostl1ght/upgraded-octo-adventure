@@ -1,14 +1,14 @@
 local config = {}
 
-local lspconfig = require('modules.lsp.lspconfig')
-
 function config.lspconfig()
+  local lspconfig = require('modules.lsp.lspconfig')
   lspconfig.setup_signs()
   lspconfig.rust()
   lspconfig.lua()
 end
 
 function config.lspsaga()
+  local lspconfig = require('modules.lsp.lspconfig')
   lspconfig.saga()
 end
 
