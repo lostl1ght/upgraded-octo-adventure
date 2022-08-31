@@ -44,6 +44,13 @@ nmap({
     end,
     opts(noremap, 'Hydra: git'),
   },
+  {
+    '<leader>f',
+    function()
+      require('modules.ui.hydra').telescope:activate()
+    end,
+    opts(noremap, 'Hydra: telescope'),
+  },
 })
 
 xmap({

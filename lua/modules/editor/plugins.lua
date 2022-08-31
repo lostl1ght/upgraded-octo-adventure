@@ -13,3 +13,5 @@ plugin({
   tag = 'nightly',
   config = conf.nvimtree,
 })
+
+plugin({ 'nvim-telescope/telescope.nvim', config = conf.telescope })

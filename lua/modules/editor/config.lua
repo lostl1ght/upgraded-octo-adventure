@@ -41,4 +41,29 @@ function config.nvimtree()
   })
 end
 
+function config.telescope()
+  require('telescope').setup({
+    pickers = {
+      fd = {
+        hidden = true,
+        theme = 'dropdown',
+      },
+      live_grep = {
+        hidden = true,
+      },
+      help_tags = {
+        hidden = true,
+        mappings = {
+          i = {
+            ['<cr>'] = 'select_tab',
+          },
+          n = {
+            ['<cr>'] = 'select_tab',
+          },
+        },
+      },
+    },
+  })
+end
+
 return config

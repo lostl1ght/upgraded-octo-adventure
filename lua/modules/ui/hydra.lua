@@ -39,7 +39,7 @@ local git = Hydra({
     end,
     on_exit = function()
       local cursor_pos = vim.api.nvim_win_get_cursor(0)
-      pcmd('loadview', "E32")
+      pcmd('loadview', 'E32')
       vim.api.nvim_win_set_cursor(0, cursor_pos)
       vim.cmd('normal zv')
       gitsigns.toggle_linehl(false)
@@ -184,11 +184,28 @@ local windows = Hydra({
   },
 })
 
+local telescope = Hydra({
+  name = 'Telescope',
+  config = {
+    color = 'blue',
+  },
+  heads = {
+    { 'f', cmd('Telescope fd'), { desc = 'files' } },
+    { 'g', cmd('Telescope live_grep'), { desc = 'live grep' } },
+    { 'h', cmd('Telescope help_tags'), { desc = 'vim help' } },
+    { 'k', cmd('Telescope keymaps'), { desc = 'keymaps' } },
+    { '/', cmd('Telescope current_buffer_fuzzy_find'), { desc = 'search in file' } },
+    { '<enter>', cmd('Telescope'), { exit = true, desc = 'all pickers' } },
+    { 'q', nil, { exit = true, desc = false } },
+  },
+})
+
 local config = {
   buffers = buffers,
   git = git,
   lsp = lsp,
   windows = windows,
+  telescope = telescope,
 }
 
 return config
