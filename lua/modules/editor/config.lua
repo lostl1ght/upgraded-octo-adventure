@@ -22,4 +22,23 @@ function config.treesitter()
   })
 end
 
+function config.nvimtree()
+  require('nvim-tree').setup({
+    actions = {
+      open_file = {
+        quit_on_open = true,
+      },
+    },
+    hijack_directories = {
+      enable = true,
+      auto_open = true,
+    },
+    update_cwd = true,
+    update_focused_file = {
+      enable = true,
+      update_cwd = false,
+    },
+  })
+end
+
 return config

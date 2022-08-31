@@ -53,3 +53,5 @@ nmap({
     opts(noremap, 'Lsp: format'),
   },
 })
+
+nmap({ '<leader>e', cmd('NvimTreeToggle'), opts(noremap, 'Nvim tree') })
