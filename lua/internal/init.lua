@@ -12,16 +12,6 @@ local autocmds = {
   {
     { 'BufRead', 'BufNewFile', 'BufWinEnter' },
     {
-      pattern = { '*.ASM', '*.asm' },
-      callback = function()
-        vim.bo.filetype = 'masm'
-      end,
-      group = file_group,
-    },
-  },
-  {
-    { 'BufRead', 'BufNewFile', 'BufWinEnter' },
-    {
       pattern = '.clang-format',
       callback = function()
         vim.bo.filetype = 'yaml'
@@ -40,29 +30,30 @@ local autocmds = {
     },
   },
   {
-    { 'BufEnter', 'BufNewFile', 'BufWinEnter' },
+    'FileType',
     {
-      pattern = '*.go',
+      pattern = 'go',
       callback = function()
-        vim.o.expandtab = false
+        vim.opt_local.expandtab = false
       end,
       group = file_group,
     },
   },
   {
-    { 'TermOpen' },
+    'TermOpen',
     {
       command = 'startinsert',
       group = vim.api.nvim_create_augroup('CustomTerminal', {}),
     },
   },
   {
-    { 'FileType' },
+    'FileType',
     {
       pattern = 'lua',
       callback = function()
         vim.opt_local.shiftwidth = 2
       end,
+      group = file_group,
     },
   },
 }
