@@ -1,13 +1,15 @@
 local config = {}
 
+local lspconfig = require('modules.lsp.lspconfig')
+
 function config.lspconfig()
-  require('modules.lsp.utils').setup_signs()
-  require('modules.lsp.sumneko-lua').setup()
-  require('modules.lsp.rust-analyzer').setup()
+  lspconfig.setup_signs()
+  lspconfig.rust()
+  lspconfig.lua()
 end
 
 function config.lspsaga()
-  require('modules.lsp.saga').setup()
+  lspconfig.saga()
 end
 
 function config.fidget()

@@ -63,7 +63,7 @@ nmap({
   {
     'gf',
     function()
-      require('modules.lsp.utils').lsp_formatting(0)
+      require('modules.lsp.lspconfig').lsp_formatting(0)
     end,
     opts(noremap, 'Lsp: format'),
   },
