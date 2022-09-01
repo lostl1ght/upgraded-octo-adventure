@@ -21,12 +21,6 @@ function config.heirline()
   require('heirline').setup(StatusLine, WinBar)
 end
 
-function config.notifier()
-  require('notifier').setup({
-    status_width = vim.o.columns,
-  })
-end
-
 function config.dressing()
   require('dressing').setup({
     input = {

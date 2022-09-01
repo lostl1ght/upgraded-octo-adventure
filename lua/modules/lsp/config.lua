@@ -39,4 +39,8 @@ function config.signature()
   })
 end
 
+function config.fidget()
+  require('fidget').setup({})
+end
+
 return config
