@@ -111,6 +111,7 @@ end
 function config.autosession()
   require('auto-session').setup({
     auto_session_suppress_dirs = { '~/', '~/dev', '~/.config' },
+    auto_session_create_enabled = false,
     cwd_change_handling = {
       restore_upcoming_session = true,
     },

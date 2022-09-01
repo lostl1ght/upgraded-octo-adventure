@@ -28,7 +28,7 @@ plugin({ 'tversteeg/registers.nvim' })
 
 plugin({ 'numToStr/Comment.nvim', config = conf.comment })
 
-plugin({'rmagatti/auto-session', config = conf.autosession})
+plugin({ 'rmagatti/auto-session', config = conf.autosession })
 
 plugin({ 'knubie/vim-kitty-navigator', run = 'cp ./*.py ~/.config/kitty/' })
 
