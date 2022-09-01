@@ -133,7 +133,6 @@ local windows = Hydra({
   config = {
     hint = {
       border = 'rounded',
-      offset = -1,
     },
   },
   heads = {
