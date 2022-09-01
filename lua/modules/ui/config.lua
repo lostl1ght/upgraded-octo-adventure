@@ -104,10 +104,13 @@ function config.dashboard()
   db.header_pad = 3
   db.center_pad = 3
   db.footer_pad = 3
+  db.session_directory = vim.fn.stdpath('data') .. '/sessions'
 end
 
 function config.notifier()
-  require('notifier').setup()
+  require('notifier').setup({
+    status_width = vim.o.columns,
+  })
 end
 
 function config.dressing()

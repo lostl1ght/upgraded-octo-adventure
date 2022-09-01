@@ -40,13 +40,6 @@ local autocmds = {
     },
   },
   {
-    'TermOpen',
-    {
-      command = 'startinsert',
-      group = vim.api.nvim_create_augroup('CustomTerminal', {}),
-    },
-  },
-  {
     'FileType',
     {
       pattern = 'lua',

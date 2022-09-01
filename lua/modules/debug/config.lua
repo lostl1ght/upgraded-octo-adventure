@@ -26,22 +26,27 @@ function config.dap()
 end
 
 function config.dapui()
-  local dapui = require('dapui')
-  local dap = require('dap')
+  local dap, dapui = require('dap'), require('dapui')
   dapui.setup()
   dap.listeners.after.event_initialized['dapui_config'] = function()
+    vim.bo.modifiable = false
     dapui.open()
   end
   dap.listeners.before.event_terminated['dapui_config'] = function()
+    vim.bo.modifiable = true
     dapui.close()
   end
   dap.listeners.before.event_exited['dapui_config'] = function()
+    vim.bo.modifiable = true
     dapui.close()
   end
-
   vim.api.nvim_create_user_command('DapEval', function()
     dapui.eval()
   end, { nargs = 0 })
+end
+
+function config.dapjson()
+  require('dap-json').setup({})
 end
 
 return config
