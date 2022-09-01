@@ -44,3 +44,4 @@ vim.opt.cmdwinheight = 5
 vim.opt.undofile = true
 vim.opt.breakindent = true
 vim.opt.breakindentopt = 'shift:2,min:20'
+vim.opt.fillchars = 'diff:╱'
