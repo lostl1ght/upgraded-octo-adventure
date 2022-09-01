@@ -27,3 +27,13 @@ plugin({ 'kylechui/nvim-surround', tag = '*', config = conf.surround })
 plugin({ 'tversteeg/registers.nvim' })
 
 plugin({ 'numToStr/Comment.nvim', config = conf.comment })
+
+plugin({'rmagatti/auto-session', config = conf.autosession})
+
+plugin({ 'knubie/vim-kitty-navigator', run = 'cp ./*.py ~/.config/kitty/' })
+
+plugin({ 'szw/vim-maximizer' })
+
+plugin({ 'mrjones2014/smart-splits.nvim', requires = 'kwkarlwang/bufresize.nvim', config = conf.smart_splits })
+
+plugin({ 'sindrets/winshift.nvim', config = conf.winshift })

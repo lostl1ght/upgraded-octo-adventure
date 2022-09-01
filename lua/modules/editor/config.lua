@@ -108,4 +108,32 @@ function config.comment()
   require('Comment').setup({ ignore = '^$' })
 end
 
+function config.autosession()
+  require('auto-session').setup({
+    auto_session_suppress_dirs = { '~/', '~/dev', '~/.config' },
+    cwd_change_handling = {
+      restore_upcoming_session = true,
+    },
+  })
+end
+
+function config.smart_splits()
+  require('bufresize').setup()
+  require('smart-splits').setup({
+    resize_mode = {
+      hooks = {
+        on_leave = require('bufresize').register,
+      },
+    },
+  })
+end
+
+function config.winshift()
+  require('winshift').setup({
+    keymaps = {
+      disable_defaults = true,
+    },
+  })
+end
+
 return config

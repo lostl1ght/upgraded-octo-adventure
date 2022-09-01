@@ -115,7 +115,7 @@ function config.saga()
     finder_request_timeout = 3000,
     finder_preview_hl_ns = 0,
     finder_action_keys = {
-      open = 'o',
+      open = '<enter>',
       vsplit = 's',
       split = 'i',
       tabe = 't',
