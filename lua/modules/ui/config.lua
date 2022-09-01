@@ -29,4 +29,8 @@ function config.dressing()
   })
 end
 
+function config.notifier()
+  require('notifier').setup({})
+end
+
 return config

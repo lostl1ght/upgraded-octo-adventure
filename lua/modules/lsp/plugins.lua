@@ -12,5 +12,3 @@ plugin({ 'simrat39/symbols-outline.nvim', config = conf.outline })
 plugin({ 'folke/trouble.nvim', config = conf.trouble })
 
 plugin({ 'ray-x/lsp_signature.nvim', config = conf.signature })
-
-plugin({ 'j-hui/fidget.nvim', config = conf.fidget })
