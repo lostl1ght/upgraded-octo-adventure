@@ -52,6 +52,13 @@ nmap({
     end,
     opts(noremap, 'Hydra: telescope'),
   },
+  {
+    '<leader>d',
+    function ()
+      hydra.dap:activate()
+    end,
+    opts(noremap, 'Hydra: debug')
+  }
 })
 
 xmap({
@@ -68,7 +75,7 @@ nmap({
   { 'gr', cmd('Lspsaga rename'), opts(noremap, 'LSP: rename') },
   { 'ga', cmd('Lspsaga code_action'), opts(noremap, 'LSP: code action') },
   { 'gp', cmd('Lspsaga preview_definition'), opts(noremap, 'LSP: preview definition') },
-  { 'K', cmd('Lspsaga hover_doc'), opts(noremap, 'LSP: hover') },
+  { 'K', vim.lsp.buf.hover, opts(noremap, 'LSP: hover') },
   {
     'gf',
     function()

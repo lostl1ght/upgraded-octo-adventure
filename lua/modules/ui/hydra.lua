@@ -18,8 +18,7 @@ local gitsigns = require('gitsigns')
 local git_hint = [[
 _K_: prev hunk   _s_: stage hunk        _d_: show deleted   _b_: blame line       _r_: reset hunk
 _J_: next hunk   _u_: undo last stage   _p_: preview hunk   _B_: blame show full  _R_: reset buffer
-_g_: neogit      _S_: stage buffer      ^ ^                 _/_: show base file
-_q_: exit
+_g_: neogit      _S_: stage buffer      ^ ^                 _/_: show base file   _q_: exit
 ]]
 
 local git = Hydra({
@@ -30,7 +29,7 @@ local git = Hydra({
     color = 'pink',
     invoke_on_body = true,
     hint = {
-      border = 'rounded',
+      border = 'single',
     },
     on_enter = function()
       pcmd('mkview', 'E32')
@@ -132,7 +131,7 @@ local windows = Hydra({
   hint = window_hint,
   config = {
     hint = {
-      border = 'rounded',
+      border = 'single',
     },
   },
   heads = {
@@ -201,12 +200,45 @@ local telescope = Hydra({
   },
 })
 
+local dap = require('dap')
+local dapui = require('dapui')
+
+local hint = [[
+_c_: continue   _b_: breakpoint  _i_: step into  _e_: eval
+_t_: terminate  _s_: step over   _o_: step out   _q_: exit
+]]
+
+local debug = Hydra({
+  name = 'Debug',
+  hint = hint,
+  config = {
+    color = 'pink',
+    invoke_on_body = true,
+    hint = {
+      border = 'single',
+    },
+  },
+  mode = 'n',
+  body = '<leader>d',
+  heads = {
+    { 'q', nil, { exit = true, nowait = true } },
+    { 'c', dap.continue, { nowait = true } },
+    { 't', dap.terminate, { exit = true, nowait = true } },
+    { 'b', dap.toggle_breakpoint, { nowait = true } },
+    { 's', dap.step_over, { nowait = true } },
+    { 'i', dap.step_into, { nowait = true } },
+    { 'o', dap.step_out, { nowait = true } },
+    { 'e', dapui.eval, { nowait = true } },
+  },
+})
+
 local config = {
   buffers = buffers,
   git = git,
   lsp = lsp,
   windows = windows,
   telescope = telescope,
+  dap = debug,
 }
 
 return config

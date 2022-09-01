@@ -40,7 +40,11 @@ function config.signature()
 end
 
 function config.fidget()
-  require('fidget').setup({})
+  require('fidget').setup({
+    window = {
+      relative = 'editor',
+    },
+  })
 end
 
 return config

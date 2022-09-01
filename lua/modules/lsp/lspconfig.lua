@@ -1,5 +1,22 @@
 local config = {}
 
+local function handlers()
+  local border = {
+    { '🭽', 'FloatBorder' },
+    { '▔', 'FloatBorder' },
+    { '🭾', 'FloatBorder' },
+    { '▕', 'FloatBorder' },
+    { '🭿', 'FloatBorder' },
+    { '▁', 'FloatBorder' },
+    { '🭼', 'FloatBorder' },
+    { '▏', 'FloatBorder' },
+  }
+  local h = {
+    ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
+  }
+  return h
+end
+
 local function setup_document_highlight(client, bufnr)
   local status_ok, highlight_supported = pcall(function()
     return client.supports_method('textDocument/documentHighlight')
@@ -55,6 +72,7 @@ end
 
 function config.rust()
   require('lspconfig').rust_analyzer.setup({
+    handlers = handlers(),
     on_attach = function(client, bufnr)
       common_attach(client, bufnr)
     end,
@@ -63,6 +81,7 @@ end
 
 function config.lua()
   require('lspconfig').sumneko_lua.setup({
+    handlers = handlers(),
     settings = {
       Lua = {
         runtime = {
