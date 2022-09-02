@@ -4,6 +4,7 @@ local conf = require('modules.git.config')
 plugin({
   'TimUntersberger/neogit',
   requires = { 'sindrets/diffview.nvim', 'nvim-lua/plenary.nvim' },
+  after = 'kanagawa.nvim',
   config = conf.neogit,
 })
 

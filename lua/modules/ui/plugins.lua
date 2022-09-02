@@ -1,13 +1,22 @@
 local plugin = require('core.pack').register_plugin
 local conf = require('modules.ui.config')
 
-plugin({ 'navarasu/onedark.nvim', config = conf.onedark })
+plugin({ 'rebelot/kanagawa.nvim', config = conf.kanagawa })
 
-plugin({ 'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons', config = conf.bufferline })
+plugin({
+  'akinsho/bufferline.nvim',
+  requires = 'kyazdani42/nvim-web-devicons',
+  after = 'kanagawa.nvim',
+  config = conf.bufferline,
+})
 
-plugin({ 'rebelot/heirline.nvim', requires = 'kyazdani42/nvim-web-devicons', config = conf.heirline })
+plugin({
+  'nvim-lualine/lualine.nvim',
+  requires = { 'kyazdani42/nvim-web-devicons', 'SmiteshP/nvim-navic' },
+  config = conf.lualine,
+})
 
-plugin({ 'SmiteshP/nvim-navic', requires = 'neovim/nvim-lspconfig' })
+plugin({ 'SmiteshP/nvim-navic', requires = 'neovim/nvim-lspconfig', config = conf.navic })
 
 plugin({ 'anuvyklack/hydra.nvim' })
 

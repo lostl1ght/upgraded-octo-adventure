@@ -7,8 +7,8 @@ function config.neogit()
   require('neogit').setup({
     signs = {
       section = { ' ', ' ' },
-      item = { ' ', ' ' },
-      hunk = { ' ', ' ' },
+      item = { '>', 'v' },
+      hunk = { '', '' },
     },
     integrations = { diffview = true },
   })

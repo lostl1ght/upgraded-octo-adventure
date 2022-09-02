@@ -1,10 +1,7 @@
 local config = {}
 
-function config.onedark()
-  require('onedark').setup({
-    style = vim.g.onedark_style,
-  })
-  require('onedark').load()
+function config.kanagawa()
+  vim.cmd('colorscheme kanagawa')
 end
 
 function config.bufferline()
@@ -15,10 +12,8 @@ function config.bufferline()
   })
 end
 
-function config.heirline()
-  local StatusLine = require('modules.ui.heirline.statusline').StatusLine
-  local WinBar = require('modules.ui.heirline.winbar').WinBar
-  require('heirline').setup(StatusLine, WinBar)
+function config.lualine()
+  require('modules.ui.lualine').config()
 end
 
 function config.dressing()
@@ -33,6 +28,39 @@ function config.notifier()
   require('notifier').setup({
     components = {
       'lsp',
+    },
+  })
+end
+
+function config.navic()
+  require('nvim-navic').setup({
+    icons = {
+      File = ' ',
+      Module = ' ',
+      Namespace = ' ',
+      Package = ' ',
+      Class = ' ',
+      Method = ' ',
+      Property = ' ',
+      Field = ' ',
+      Constructor = ' ',
+      Enum = ' ',
+      Interface = ' ',
+      Function = ' ',
+      Variable = ' ',
+      Constant = ' ',
+      String = ' ',
+      Number = ' ',
+      Boolean = ' ',
+      Array = ' ',
+      Object = ' ',
+      Key = ' ',
+      Null = ' ',
+      EnumMember = ' ',
+      Struct = ' ',
+      Event = ' ',
+      Operator = ' ',
+      TypeParameter = ' ',
     },
   })
 end
