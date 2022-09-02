@@ -137,10 +137,10 @@ local windows = Hydra({
     },
   },
   heads = {
-    { 'h', cmd('KittyNavigateLeft') },
-    { 'j', cmd('KittyNavigateDown') },
-    { 'k', cmd('KittyNavigateUp') },
-    { 'l', cmd('KittyNavigateRight') },
+    { 'h', '<c-w>h' },
+    { 'j', '<c-w>j' },
+    { 'k', '<c-w>k' },
+    { 'l', '<c-w>l' },
 
     { 'H', cmd('WinShift left') },
     { 'J', cmd('WinShift down') },
@@ -220,8 +220,6 @@ local debug = Hydra({
       border = 'single',
     },
   },
-  mode = 'n',
-  body = '<leader>d',
   heads = {
     { 'q', nil, { exit = true, nowait = true } },
     { 'c', dap.continue, { nowait = true } },

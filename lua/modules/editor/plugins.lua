@@ -30,8 +30,6 @@ plugin({ 'numToStr/Comment.nvim', config = conf.comment })
 
 plugin({ 'rmagatti/auto-session', config = conf.autosession })
 
-plugin({ 'knubie/vim-kitty-navigator', run = 'cp ./*.py ~/.config/kitty/' })
-
 plugin({ 'szw/vim-maximizer' })
 
 plugin({ 'mrjones2014/smart-splits.nvim', requires = 'kwkarlwang/bufresize.nvim', config = conf.smart_splits })

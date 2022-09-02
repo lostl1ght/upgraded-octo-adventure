@@ -1,13 +1,18 @@
 local config = {}
 
 function config.kanagawa()
+  require('kanagawa').setup({
+    undercurl = false,
+    globalStatus = true,
+  })
   vim.cmd('colorscheme kanagawa')
 end
 
 function config.bufferline()
   require('bufferline').setup({
     options = {
-      modified_icon = '',
+      buffer_close_icon = '',
+      modified_icon = '●',
     },
   })
 end
@@ -93,7 +98,7 @@ function config.navic()
     { group = 'NavicIconsEvent', link = 'TSType' },
     { group = 'NavicIconsOperator', link = 'TSOperator' },
     { group = 'NavicIconsTypeParameter', link = 'TSParameter' },
-    { group = 'NavicSeparator', link = 'Comment'}
+    { group = 'NavicSeparator', link = 'Comment' },
   }
   for _, v in ipairs(groups) do
     vim.cmd(string.format('hi link %s %s', v.group, v.link))
