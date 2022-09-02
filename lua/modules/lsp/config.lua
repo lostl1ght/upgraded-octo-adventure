@@ -68,10 +68,12 @@ function config.signature()
 end
 
 function config.lsplines()
+  local lsplines = require('lsp_lines')
+  lsplines.setup()
   vim.diagnostic.config({
     virtual_text = false,
+    virtual_lines = false,
   })
-  require('lsp_lines').setup()
   local lspconfig = require('modules.lsp.lspconfig')
   lspconfig.setup_signs()
 end

@@ -11,9 +11,10 @@ plugin({
 })
 
 plugin({
-  'nvim-lualine/lualine.nvim',
+  'rebelot/heirline.nvim',
   requires = { 'kyazdani42/nvim-web-devicons', 'SmiteshP/nvim-navic' },
-  config = conf.lualine,
+  after = 'kanagawa.nvim',
+  config = conf.heirline,
 })
 
 plugin({ 'SmiteshP/nvim-navic', requires = 'neovim/nvim-lspconfig', config = conf.navic })
