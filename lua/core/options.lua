@@ -1,5 +1,6 @@
 local cache_dir = os.getenv('HOME') .. '/.cache/nvim/'
 
+vim.g.onedark_style = 'warm'
 vim.g.tex_flavor = 'latex'
 vim.opt.termguicolors = true
 vim.opt.guifont = { 'JetBrainsMono Nerd Font', ':h11' }

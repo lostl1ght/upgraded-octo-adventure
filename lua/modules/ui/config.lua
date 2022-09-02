@@ -2,7 +2,7 @@ local config = {}
 
 function config.onedark()
   require('onedark').setup({
-    style = 'dark',
+    style = vim.g.onedark_style,
   })
   require('onedark').load()
 end

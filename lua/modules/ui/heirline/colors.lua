@@ -1,7 +1,7 @@
 local palette = require('modules.ui.heirline.palette')
 local heirline = require('heirline.utils')
 
-local colors = palette['dark']
+local colors = palette[vim.g.onedark_style]
 
 local hl = {
   StatusLine = {
