@@ -12,3 +12,5 @@ plugin({ 'simrat39/symbols-outline.nvim', config = conf.outline })
 plugin({ 'folke/trouble.nvim', config = conf.trouble })
 
 plugin({ 'ray-x/lsp_signature.nvim', config = conf.signature })
+
+plugin({ "https://git.sr.ht/~whynothugo/lsp_lines.nvim", after = 'nvim-lspconfig', config = conf.lsplines, })

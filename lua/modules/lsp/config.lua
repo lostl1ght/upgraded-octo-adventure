@@ -39,4 +39,11 @@ function config.signature()
   })
 end
 
+function config.lsplines()
+  vim.diagnostic.config({
+    virtual_text = false,
+  })
+  require('lsp_lines').setup()
+end
+
 return config
