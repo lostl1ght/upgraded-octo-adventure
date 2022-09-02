@@ -94,6 +94,7 @@ local git = Hydra({
   },
 })
 
+local lsplines = require('lsp_lines')
 local lsp = Hydra({
   name = 'Lsp',
   heads = {
@@ -102,6 +103,7 @@ local lsp = Hydra({
     { 'd', cmd('Lspsaga show_line_diagnostics'), { desc = 'line diag' } },
     { 't', cmd('TroubleToggle'), { exit = true, desc = 'trouble' } },
     { 's', cmd('SymbolsOutline'), { exit = true, desc = 'outline' } },
+    { 'c', lsplines.toggle, { exit = true, desc = 'diagnostics' } },
     { '<Esc>', nil, { desc = false, exit = true } },
   },
 })

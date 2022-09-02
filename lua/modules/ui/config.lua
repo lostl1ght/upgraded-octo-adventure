@@ -24,13 +24,17 @@ end
 function config.dressing()
   require('dressing').setup({
     input = {
-      relative = 'win',
+      relative = 'editor',
     },
   })
 end
 
 function config.notifier()
-  require('notifier').setup({})
+  require('notifier').setup({
+    components = {
+      'lsp',
+    },
+  })
 end
 
 return config

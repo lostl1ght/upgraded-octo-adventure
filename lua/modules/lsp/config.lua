@@ -2,7 +2,6 @@ local config = {}
 
 function config.lspconfig()
   local lspconfig = require('modules.lsp.lspconfig')
-  lspconfig.setup_signs()
   lspconfig.rust()
   lspconfig.lua()
 end
@@ -44,6 +43,8 @@ function config.lsplines()
     virtual_text = false,
   })
   require('lsp_lines').setup()
+  local lspconfig = require('modules.lsp.lspconfig')
+  lspconfig.setup_signs()
 end
 
 return config

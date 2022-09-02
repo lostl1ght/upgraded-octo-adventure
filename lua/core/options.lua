@@ -2,6 +2,7 @@ local cache_dir = os.getenv('HOME') .. '/.cache/nvim/'
 
 vim.g.onedark_style = 'warm'
 vim.g.tex_flavor = 'latex'
+vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 vim.opt.termguicolors = true
 vim.opt.guifont = { 'JetBrainsMono Nerd Font', ':h11' }
 vim.opt.mouse = 'a'
