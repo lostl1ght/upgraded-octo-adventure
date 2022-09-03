@@ -69,11 +69,11 @@ xmap({
 
 local lsp = require('modules.lsp.lspconfig')
 nmap({
-  { 'gd', cmd('Lspsaga lsp_finder'), opts(noremap, 'LSP: goto definition') },
-  { 'gr', cmd('Lspsaga rename'), opts(noremap, 'LSP: rename') },
-  { 'ga', cmd('Lspsaga code_action'), opts(noremap, 'LSP: code action') },
-  { 'gp', cmd('Lspsaga preview_definition'), opts(noremap, 'LSP: preview definition') },
-  { 'K', cmd('Lspsaga hover_doc'), opts(noremap, 'LSP: hover') },
+  { 'gd', cmd('Lspsaga lsp_finder'), opts(noremap, 'Lsp: goto definition') },
+  { 'gr', cmd('Lspsaga rename'), opts(noremap, 'Lsp: rename') },
+  { 'ga', cmd('Lspsaga code_action'), opts(noremap, 'Lsp: code action') },
+  { 'gp', cmd('Lspsaga preview_definition'), opts(noremap, 'Lsp: preview definition') },
+  { 'K', cmd('Lspsaga hover_doc'), opts(noremap, 'Lsp: hover') },
   {
     'gf',
     function()

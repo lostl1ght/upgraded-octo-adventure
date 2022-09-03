@@ -7,6 +7,7 @@ local buffers = Hydra({
   heads = {
     { 'l', cmd('bn'), { desc = 'next buf' } },
     { 'h', cmd('bp'), { desc = 'prev buf' } },
+    { 'b', cmd('Telescope buffers'), { exit = true, desc = 'bufs' } },
     { 'c', cmd('bd'), { desc = 'close' } },
     { '`', cmd('b#'), { desc = 'switch' } },
     { 'q', nil, { exit = true, desc = false } },
