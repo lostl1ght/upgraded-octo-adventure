@@ -84,3 +84,10 @@ nmap({
 })
 
 nmap({ '<leader>e', cmd('NvimTreeToggle'), opts(noremap, 'Nvim tree') })
+
+nmap({
+  { '<c-l>', '<c-w>l', opts(noremap, 'Nvim: move left') },
+  { '<c-h>', '<c-w>h', opts(noremap, 'Nvim: move right') },
+  { '<c-j>', '<c-w>j', opts(noremap, 'Nvim: move down') },
+  { '<c-k>', '<c-w>k', opts(noremap, 'Nvim: move up') },
+})
