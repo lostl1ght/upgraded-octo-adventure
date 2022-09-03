@@ -49,10 +49,10 @@ function config.telescope()
         theme = 'dropdown',
       },
       live_grep = {
-        hidden = true,
+        theme = 'ivy',
       },
       help_tags = {
-        hidden = true,
+        theme = 'ivy',
         mappings = {
           i = {
             ['<cr>'] = 'select_tab',
@@ -62,6 +62,12 @@ function config.telescope()
           },
         },
       },
+      buffers = {
+        theme = 'dropdown',
+      },
+      keymaps = {
+        theme = 'dropdown'
+      }
     },
   })
 end
