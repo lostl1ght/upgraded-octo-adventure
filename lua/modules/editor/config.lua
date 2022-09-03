@@ -136,4 +136,8 @@ function config.winshift()
   })
 end
 
+function config.registers()
+  vim.g.registers_window_border = 'single'
+end
+
 return config
