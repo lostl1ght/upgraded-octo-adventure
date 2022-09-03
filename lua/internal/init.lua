@@ -29,26 +29,6 @@ local autocmds = {
       group = file_group,
     },
   },
-  {
-    'FileType',
-    {
-      pattern = 'go',
-      callback = function()
-        vim.opt_local.expandtab = false
-      end,
-      group = file_group,
-    },
-  },
-  {
-    'FileType',
-    {
-      pattern = 'lua',
-      callback = function()
-        vim.opt_local.shiftwidth = 2
-      end,
-      group = file_group,
-    },
-  },
 }
 for _, v in ipairs(autocmds) do
   vim.api.nvim_create_autocmd(v[1], v[2])
