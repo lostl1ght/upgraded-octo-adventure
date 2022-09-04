@@ -3,7 +3,7 @@ local colors = require('kanagawa.colors').setup()
 local hl = {
   StatusLine = {
     fg = colors.oldWhite,
-    bg = colors.sumiInk1,
+    bg = colors.sumiInk2,
     bold = true,
   },
 
@@ -36,7 +36,7 @@ local hl = {
   },
 
   ScrollBar = {
-    bg = colors.sumiInk1,
+    bg = colors.sumiInk2,
     fg = colors.oldWhite,
   },
 
