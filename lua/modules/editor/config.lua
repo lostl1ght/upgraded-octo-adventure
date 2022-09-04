@@ -55,10 +55,10 @@ function config.telescope()
         theme = 'ivy',
         mappings = {
           i = {
-            ['<cr>'] = 'select_tab',
+            ['<cr>'] = 'select_vertical',
           },
           n = {
-            ['<cr>'] = 'select_tab',
+            ['<cr>'] = 'select_vertical',
           },
         },
       },
