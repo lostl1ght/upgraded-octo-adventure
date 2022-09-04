@@ -33,7 +33,11 @@ end
 
 function config.notifier()
   require('notifier').setup({
+    status_width = function()
+      return math.floor(vim.o.columns * 3 / 4)
+    end,
     components = {
+      'nvim',
       'lsp',
     },
   })
