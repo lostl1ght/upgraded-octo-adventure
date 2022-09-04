@@ -66,8 +66,8 @@ function config.telescope()
         theme = 'dropdown',
       },
       keymaps = {
-        theme = 'dropdown'
-      }
+        theme = 'dropdown',
+      },
     },
   })
 end
@@ -144,6 +144,17 @@ end
 
 function config.registers()
   vim.g.registers_window_border = 'single'
+end
+
+function config.colorizer()
+  require('colorizer').setup({
+    filetypes = { '*' },
+    user_default_options = {
+      RGB = false,
+      RRGGBB = true,
+      names = false,
+    },
+  })
 end
 
 return config
