@@ -1,6 +1,5 @@
 local colors = require('modules.ui.heirline.colors')
 local mode_colors = colors.highlight.ModeColors
-local heirline = require 'heirline.utils'
 local conditions = require 'heirline.conditions'
 local navic = require 'nvim-navic'
 
