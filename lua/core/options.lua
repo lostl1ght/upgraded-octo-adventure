@@ -1,8 +1,5 @@
 local cache_dir = os.getenv('HOME') .. '/.cache/nvim/'
 
-vim.g.onedark_style = 'warm'
-vim.g.tex_flavor = 'latex'
-vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 vim.opt.termguicolors = true
 vim.opt.guifont = { 'JetBrainsMono Nerd Font', ':h11' }
 vim.opt.mouse = 'a'
@@ -10,14 +7,14 @@ vim.opt.cursorline = true
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.laststatus = 3
 vim.opt.list = true
-vim.opt.listchars = 'tab:»·,nbsp:+,trail:·,extends:→,precedes:←'
+vim.opt.listchars = { tab = '»·', nbsp = '+', trail = '·', extends = '→', precedes = '←' }
 vim.opt.expandtab = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.number = true
 vim.opt.updatetime = 300
 vim.opt.showmode = false
-vim.opt.virtualedit = 'block,onemore'
+vim.opt.virtualedit = { 'block', 'onemore' }
 vim.opt.shiftround = true
 vim.opt.backup = false
 vim.opt.writebackup = false
@@ -29,7 +26,7 @@ vim.opt.viewdir = cache_dir .. 'view/'
 vim.opt.spellfile = cache_dir .. 'spell/en.uft-8.add'
 vim.opt.history = 2000
 vim.opt.shada = "!,'300,<50,@100,s10,h"
-vim.opt.backupskip = '/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*,/private/var/*,.vault.vim'
+vim.opt.backupskip = { '/tmp/*', '$TMPDIR/*', '$TMP/*', '$TEMP/*', '*/shm/*', '/private/var/*', '.vault.vim' }
 vim.opt.redrawtime = 1500
 vim.opt.ignorecase = false
 vim.opt.equalalways = false
@@ -43,5 +40,11 @@ vim.opt.ruler = false
 vim.opt.showtabline = 2
 vim.opt.undofile = true
 vim.opt.breakindent = true
-vim.opt.breakindentopt = 'shift:2,min:20'
-vim.opt.fillchars = 'diff:╱'
+vim.opt.breakindentopt = { shift = 2, min = 20 }
+vim.opt.fillchars = { diff = '╱' }
+vim.opt.sessionoptions = { 'blank', 'buffers', 'curdir', 'folds', 'help', 'tabpages', 'winsize', 'winpos', 'terminal' }
+vim.g.tex_flavor = 'latex'
+vim.g.python3_host_prog = os.getenv('HOME') .. '/.pyenv/versions/neovim/bin/python3'
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
