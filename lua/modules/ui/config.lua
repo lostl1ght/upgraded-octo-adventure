@@ -101,7 +101,7 @@ function config.navic()
     { group = 'NavicSeparator', link = 'Comment' },
   }
   for _, v in ipairs(groups) do
-    vim.cmd(string.format('hi link %s %s', v.group, v.link))
+    vim.api.nvim_set_hl(0, v.group, { link = v.link })
   end
 end
 
