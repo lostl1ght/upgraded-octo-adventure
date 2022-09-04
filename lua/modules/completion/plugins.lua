@@ -15,3 +15,5 @@ plugin({
   },
   config = conf.cmp,
 })
+
+plugin({ 'L3MON4D3/LuaSnip', config = conf.luasnip })
