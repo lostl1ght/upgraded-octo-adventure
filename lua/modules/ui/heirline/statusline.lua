@@ -152,14 +152,7 @@ local SearchResults = {
   end,
   {
     provider = function(self)
-      return table.concat({
-        -- ' ', self.query, ' ', self.count.current, '/', self.count.total, ' '
-        ' ',
-        self.count.current,
-        '/',
-        self.count.total,
-        ' ',
-      })
+      return table.concat({ ' ', self.query, ' [', self.count.current, '/', self.count.total, '] ' })
     end,
     hl = hl.SearchResults,
   },
