@@ -4,6 +4,7 @@ function config.lspconfig()
   local lspconfig = require('modules.lsp.lspconfig')
   lspconfig.rust()
   lspconfig.lua()
+  lspconfig.haskell()
 end
 
 function config.lspsaga()
@@ -17,6 +18,7 @@ function config.null_ls()
     sources = {
       null.builtins.formatting.stylua,
       null.builtins.formatting.rustfmt,
+      null.builtins.formatting.fourmolu
     },
   })
 end

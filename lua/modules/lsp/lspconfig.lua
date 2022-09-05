@@ -55,6 +55,7 @@ end
 
 function config.rust()
   require('lspconfig').rust_analyzer.setup({
+    settings = { ['rust-analyzer'] = { completion = { postfix = { enable = false }, snippets = { custom = {} } } } },
     on_attach = function(client, bufnr)
       common_attach(client, bufnr)
     end,
@@ -72,6 +73,14 @@ function config.lua()
         telemetry = { enable = false },
       },
     },
+    on_attach = function(client, bufnr)
+      common_attach(client, bufnr)
+    end,
+  })
+end
+
+function config.haskell()
+  require('lspconfig').hls.setup({
     on_attach = function(client, bufnr)
       common_attach(client, bufnr)
     end,

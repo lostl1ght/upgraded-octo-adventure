@@ -8,6 +8,7 @@ function config.treesitter()
       'cmake',
       'cpp',
       'go',
+      'haskell',
       'latex',
       'lua',
       'python',
