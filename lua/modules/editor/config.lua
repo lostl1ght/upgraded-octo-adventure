@@ -158,4 +158,8 @@ function config.colorizer()
   })
 end
 
+function config.input_switch()
+  require('input_switch').setup({ keymap = 'russian-jcukenwin' })
+end
+
 return config

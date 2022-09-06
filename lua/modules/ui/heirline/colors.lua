@@ -83,6 +83,8 @@ local hl = {
   TabLineOffset = { bg = colors.sumiInk1 },
 
   Navic = { fg = colors.oldWhite },
+
+  Layout = { fg = colors.samuraiRed },
 }
 
 local mode_colors = {

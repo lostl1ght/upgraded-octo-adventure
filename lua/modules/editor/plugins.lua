@@ -39,3 +39,5 @@ plugin({ 'sindrets/winshift.nvim', config = conf.winshift })
 plugin({ 'Akianonymus/nvim-colorizer.lua', config = conf.colorizer })
 
 plugin({ 'marklcrns/vim-smartq' })
+
+plugin({ '~/dev/plugins/input_switch.nvim', config = conf.input_switch })

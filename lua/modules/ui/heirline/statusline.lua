@@ -409,7 +409,7 @@ local Ruler = {
   -- %L  : number of lines in the buffer
   -- %c  : column number
   -- provider = ' %7(%l:%3L%)  %-2c ',
-  provider = ' %7(%l:%L%)  %-2c ',
+  provider = '%(%l:%L%)  %-2c ',
   hl = { bold = true },
 }
 
@@ -426,12 +426,24 @@ local ScrollBar = {
   hl = hl.ScrollBar,
 }
 
+local Layout = {
+  condition = function()
+    return vim.o.iminsert == 1
+  end,
+
+  provider = function()
+    return string.upper(vim.b.keymap_name) .. ' '
+  end,
+  hl = hl.Layout,
+}
+
 local HelpBufferStatusline = {
   condition = function()
     return vim.bo.filetype == 'help'
   end,
   Space,
   VimMode,
+  SearchResults,
   FileIcon,
   Space,
   FileType,
@@ -458,6 +470,7 @@ local ActiveStatusline = {
   Align,
   Diagnostics,
   Lsp,
+  Layout,
   Ruler,
   ScrollBar,
 }
