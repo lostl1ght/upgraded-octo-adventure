@@ -14,11 +14,12 @@ local Space = setmetatable({ provider = ' ' }, {
   end,
 })
 
+local os_sep = package.config:sub(1, 1)
 local TablineFileName = {
   provider = function(self)
     local filename = self.filename
     filename = filename == '' and '[No Name]'
-      or string.format('%s/%s', vim.fn.fnamemodify(filename, ':p:h:t'), vim.fn.fnamemodify(filename, ':t'))
+      or string.format('%s%s%s', vim.fn.fnamemodify(filename, ':p:h:t'), os_sep, vim.fn.fnamemodify(filename, ':t'))
     return filename
   end,
   hl = function(self)
