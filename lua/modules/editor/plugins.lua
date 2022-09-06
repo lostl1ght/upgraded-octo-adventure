@@ -37,3 +37,5 @@ plugin({ 'mrjones2014/smart-splits.nvim', requires = 'kwkarlwang/bufresize.nvim'
 plugin({ 'sindrets/winshift.nvim', config = conf.winshift })
 
 plugin({ 'Akianonymus/nvim-colorizer.lua', config = conf.colorizer })
+
+plugin({ 'marklcrns/vim-smartq' })
