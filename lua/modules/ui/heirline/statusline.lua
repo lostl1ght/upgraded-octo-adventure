@@ -43,7 +43,7 @@ local NormalModeIndicator = {
       provider = icons.circle,
       hl = function()
         if vim.bo.modified then
-          return { fg = colors.colors.autumnRed }
+          return mode_colors.modified
         else
           return mode_colors.normal
         end

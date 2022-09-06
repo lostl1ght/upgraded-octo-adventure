@@ -8,19 +8,22 @@ function config.kanagawa()
   vim.cmd('colorscheme kanagawa')
 end
 
-function config.bufferline()
-  require('bufferline').setup({
-    options = {
-      buffer_close_icon = '',
-      modified_icon = '●',
-    },
-  })
-end
-
 function config.heirline()
   local statuline = require('modules.ui.heirline.statusline').StatusLine
   local winbar = require('modules.ui.heirline.winbar').WinBar
-  require('heirline').setup(statuline, winbar)
+  local tabline = require('modules.ui.heirline.tabline').TabLine
+  require('heirline').setup(statuline, winbar, tabline)
+  vim.api.nvim_create_autocmd('FileType', {
+    callback = function()
+      local t = { 'wipe', 'delete', 'unload' }
+      for _, v in ipairs(t) do
+        if vim.o.bufhidden == v then
+          vim.o.buflisted = false
+          break
+        end
+      end
+    end,
+  })
 end
 
 function config.dressing()

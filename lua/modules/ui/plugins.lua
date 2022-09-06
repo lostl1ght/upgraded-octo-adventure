@@ -4,13 +4,6 @@ local conf = require('modules.ui.config')
 plugin({ 'rebelot/kanagawa.nvim', config = conf.kanagawa })
 
 plugin({
-  'akinsho/bufferline.nvim',
-  requires = 'kyazdani42/nvim-web-devicons',
-  after = 'kanagawa.nvim',
-  config = conf.bufferline,
-})
-
-plugin({
   'rebelot/heirline.nvim',
   requires = { 'kyazdani42/nvim-web-devicons', 'SmiteshP/nvim-navic' },
   after = 'kanagawa.nvim',

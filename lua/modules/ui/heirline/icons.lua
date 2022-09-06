@@ -13,7 +13,13 @@ icons.icons = {
   },
   padlock = '',
   circle = '',
+  small_circle = '●',
   server = '',
+  close = '',
+  bufferline = {
+    left = ' ',
+    right = ' ',
+  },
 }
 
 icons.mode = setmetatable({
