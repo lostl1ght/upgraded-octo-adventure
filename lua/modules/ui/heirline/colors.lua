@@ -81,6 +81,8 @@ local hl = {
   TabpageClose = { fg = colors.fujiGray },
 
   TabLineOffset = { bg = colors.sumiInk1 },
+
+  Navic = { fg = colors.oldWhite },
 }
 
 local mode_colors = {
@@ -122,9 +124,10 @@ local hydra = {
   blue = colors.crystalBlue,
 }
 
-local theme = {
-  highlight = hl,
-  hydra = hydra,
-}
+hl.Hydra = setmetatable({}, {
+  __index = function(_, color)
+    return hydra[color]
+  end,
+})
 
-return theme
+return hl

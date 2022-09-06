@@ -1,8 +1,7 @@
-local colors = require('modules.ui.heirline.colors')
+local hl = require('modules.ui.heirline.colors')
 local util = require('modules.ui.heirline.icons')
-local hl = colors.highlight
 local icons = util.icons
-local mode_colors = colors.highlight.ModeColors
+local mode_colors = hl.ModeColors
 local conditions = require('heirline.conditions')
 local heirline = require('heirline.utils')
 local devicons = require('nvim-web-devicons')
@@ -56,7 +55,7 @@ local NormalModeIndicator = {
 local HydraActive = {
   condition = hydra.is_active,
   heirline.surround({ icons.powerline.left_rounded, icons.powerline.right_rounded }, function() -- color
-    return colors.hydra[hydra.get_color()]
+    return hl.Hydra[hydra.get_color()]
   end, {
     {
       fallthrough = false,

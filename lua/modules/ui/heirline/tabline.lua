@@ -1,4 +1,4 @@
-local hl = require('modules.ui.heirline.colors').highlight
+local hl = require('modules.ui.heirline.colors')
 local icons = require('modules.ui.heirline.icons').icons
 
 local TablineBufnr = {
