@@ -8,7 +8,7 @@ function opts:new(instance)
         silent = false,
         nowait = false,
         expr = false,
-        noremap = false,
+        remap = false,
       },
     }
   setmetatable(instance, self)
@@ -19,12 +19,6 @@ end
 function keymap.silent(opt)
   return function()
     opt.silent = true
-  end
-end
-
-function keymap.noremap(opt)
-  return function()
-    opt.noremap = true
   end
 end
 
