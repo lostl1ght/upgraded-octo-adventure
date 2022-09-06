@@ -12,47 +12,46 @@ nmap({
   { '<Leader>pS', cmd('PackerStatus'), opts('Packer: status') },
 })
 
-local hydra = require('modules.ui.hydra')
 nmap({
   {
     '<leader>b',
     function()
-      hydra.buffers:activate()
+      require('modules.ui.hydra').buffers:activate()
     end,
     opts('Hydra: buffers'),
   },
   {
     '<leader>w',
     function()
-      hydra.windows:activate()
+      require('modules.ui.hydra').windows:activate()
     end,
     opts('Hydra: windows'),
   },
   {
     '<leader>l',
     function()
-      hydra.lsp:activate()
+      require('modules.ui.hydra').lsp:activate()
     end,
     opts('Hydra: lsp'),
   },
   {
     '<leader>g',
     function()
-      hydra.git:activate()
+      require('modules.ui.hydra').git:activate()
     end,
     opts('Hydra: git'),
   },
   {
     '<leader>f',
     function()
-      hydra.telescope:activate()
+      require('modules.ui.hydra').telescope:activate()
     end,
     opts('Hydra: telescope'),
   },
   {
     '<leader>d',
     function()
-      hydra.dap:activate()
+      require('modules.ui.hydra').dap:activate()
     end,
     opts('Hydra: debug'),
   },
@@ -61,7 +60,7 @@ nmap({
 xmap({
   '<leader>g',
   function()
-    hydra.git:activate()
+    require('modules.ui.hydra').git:activate()
   end,
   opts('Hydra: git'),
 })
