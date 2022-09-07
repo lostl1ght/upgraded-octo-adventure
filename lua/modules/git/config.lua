@@ -1,16 +1,8 @@
 local config = {}
 
-function config.neogit()
+function config.diffview()
   require('diffview').setup({
     enhanced_diff_hl = true,
-  })
-  require('neogit').setup({
-    signs = {
-      section = { ' ', ' ' },
-      item = { '>', 'v' },
-      hunk = { '', '' },
-    },
-    integrations = { diffview = true },
   })
 end
 
