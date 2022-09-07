@@ -54,16 +54,18 @@ local function common_attach(client, bufnr)
   setup_document_highlight(client, bufnr)
 end
 
-function config.rust()
+local servers = {}
+
+function servers.rust()
   require('lspconfig').rust_analyzer.setup({
-    settings = { ['rust-analyzer'] = { completion = { postfix = { enable = false }, snippets = { custom = {} } } } },
+    settings = { ['rust-analyzer'] = { completion = { postfix = { enable = false } } } },
     on_attach = function(client, bufnr)
       common_attach(client, bufnr)
     end,
   })
 end
 
-function config.lua()
+function servers.lua()
   require('lspconfig').sumneko_lua.setup({
     settings = {
       Lua = {
@@ -80,12 +82,29 @@ function config.lua()
   })
 end
 
-function config.haskell()
+function servers.haskell()
   require('lspconfig').hls.setup({
     on_attach = function(client, bufnr)
       common_attach(client, bufnr)
     end,
   })
+end
+
+local group = vim.api.nvim_create_augroup('CustomLsp', {})
+function config.setup()
+  for name, conf in pairs(servers) do
+    vim.api.nvim_create_autocmd('FileType', {
+      group = group,
+      pattern = name,
+      once = true,
+      callback = function()
+        vim.schedule(function()
+          conf()
+          vim.cmd('LspStart')
+        end)
+      end,
+    })
+  end
 end
 
 function config.saga()
