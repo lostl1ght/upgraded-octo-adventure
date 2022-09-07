@@ -42,7 +42,7 @@ vim.opt.undofile = true
 vim.opt.breakindent = true
 vim.opt.breakindentopt = { shift = 2, min = 20 }
 vim.opt.fillchars = { diff = '╱' }
-vim.opt.sessionoptions = { 'blank', 'buffers', 'curdir', 'folds', 'help', 'tabpages', 'winsize', 'winpos', 'terminal' }
+vim.opt.sessionoptions = { 'blank', 'buffers', 'curdir', 'help', 'tabpages', 'winsize', 'winpos', 'terminal' }
 vim.g.tex_flavor = 'latex'
 vim.g.python3_host_prog = os.getenv('HOME') .. '/.pyenv/versions/neovim/bin/python3'
 vim.g.loaded_ruby_provider = 0
