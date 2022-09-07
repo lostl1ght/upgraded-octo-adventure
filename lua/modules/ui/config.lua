@@ -1,9 +1,17 @@
 local config = {}
 
 function config.kanagawa()
+  local colors = require('kanagawa.colors').setup()
   require('kanagawa').setup({
     undercurl = false,
     globalStatus = true,
+    overrides = {
+      NeogitHunkHeader = { bg = colors.diff.text },
+      NeogitHunkHeaderHighlight = { fg = colors.git.changed, bg = colors.diff.text },
+      NeogitDiffContextHighlight = { bg = colors.diff.change },
+      NeogitDiffDeleteHighlight = { fg = colors.git.removed, bg = colors.diff.delete },
+      NeogitDiffAddHighlight = { fg = colors.git.added, bg = colors.diff.add },
+    },
   })
   vim.cmd('colorscheme kanagawa')
 end
