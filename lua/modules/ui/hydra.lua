@@ -90,7 +90,7 @@ local git = Hydra({
       { desc = 'blame show full' },
     },
     { '/', gitsigns.show, { exit = true, desc = 'show base file' } },
-    { 'g', ':Neogit<cr>', { exit = true, desc = 'neogit', nowait = true } },
+    { 'g', cmd('Neogit'), { exit = true, desc = 'neogit', nowait = true } },
     { 'q', nil, { exit = true, nowait = true, desc = 'exit' } },
   },
 })
@@ -203,9 +203,6 @@ local telescope = Hydra({
   },
 })
 
-local dap = require('dap')
-local dapui = require('dapui')
-
 local hint = [[
 _c_: continue   _b_: breakpoint  _i_: step into  _e_: eval
 _t_: terminate  _s_: step over   _o_: step out   _q_: exit
@@ -223,13 +220,13 @@ local debug = Hydra({
   },
   heads = {
     { 'q', nil, { exit = true, nowait = true } },
-    { 'c', dap.continue, { nowait = true } },
-    { 't', dap.terminate, { exit = true, nowait = true } },
-    { 'b', dap.toggle_breakpoint, { nowait = true } },
-    { 's', dap.step_over, { nowait = true } },
-    { 'i', dap.step_into, { nowait = true } },
-    { 'o', dap.step_out, { nowait = true } },
-    { 'e', dapui.eval, { nowait = true } },
+    { 'c', cmd('DapContinue'), { nowait = true } },
+    { 't', cmd('DapTerminate'), { exit = true, nowait = true } },
+    { 'b', cmd('DapToggleBreakpoint'), { nowait = true } },
+    { 's', cmd('DapStepOver'), { nowait = true } },
+    { 'i', cmd('DapStepInto'), { nowait = true } },
+    { 'o', cmd('DapStepOut'), { nowait = true } },
+    { 'e', cmd('DapEval'), { nowait = true } },
   },
 })
 
