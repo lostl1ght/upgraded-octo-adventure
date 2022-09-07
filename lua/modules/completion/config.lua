@@ -68,6 +68,7 @@ function config.cmp()
       format = require('lspkind').cmp_format({
         with_text = true,
         menu = {
+          cmdline = '[cmd]',
           buffer = '[buf]',
           nvim_lsp = '[lsp]',
           nvim_lua = '[api]',
@@ -81,6 +82,21 @@ function config.cmp()
 
       ghost_text = true,
     },
+  })
+  cmp.setup.cmdline('/', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+      { name = 'buffer' },
+    },
+  })
+
+  cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+      { name = 'path' },
+    }, {
+      { name = 'cmdline' },
+    }),
   })
 end
 
