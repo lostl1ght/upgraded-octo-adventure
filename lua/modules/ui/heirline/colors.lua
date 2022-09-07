@@ -118,18 +118,12 @@ hl.ModeColors = setmetatable({
   end,
 })
 
-local hydra = {
+hl.Hydra = {
   red = colors.autumnRed,
   amaranth = colors.samuraiRed,
   teal = colors.lightBlue,
   pink = colors.sakuraPink,
   blue = colors.crystalBlue,
 }
-
-hl.Hydra = setmetatable({}, {
-  __index = function(_, color)
-    return hydra[color]
-  end,
-})
 
 return hl

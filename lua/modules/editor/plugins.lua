@@ -40,4 +40,4 @@ plugin({ 'Akianonymus/nvim-colorizer.lua', config = conf.colorizer })
 
 plugin({ 'marklcrns/vim-smartq' })
 
-plugin({ '~/dev/plugins/input_switch.nvim', config = conf.input_switch })
+plugin({ '~/dev/plugins/langmap_switch.nvim', config = conf.langmap_switch })

@@ -39,7 +39,7 @@ local TablineFileFlags = {
   {
     provider = function(self)
       if not vim.bo[self.bufnr].modifiable or vim.bo[self.bufnr].readonly then
-        return icons.padlock
+        return icons.padlock .. ' '
       end
     end,
     hl = hl.TablineFileFlags.readonly,
