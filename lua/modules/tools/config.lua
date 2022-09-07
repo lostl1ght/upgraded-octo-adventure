@@ -56,6 +56,7 @@ end
 
 function config.autosession()
   require('auto-session').setup({
+    auto_session_root_dir = vim.fn.stdpath('cache') .. '/sessions/',
     auto_session_create_enabled = false,
     cwd_change_handling = {
       restore_upcoming_session = true,

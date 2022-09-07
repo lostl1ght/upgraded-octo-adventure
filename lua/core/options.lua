@@ -1,4 +1,4 @@
-local cache_dir = os.getenv('HOME') .. '/.cache/nvim/'
+local cache_dir = vim.fn.stdpath('cache')
 
 vim.opt.termguicolors = true
 vim.opt.guifont = { 'JetBrainsMono Nerd Font', ':h11' }
