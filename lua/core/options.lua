@@ -1,7 +1,7 @@
 local cache_dir = vim.fn.stdpath('cache')
 
 vim.opt.termguicolors = true
-vim.opt.guifont = { 'JetBrainsMono Nerd Font', ':h11' }
+vim.opt.guifont = { 'JetBrainsMono Nerd Font', ':h10' }
 vim.opt.mouse = 'a'
 vim.opt.cursorline = true
 vim.opt.clipboard = 'unnamedplus'
@@ -23,7 +23,6 @@ vim.opt.directory = cache_dir .. 'swap/'
 vim.opt.undodir = cache_dir .. 'undo/'
 vim.opt.backupdir = cache_dir .. 'backup/'
 vim.opt.viewdir = cache_dir .. 'view/'
-vim.opt.spellfile = cache_dir .. 'spell/en.uft-8.add'
 vim.opt.history = 2000
 vim.opt.shada = "!,'300,<50,@100,s10,h"
 vim.opt.backupskip = { '/tmp/*', '$TMPDIR/*', '$TMP/*', '$TEMP/*', '*/shm/*', '/private/var/*', '.vault.vim' }

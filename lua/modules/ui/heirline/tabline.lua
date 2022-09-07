@@ -111,10 +111,17 @@ local TablineBufferBlock = {
   Space,
 }
 
+local function get_bufs()
+  return vim.tbl_filter(function(bufnr)
+    return vim.bo[bufnr].buflisted
+  end, vim.api.nvim_list_bufs())
+end
+
 local BufferLine = utils.make_buflist(
   TablineBufferBlock,
   { provider = icons.bufferline.left, hl = hl.BufferLine },
-  { provider = icons.bufferline.right, hl = hl.BufferLine }
+  { provider = icons.bufferline.right, hl = hl.BufferLine },
+  get_bufs
 )
 
 local Tabpage = {

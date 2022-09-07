@@ -100,6 +100,8 @@ function config.setup()
       callback = function()
         vim.schedule(function()
           conf()
+        end)
+        vim.schedule(function()
           vim.cmd('LspStart')
         end)
       end,
