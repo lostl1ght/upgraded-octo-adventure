@@ -33,6 +33,7 @@ function config.lsp_formatting(bufnr)
     end,
     bufnr = bufnr,
   })
+  vim.cmd('w')
 end
 
 function config.setup_signs()
