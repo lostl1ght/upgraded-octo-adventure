@@ -96,6 +96,7 @@ local git = Hydra({
 })
 
 local lsplines = require('lsp_lines')
+local lsplines_enabled = false
 local lsp = Hydra({
   name = 'Lsp',
   heads = {
@@ -104,7 +105,15 @@ local lsp = Hydra({
     { 'd', cmd('Lspsaga show_line_diagnostics'), { desc = 'line diag' } },
     { 't', cmd('TroubleToggle'), { exit = true, desc = 'trouble' } },
     { 's', cmd('SymbolsOutline'), { exit = true, desc = 'outline' } },
-    { 'c', lsplines.toggle, { exit = true, desc = 'diagnostics' } },
+    {
+      'c',
+      function()
+        lsplines.toggle()
+        lsplines_enabled = not lsplines_enabled
+        vim.notify(string.format('Line diagnostics %s', lsplines_enabled and 'enabled' or 'disabled'))
+      end,
+      { exit = true, desc = 'diagnostics' },
+    },
     { '<Esc>', nil, { desc = false, exit = true } },
   },
 })
