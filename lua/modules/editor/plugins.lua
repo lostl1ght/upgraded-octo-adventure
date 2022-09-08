@@ -13,8 +13,10 @@ plugin({ 'windwp/nvim-autopairs', config = conf.autopairs })
 
 plugin({ 'abecodes/tabout.nvim', wants = 'nvim-treesitter', config = conf.tabout })
 
-plugin({ 'karb94/neoscroll.nvim', config = conf.neoscroll })
+plugin({ 'declancm/cinnamon.nvim', config = conf.cinnamon })
 
 plugin({ 'kylechui/nvim-surround', tag = '*', config = conf.surround })
 
 plugin({ 'tversteeg/registers.nvim', config = conf.registers })
+
+plugin({ 'ggandor/lightspeed.nvim' })
