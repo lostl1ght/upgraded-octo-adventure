@@ -3,17 +3,12 @@ local config = {}
 function config.treesitter()
   require('nvim-treesitter.configs').setup({
     ensure_installed = {
-      'bash',
-      'c',
-      'cmake',
-      'cpp',
-      'go',
-      'haskell',
-      'latex',
+      'help',
+      'jsonc',
       'lua',
-      'python',
       'rust',
       'toml',
+      'vim',
       'yaml',
     },
     highlight = {
