@@ -14,7 +14,9 @@ function config.null_ls()
   null.setup({
     sources = {
       null.builtins.formatting.stylua,
-      null.builtins.formatting.rustfmt,
+      null.builtins.formatting.rustfmt.with({
+        extra_args = { '--edition', '2021' },
+      }),
       null.builtins.formatting.fourmolu,
     },
   })
