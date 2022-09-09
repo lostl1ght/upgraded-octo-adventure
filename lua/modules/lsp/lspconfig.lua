@@ -55,10 +55,9 @@ local function common_attach(client, bufnr)
 end
 
 local servers = {}
-local lspconfig = require('lspconfig')
 
 function servers.rust_analyzer()
-  lspconfig.rust_analyzer.setup({
+  require('lspconfig').rust_analyzer.setup({
     settings = { ['rust-analyzer'] = { completion = { postfix = { enable = false } } } },
     on_attach = function(client, bufnr)
       common_attach(client, bufnr)
@@ -67,7 +66,7 @@ function servers.rust_analyzer()
 end
 
 function servers.sumneko_lua()
-  lspconfig.sumneko_lua.setup({
+  require('lspconfig').sumneko_lua.setup({
     settings = {
       Lua = {
         completion = { autoRequire = false, keywordSnippet = 'Disable' },
@@ -84,7 +83,7 @@ function servers.sumneko_lua()
 end
 
 function servers.hls()
-  lspconfig.hls.setup({
+  require('lspconfig').hls.setup({
     on_attach = function(client, bufnr)
       common_attach(client, bufnr)
     end,
