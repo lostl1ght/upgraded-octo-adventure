@@ -1,22 +1,15 @@
 local config = {}
 
-function config.nvimtree()
-  require('nvim-tree').setup({
-    actions = {
-      open_file = {
-        quit_on_open = true,
-      },
-    },
-    hijack_directories = {
-      enable = true,
-      auto_open = true,
-    },
-    update_cwd = true,
-    update_focused_file = {
-      enable = true,
-      update_cwd = false,
-    },
-  })
+function config.rnvimr()
+  vim.g.rnvimr_draw_border = 0
+  vim.g.rnvimr_layout = {
+    relative = 'editor',
+    width = math.floor(0.8 * vim.o.columns),
+    height = math.floor(0.8 * vim.o.lines),
+    col = math.floor(0.1 * vim.o.columns),
+    row = math.floor(0.1 * vim.o.lines),
+    style = 'minimal',
+  }
 end
 
 function config.telescope()

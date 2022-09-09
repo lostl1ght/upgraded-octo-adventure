@@ -81,7 +81,7 @@ nmap({
   },
 })
 
-nmap({ '<leader>e', cmd('NvimTreeToggle'), opts('Nvim tree') })
+nmap({ '<leader>e', cmd('RnvimrToggle'), opts('Ranger') })
 
 nmap({
   { '<c-l>', '<c-w>l', opts('Nvim: move left') },
