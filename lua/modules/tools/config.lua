@@ -1,7 +1,6 @@
 local config = {}
 
 function config.rnvimr()
-  vim.api.nvim_set_hl(0, 'RnvimrNormal', { link = 'CursorLine' })
   vim.g.rnvimr_draw_border = 0
   vim.g.rnvimr_enable_bw = 1
   vim.g.rnvimr_layout = {
