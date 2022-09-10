@@ -34,7 +34,6 @@ local git = Hydra({
   name = 'Git',
   hint = git_hint,
   config = {
-    buffer = bufnr,
     color = 'pink',
     invoke_on_body = true,
     hint = {
