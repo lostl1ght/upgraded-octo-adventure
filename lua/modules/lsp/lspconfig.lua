@@ -92,9 +92,35 @@ end
 
 function servers.texlab()
   require('lspconfig').texlab.setup({
-    on_attach = function (client, bufnr)
+    on_attach = function(client, bufnr)
       common_attach(client, bufnr)
-    end
+    end,
+    settings = {
+      texlab = {
+        auxDirectory = 'latex.out',
+        bibtexFormatter = 'texlab',
+        build = {
+          args = { '%f' },
+          executable = 'latexrun',
+          forwardSearchAfter = false,
+          onSave = false,
+        },
+        chktex = {
+          onEdit = false,
+          onOpenAndSave = false,
+        },
+        diagnosticsDelay = 300,
+        formatterLineLength = 80,
+        forwardSearch = {
+          executable = 'evince',
+          args = { '%p' },
+        },
+        latexFormatter = 'latexindent',
+        latexindent = {
+          modifyLineBreaks = false,
+        },
+      },
+    },
   })
 end
 
