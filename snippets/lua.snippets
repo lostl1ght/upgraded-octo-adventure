@@ -1,0 +1,50 @@
+snippet local
+	local ${1:var} = ${0:val}
+
+snippet fun
+	function ${1}(${2})
+		$0
+	end
+
+snippet forp
+	for ${1:i},${2:v} in pairs(${3:t}) do
+		$0
+	end
+
+snippet fori
+	for ${1:i},${2:v} in ipairs(${3:t}) do
+		$0
+	end
+
+snippet if
+	if $1 then
+		$2
+	end
+
+snippet ife
+	if $1 then
+		${2}
+	else
+		${0}
+	end
+
+snippet elif
+	elseif $1 then
+		$0
+
+snippet then
+	then
+		$0
+	end
+
+snippet do
+	do
+		$0
+	end
+
+snippet mod
+	local ${1:M} = {}
+
+	$0
+
+	return $1

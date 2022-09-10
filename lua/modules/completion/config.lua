@@ -101,7 +101,7 @@ function config.cmp()
 end
 
 function config.luasnip()
-  require('luasnip.loaders.from_lua').lazy_load({ paths = vim.fn.stdpath('config') .. '/snippets' })
+  require('luasnip.loaders.from_snipmate').lazy_load()
 end
 
 return config
