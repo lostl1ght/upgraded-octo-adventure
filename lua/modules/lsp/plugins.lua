@@ -1,7 +1,7 @@
 local plugin = require('core.pack').register_plugin
 local conf = require('modules.lsp.config')
 
-plugin({ 'neovim/nvim-lspconfig', ft = { 'lua', 'rust', 'haskell' }, config = conf.lspconfig })
+plugin({ 'neovim/nvim-lspconfig', ft = { 'lua', 'rust', 'haskell', 'tex', 'bib' }, config = conf.lspconfig })
 
 plugin({ 'glepnir/lspsaga.nvim', cmd = 'Lspsaga', branch = 'main', config = conf.lspsaga })
 

@@ -90,6 +90,14 @@ function servers.hls()
   })
 end
 
+function servers.texlab()
+  require('lspconfig').texlab.setup({
+    on_attach = function (client, bufnr)
+      common_attach(client, bufnr)
+    end
+  })
+end
+
 function config.setup()
   for _, func in pairs(servers) do
     func()
