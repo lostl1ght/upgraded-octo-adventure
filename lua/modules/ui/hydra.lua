@@ -2,13 +2,21 @@ local Hydra = require('hydra')
 local cmd = require('hydra.keymap-util').cmd
 local pcmd = require('hydra.keymap-util').pcmd
 
+local function close_buffer()
+  if vim.bo.buftype == 'terminal' then
+    vim.cmd('bd!')
+  else
+    vim.cmd('bd')
+  end
+end
+
 local buffers = Hydra({
   name = 'Buffers',
   heads = {
     { 'l', cmd('bn'), { desc = 'next buf' } },
     { 'h', cmd('bp'), { desc = 'prev buf' } },
     { 'b', cmd('Telescope buffers'), { exit = true, desc = 'bufs' } },
-    { 'c', cmd('bd'), { desc = 'close' } },
+    { 'c', close_buffer, { desc = 'close' } },
     { '`', cmd('b#'), { desc = 'switch' } },
     { 'q', nil, { exit = true, desc = false } },
   },
