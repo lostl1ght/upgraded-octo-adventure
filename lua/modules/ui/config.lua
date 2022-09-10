@@ -52,16 +52,8 @@ function config.dressing()
   })
 end
 
-function config.notifier()
-  require('notifier').setup({
-    status_width = function()
-      return math.floor(vim.o.columns * 3 / 4)
-    end,
-    components = {
-      'nvim',
-      'lsp',
-    },
-  })
+function config.fidget()
+  require('fidget').setup({})
 end
 
 function config.navic()
