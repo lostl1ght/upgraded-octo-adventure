@@ -124,6 +124,10 @@ function servers.texlab()
   })
 end
 
+function servers.gopls()
+  require('lspconfig').gopls.setup({})
+end
+
 function config.setup()
   for _, func in pairs(servers) do
     func()
