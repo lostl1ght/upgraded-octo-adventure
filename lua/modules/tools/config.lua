@@ -1,7 +1,6 @@
 local config = {}
 
 function config.rnvimr()
-  vim.g.rnvimr_draw_border = 0
   vim.g.rnvimr_enable_bw = 1
   vim.g.rnvimr_layout = {
     relative = 'editor',
@@ -53,9 +52,7 @@ function config.autosession()
     log_level = 'error',
     auto_session_root_dir = vim.fn.stdpath('cache') .. '/sessions/',
     auto_session_create_enabled = false,
-    cwd_change_handling = {
-      restore_upcoming_session = true,
-    },
+    cwd_change_handling = nil,
   })
 end
 

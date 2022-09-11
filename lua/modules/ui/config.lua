@@ -29,19 +29,7 @@ function config.heirline()
   local statuline = require('modules.ui.heirline.statusline').StatusLine
   local winbar = require('modules.ui.heirline.winbar').WinBar
   -- local tabline = require('modules.ui.heirline.tabline').TabLine
-  -- require('heirline').setup(statuline, winbar, tabline)
-  require('heirline').setup(statuline, winbar)
-  vim.api.nvim_create_autocmd('FileType', {
-    callback = function()
-      local t = { 'wipe', 'delete', 'unload' }
-      for _, v in ipairs(t) do
-        if vim.o.bufhidden == v then
-          vim.o.buflisted = false
-          break
-        end
-      end
-    end,
-  })
+  require('heirline').setup(statuline, winbar, tabline)
 end
 
 function config.dressing()
