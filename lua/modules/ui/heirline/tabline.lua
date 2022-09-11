@@ -89,7 +89,7 @@ local TablineCloseButton = {
     return not vim.bo[self.bufnr].modified
   end,
   {
-    provider = icons.close,
+    provider = icons.cross,
     hl = hl.TablineCloseButton,
     on_click = {
       callback = function(_, minwid)

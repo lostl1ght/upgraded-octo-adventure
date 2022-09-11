@@ -1,20 +1,222 @@
 local colors = require('modules.ui.heirline.colors')
 local conditions = require('heirline.conditions')
 local navic = require('nvim-navic')
+local icons = require('modules.ui.heirline.icons').icons
 
+local Align = { provider = '%=' }
 local Space = setmetatable({ provider = ' ' }, {
   __call = function(_, n)
     return { provider = string.rep(' ', n) }
   end,
 })
 
+local hl = require('modules.ui.heirline.colors')
+local devicons = require('nvim-web-devicons')
+local heirline = require('heirline.utils')
+
+local priority = {
+  CurrentPath = 10,
+  FileIcon = 60,
+  FileType = 25,
+  Navic = 40,
+}
+
+local FileIcon = {
+  init = function(self)
+    local filename = self.filename
+    local extension = vim.fn.fnamemodify(filename, ':e')
+    self.icon, self.icon_color = devicons.get_icon_color(filename, extension, { default = true })
+  end,
+  heirline.make_flexible_component(priority.FileIcon, {
+    provider = function(self)
+      return self.icon
+    end,
+  }, { provider = '' }),
+  hl = function(self)
+    return { fg = self.icon_color }
+  end,
+  Space,
+}
+
+local FileType = {
+  init = function(self)
+    self.filetype = vim.bo.filetype
+    local filename = self.filename
+    local extension = vim.fn.fnamemodify(filename, ':e')
+    _, self.icon_color = devicons.get_icon_color(filename, extension, { default = true })
+  end,
+  heirline.make_flexible_component(priority.FileType, {
+    provider = function(self)
+      return self.filetype
+    end,
+  }, { provider = '' }),
+  hl = function(self)
+    return { fg = self.icon_color }
+  end,
+  Space,
+}
+
+local CurrentPath = {
+  condition = function(self)
+    return self.current_path
+  end,
+  heirline.make_flexible_component(priority.CurrentPath, {
+    provider = function(self)
+      return self.current_path
+    end,
+  }, {
+    provider = function(self)
+      return vim.fn.pathshorten(self.current_path, 2)
+    end,
+  }, {
+    provider = '',
+  }),
+  hl = hl.CurrentPath,
+}
+
+local FileName = {
+  provider = function(self)
+    return self.filename
+  end,
+  hl = hl.FileName,
+  Space,
+}
+
+local FileModified = {
+  condition = function()
+    return vim.bo.modified
+  end,
+  provider = icons.circle,
+  hl = hl.ModeColors.modified,
+}
+
+local FileNameBlock = {
+  {
+    CurrentPath,
+    FileName,
+    FileIcon,
+    FileType,
+  },
+  { provider = '%<' },
+}
+
+local GitChanges = {
+  condition = function(self)
+    if conditions.is_git_repo() then
+      self.git_status = vim.b.gitsigns_status_dict
+      local has_changes = self.git_status.added ~= 0 or self.git_status.removed ~= 0 or self.git_status.changed ~= 0
+      return has_changes
+    end
+  end,
+  {
+    provider = function(self)
+      local count = self.git_status.added or 0
+      return count > 0 and table.concat({ '+', count, ' ' })
+    end,
+    hl = hl.Git.added,
+  },
+  {
+    provider = function(self)
+      local count = self.git_status.changed or 0
+      return count > 0 and table.concat({ '~', count, ' ' })
+    end,
+    hl = hl.Git.changed,
+  },
+  {
+    provider = function(self)
+      local count = self.git_status.removed or 0
+      return count > 0 and table.concat({ '-', count, ' ' })
+    end,
+    hl = hl.Git.removed,
+  },
+}
+
 local Navic = {
   condition = navic.is_available,
-  provider = navic.get_location,
+  heirline.make_flexible_component(priority.Navic, {
+    provider = navic.get_location,
+  }, { provider = '' }),
   hl = colors.Navic,
 }
 
+local Diagnostics = {
+  condition = conditions.has_diagnostics,
+  static = {
+    error_icon = icons.diagnostic.error,
+    warn_icon = icons.diagnostic.warn,
+    info_icon = icons.diagnostic.info,
+    hint_icon = icons.diagnostic.hint,
+  },
+  init = function(self)
+    self.errors = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
+    self.warnings = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
+    self.hints = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT })
+    self.info = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO })
+  end,
+  {
+    provider = function(self)
+      if self.errors > 0 then
+        return table.concat({ self.error_icon, self.errors, ' ' })
+      end
+    end,
+    hl = hl.Diagnostic.error,
+  },
+  {
+    provider = function(self)
+      if self.warnings > 0 then
+        return table.concat({ self.warn_icon, self.warnings, ' ' })
+      end
+    end,
+    hl = hl.Diagnostic.warn,
+  },
+  {
+    provider = function(self)
+      if self.info > 0 then
+        return table.concat({ self.info_icon, self.info, ' ' })
+      end
+    end,
+    hl = hl.Diagnostic.info,
+  },
+  {
+    provider = function(self)
+      if self.hints > 0 then
+        return table.concat({ self.hint_icon, self.hints, ' ' })
+      end
+    end,
+    hl = hl.Diagnostic.hint,
+  },
+  Space,
+}
+
+local os_sep = package.config:sub(1, 1)
 local winbar = {
+  init = function(self)
+    local pwd = vim.fn.getcwd(0) -- Present working directory.
+    local current_path = vim.api.nvim_buf_get_name(0)
+    local filename
+
+    if current_path == '' then
+      pwd = vim.fn.fnamemodify(pwd, ':~')
+      current_path = nil
+      filename = ' [No Name]'
+    elseif current_path:find(pwd, 1, true) then
+      filename = vim.fn.fnamemodify(current_path, ':t')
+      current_path = vim.fn.fnamemodify(current_path, ':~:.:h')
+      pwd = vim.fn.fnamemodify(pwd, ':~') .. os_sep
+      if current_path == '.' then
+        current_path = nil
+      else
+        current_path = current_path .. os_sep
+      end
+    else
+      pwd = nil
+      filename = vim.fn.fnamemodify(current_path, ':t')
+      current_path = vim.fn.fnamemodify(current_path, ':~:.:h') .. os_sep
+    end
+
+    self.current_path = current_path -- The opened file path relevant to pwd.
+    self.filename = filename
+  end,
   fallthrough = false,
   {
     condition = function()
@@ -30,6 +232,11 @@ local winbar = {
   {
     Space,
     Navic,
+    Align,
+    Diagnostics,
+    GitChanges,
+    FileNameBlock,
+    FileModified,
   },
 }
 

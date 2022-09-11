@@ -16,15 +16,6 @@ function config.kanagawa()
   vim.cmd('colorscheme kanagawa')
 end
 
-function config.bufferline()
-  require('bufferline').setup({
-    options = {
-      buffer_close_icon = '',
-      modified_icon = '●',
-    },
-  })
-end
-
 function config.heirline()
   local statuline = require('modules.ui.heirline.statusline').StatusLine
   local winbar = require('modules.ui.heirline.winbar').WinBar

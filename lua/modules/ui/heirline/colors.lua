@@ -107,7 +107,7 @@ local mode_colors = {
 
 hl.ModeColors = setmetatable({
   normal = { fg = mode_colors.normal },
-  modified = { fg = colors.autumnGreen },
+  modified = { fg = colors.peachRed },
 }, {
   __index = function(_, mode)
     return {

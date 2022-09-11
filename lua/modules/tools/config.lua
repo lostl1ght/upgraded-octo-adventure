@@ -57,7 +57,7 @@ function config.autosession()
 end
 
 function config.smart_splits()
-  require('bufresize').setup()
+  require('bufresize').setup({})
   require('smart-splits').setup({
     resize_mode = {
       hooks = {

@@ -10,13 +10,6 @@ plugin({
   config = conf.heirline,
 })
 
-plugin({
-  'akinsho/bufferline.nvim',
-  requires = 'kyazdani42/nvim-web-devicons',
-  after = 'kanagawa.nvim',
-  config = conf.bufferline,
-})
-
 plugin({ 'SmiteshP/nvim-navic', requires = 'neovim/nvim-lspconfig', config = conf.navic })
 
 plugin({ 'anuvyklack/hydra.nvim' })

@@ -201,24 +201,7 @@ local WorkDir = {
       return vim.fn.pathshorten(self.pwd)
     end,
   }, null),
-}
-
-local CurrentPath = {
-  condition = function(self)
-    return self.current_path
-  end,
-  heirline.make_flexible_component(priority.CurrentPath, {
-    provider = function(self)
-      return self.current_path
-    end,
-  }, {
-    provider = function(self)
-      return vim.fn.pathshorten(self.current_path, 2)
-    end,
-  }, {
-    provider = '',
-  }),
-  hl = hl.CurrentPath,
+  Space,
 }
 
 local FileName = {
@@ -235,39 +218,13 @@ local HydraHint = {
   provider = hydra.get_hint,
 }
 
-local is_banned = function()
-  local types = {
-    'NvimTree',
-    'NeogitStatus',
-  }
-  for _, v in ipairs(types) do
-    if vim.bo.filetype == v then
-      return true
-    end
-  end
-  return false
-end
-
 local FileNameBlock = {
   {
-    fallthrough = false,
     HydraHint,
     {
-      condition = function()
-        return conditions.is_active() and not is_banned()
-      end,
       FileIcon,
       Space,
-      FileType,
-      Space,
-      WorkDir,
-      CurrentPath,
       FileName,
-    },
-    {
-      FileIcon,
-      Space,
-      WorkDir,
     },
   },
   -- This means that the statusline is cut here when there's not enough space.
@@ -283,89 +240,6 @@ local GitBranch = {
   provider = function(self)
     return table.concat({ ' ', self.git_status.head, ' ' })
   end,
-}
-
-local GitChanges = {
-  condition = function(self)
-    if conditions.is_git_repo() then
-      self.git_status = vim.b.gitsigns_status_dict
-      local has_changes = self.git_status.added ~= 0 or self.git_status.removed ~= 0 or self.git_status.changed ~= 0
-      return has_changes
-    end
-  end,
-  {
-    provider = function(self)
-      local count = self.git_status.added or 0
-      return count > 0 and table.concat({ '+', count, ' ' })
-    end,
-    hl = hl.Git.added,
-  },
-  {
-    provider = function(self)
-      local count = self.git_status.changed or 0
-      return count > 0 and table.concat({ '~', count, ' ' })
-    end,
-    hl = hl.Git.changed,
-  },
-  {
-    provider = function(self)
-      local count = self.git_status.removed or 0
-      return count > 0 and table.concat({ '-', count, ' ' })
-    end,
-    hl = hl.Git.removed,
-  },
-  Space,
-}
-
-local Git = heirline.make_flexible_component(priority.Git, { GitBranch, GitChanges }, { GitBranch })
-
-local Diagnostics = {
-  condition = conditions.has_diagnostics,
-  static = {
-    error_icon = icons.diagnostic.error,
-    warn_icon = icons.diagnostic.warn,
-    info_icon = icons.diagnostic.info,
-    hint_icon = icons.diagnostic.hint,
-  },
-  init = function(self)
-    self.errors = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
-    self.warnings = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
-    self.hints = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT })
-    self.info = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO })
-  end,
-  {
-    provider = function(self)
-      -- 0 is just another output, we can decide to print it or not!
-      if self.errors > 0 then
-        return table.concat({ self.error_icon, self.errors, ' ' })
-      end
-    end,
-    hl = hl.Diagnostic.error,
-  },
-  {
-    provider = function(self)
-      if self.warnings > 0 then
-        return table.concat({ self.warn_icon, self.warnings, ' ' })
-      end
-    end,
-    hl = hl.Diagnostic.warn,
-  },
-  {
-    provider = function(self)
-      if self.info > 0 then
-        return table.concat({ self.info_icon, self.info, ' ' })
-      end
-    end,
-    hl = hl.Diagnostic.info,
-  },
-  {
-    provider = function(self)
-      if self.hints > 0 then
-        return table.concat({ self.hint_icon, self.hints, ' ' })
-      end
-    end,
-    hl = hl.Diagnostic.hint,
-  },
 }
 
 local LspIndicator = {
@@ -458,21 +332,23 @@ local HelpBufferStatusline = {
   Align,
   Ruler,
   ScrollBar,
+  Space,
 }
 
 local ActiveStatusline = {
   Space,
   VimMode,
   SearchResults,
-  FileNameBlock,
-  Space,
-  Git,
+  WorkDir,
+  GitBranch,
   Align,
-  Diagnostics,
+  FileNameBlock,
+  Align,
   Lsp,
   Layout,
   Ruler,
   ScrollBar,
+  Space,
 }
 
 local statusline = {
