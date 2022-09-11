@@ -86,7 +86,7 @@ local FileModified = {
   condition = function()
     return vim.bo.modified
   end,
-  provider = icons.circle,
+  provider = icons.small_circle,
   hl = hl.ModeColors.modified,
 }
 
