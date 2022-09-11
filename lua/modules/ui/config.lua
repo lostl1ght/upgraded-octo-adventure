@@ -19,7 +19,7 @@ end
 function config.heirline()
   local statuline = require('modules.ui.heirline.statusline').StatusLine
   local winbar = require('modules.ui.heirline.winbar').WinBar
-  -- local tabline = require('modules.ui.heirline.tabline').TabLine
+  local tabline = require('modules.ui.heirline.tabline').TabLine
   require('heirline').setup(statuline, winbar, tabline)
 end
 
@@ -32,7 +32,11 @@ function config.dressing()
 end
 
 function config.fidget()
-  require('fidget').setup({})
+  require('fidget').setup({
+    window = {
+      relative = 'editor',
+    },
+  })
 end
 
 function config.navic()
