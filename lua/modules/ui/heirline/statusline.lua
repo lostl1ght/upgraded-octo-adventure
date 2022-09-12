@@ -308,14 +308,11 @@ local ScrollBar = {
   hl = hl.ScrollBar,
 }
 
+local langmap = require('langmap_switch')
 local Layout = {
-  condition = function()
-    return vim.o.iminsert == 1
-  end,
+  condition = langmap.condition,
 
-  provider = function()
-    return string.upper(vim.b.keymap_name) .. ' '
-  end,
+  provider = langmap.provider,
   hl = hl.Layout,
 }
 

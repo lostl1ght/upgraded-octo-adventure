@@ -5,8 +5,13 @@ plugin({ 'rebelot/kanagawa.nvim', config = conf.kanagawa })
 
 plugin({
   'rebelot/heirline.nvim',
-  requires = { 'kyazdani42/nvim-web-devicons', 'SmiteshP/nvim-navic' },
-  after = 'kanagawa.nvim',
+  requires = {
+    'kyazdani42/nvim-web-devicons',
+    'SmiteshP/nvim-navic',
+    'kanagawa.nvim',
+    'langmap_switch.nvim',
+  },
+  after = { 'kanagawa.nvim', 'nvim-navic', 'langmap_switch.nvim' },
   config = conf.heirline,
 })
 
