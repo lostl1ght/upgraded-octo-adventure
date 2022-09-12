@@ -8,19 +8,14 @@ local function setup_document_highlight(client, bufnr)
   if not status_ok or not highlight_supported then
     return
   end
-  local augroup_exist, _ = pcall(vim.api.nvim_get_autocmds, {
-    group = 'lsp_document_highlight',
-  })
-  if not augroup_exist then
-    vim.api.nvim_create_augroup('lsp_document_highlight', {})
-  end
+  local group = vim.api.nvim_create_augroup('LspDocumentHighlight', {})
   vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-    group = 'lsp_document_highlight',
+    group = group,
     buffer = bufnr,
     callback = vim.lsp.buf.document_highlight,
   })
-  vim.api.nvim_create_autocmd('CursorMoved', {
-    group = 'lsp_document_highlight',
+  vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+    group = group,
     buffer = bufnr,
     callback = vim.lsp.buf.clear_references,
   })
