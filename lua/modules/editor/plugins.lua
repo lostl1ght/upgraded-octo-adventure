@@ -20,3 +20,5 @@ plugin({ 'kylechui/nvim-surround', tag = '*', config = conf.surround })
 plugin({ 'tversteeg/registers.nvim', config = conf.registers })
 
 plugin({ 'ggandor/lightspeed.nvim' })
+
+plugin({ 'andymass/vim-matchup', requires = 'nvim-treesitter', after = 'nvim-treesitter', config = conf.matchup })

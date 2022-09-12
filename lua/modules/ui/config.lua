@@ -11,6 +11,8 @@ function config.kanagawa()
       NeogitDiffContextHighlight = { bg = colors.diff.change },
       NeogitDiffDeleteHighlight = { fg = colors.git.removed, bg = colors.diff.delete },
       NeogitDiffAddHighlight = { fg = colors.git.added, bg = colors.diff.add },
+      MatchParen = { fg = colors.springGreen, bg = colors.sumiInk3 },
+      LspReferenceText = { link = 'MatchParen' },
     },
   })
   vim.cmd('colorscheme kanagawa')

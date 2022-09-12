@@ -117,4 +117,12 @@ function config.registers()
   vim.g.registers_window_border = 'single'
 end
 
+function config.matchup()
+  require('nvim-treesitter.configs').setup({
+    matchup = {
+      enable = true,
+    },
+  })
+end
+
 return config
