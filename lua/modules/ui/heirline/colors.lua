@@ -42,34 +42,6 @@ local hl = {
 
   SearchResults = { fg = colors.sumiInk0, bg = colors.waveAqua2 },
 
-  TablineBufnr = { fg = colors.fujiGray },
-
-  TablineFileFlags = {
-    modified = { fg = colors.autumnGreen },
-    readonly = { fg = colors.surimiOrange },
-  },
-
-  TablineFileNameBlock = function(self)
-    if self.is_active then
-      return { fg = colors.surimiOrange }
-    elseif self.is_visible then
-      return { fg = colors.crystalBlue }
-    else
-      return { fg = colors.fujiGray }
-    end
-  end,
-
-  TablineCloseButton = { fg = colors.fujiGray },
-  TablineBufferBlock = function(self)
-    if self.is_active then
-      return { bg = colors.sumiInk2 }
-    else
-      return { bg = colors.sumiInk1 }
-    end
-  end,
-
-  BufferLine = { fg = colors.fujiGray },
-
   Tabpage = function(self)
     if not self.is_active then
       return { fg = colors.fujiGray }
@@ -78,13 +50,17 @@ local hl = {
     end
   end,
 
-  TabpageClose = { fg = colors.fujiGray },
-
-  TabLineOffset = { bg = colors.sumiInk1 },
-
   Navic = { fg = colors.oldWhite },
 
   Layout = { fg = colors.samuraiRed },
+
+  VerticalLine = function(self)
+    if not self.is_active then
+      return { fg = colors.fujiGray }
+    else
+      return { fg = colors.surimiOrange }
+    end
+  end,
 }
 
 local mode_colors = {

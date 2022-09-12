@@ -2,6 +2,11 @@ local hl = require('modules.ui.heirline.colors')
 local utils = require('heirline.utils')
 local icons = require('modules.ui.heirline.icons').icons
 
+local VerticalLine = {
+  provider = '│',
+  hl = hl.VerticalLine,
+}
+
 local TabNumber = {
   provider = function(self)
     return string.format('%%%dT %d.%%T', self.tabnr, self.tabnr)
@@ -53,6 +58,7 @@ local TabPage = {
       end
     end
   end,
+  VerticalLine,
   TabNumber,
   WinCount,
   WinModified,
