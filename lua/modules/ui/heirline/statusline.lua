@@ -311,9 +311,9 @@ local ScrollBar = {
 local langmap = require('langmap_switch')
 local Layout = {
   condition = langmap.condition,
-
   provider = langmap.provider,
   hl = hl.Layout,
+  Space,
 }
 
 local HelpBufferStatusline = {
