@@ -16,6 +16,16 @@ plugin({
   config = conf.dap,
 })
 
-plugin({ 'rcarriga/nvim-dap-ui', requires = 'mfussenegger/nvim-dap', config = conf.dapui, after = 'nvim-dap' })
+plugin({
+  'rcarriga/nvim-dap-ui',
+  requires = 'mfussenegger/nvim-dap',
+  config = conf.dapui,
+  after = 'nvim-dap',
+})
 
-plugin({ 'lostl1ght/dap-json.nvim', requires = 'mfussenegger/nvim-dap', config = conf.dapjson, after = 'nvim-dap' })
+plugin({
+  'lostl1ght/dap-json.nvim',
+  requires = 'mfussenegger/nvim-dap',
+  config = conf.dapjson,
+  after = 'nvim-dap',
+})

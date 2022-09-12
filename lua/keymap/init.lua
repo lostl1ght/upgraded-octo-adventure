@@ -70,7 +70,7 @@ nmap({
   { 'gd', cmd('Lspsaga lsp_finder'), opts('Lsp: goto definition') },
   { 'gr', cmd('Lspsaga rename'), opts('Lsp: rename') },
   { 'ga', cmd('Lspsaga code_action'), opts('Lsp: code action') },
-  { 'gp', cmd('Lspsaga preview_definition'), opts('Lsp: preview definition') },
+  { 'gp', cmd('Lspsaga peek_definition'), opts('Lsp: preview definition') },
   { 'K', cmd('Lspsaga hover_doc'), opts('Lsp: hover') },
   {
     'gf',

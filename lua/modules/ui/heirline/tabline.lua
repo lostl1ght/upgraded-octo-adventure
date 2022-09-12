@@ -21,7 +21,12 @@ local WinModified = {
 
 local WinCount = {
   provider = function(self)
-    return string.format('%%%dT %d window%s%%T', self.tabnr, self.win_count, self.win_count == 1 and '' or 's')
+    return string.format(
+      '%%%dT %d window%s%%T',
+      self.tabnr,
+      self.win_count,
+      self.win_count == 1 and '' or 's'
+    )
   end,
   hl = hl.Tabpage,
 }

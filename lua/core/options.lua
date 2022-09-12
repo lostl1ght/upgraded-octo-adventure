@@ -25,7 +25,15 @@ vim.opt.backupdir = cache_dir .. 'backup/'
 vim.opt.viewdir = cache_dir .. 'view/'
 vim.opt.history = 2000
 vim.opt.shada = "!,'300,<50,@100,s10,h"
-vim.opt.backupskip = { '/tmp/*', '$TMPDIR/*', '$TMP/*', '$TEMP/*', '*/shm/*', '/private/var/*', '.vault.vim' }
+vim.opt.backupskip = {
+  '/tmp/*',
+  '$TMPDIR/*',
+  '$TMP/*',
+  '$TEMP/*',
+  '*/shm/*',
+  '/private/var/*',
+  '.vault.vim',
+}
 vim.opt.redrawtime = 1500
 vim.opt.ignorecase = false
 vim.opt.equalalways = false

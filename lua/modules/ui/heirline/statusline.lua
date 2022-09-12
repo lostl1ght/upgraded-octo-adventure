@@ -54,7 +54,7 @@ local NormalModeIndicator = {
 
 local HydraActive = {
   condition = hydra.is_active,
-  heirline.surround({ icons.powerline.left_rounded, icons.powerline.right_rounded }, function() -- color
+  heirline.surround({ icons.powerline.left_rounded, icons.powerline.right_rounded }, function()
     return hl.Hydra[hydra.get_color()]
   end, {
     {
@@ -88,7 +88,7 @@ local VimModeActive = {
     return conditions.is_active() and self.mode ~= 'normal'
   end,
   hl = { bg = hl.StatusLine.bg },
-  heirline.surround({ icons.powerline.left_rounded, icons.powerline.right_rounded }, function(self) -- color
+  heirline.surround({ icons.powerline.left_rounded, icons.powerline.right_rounded }, function(self)
     return mode_colors[self.mode].bg
   end, {
     {
@@ -151,7 +151,15 @@ local SearchResults = {
   end,
   {
     provider = function(self)
-      return table.concat({ ' ', self.query, ' [', self.count.current, '/', self.count.total, '] ' })
+      return table.concat({
+        ' ',
+        self.query,
+        ' [',
+        self.count.current,
+        '/',
+        self.count.total,
+        '] ',
+      })
     end,
     hl = hl.SearchResults,
   },

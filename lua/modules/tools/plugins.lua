@@ -9,7 +9,11 @@ plugin({ 'rmagatti/auto-session', config = conf.autosession })
 
 plugin({ 'szw/vim-maximizer' })
 
-plugin({ 'mrjones2014/smart-splits.nvim', requires = 'kwkarlwang/bufresize.nvim', config = conf.smart_splits })
+plugin({
+  'mrjones2014/smart-splits.nvim',
+  requires = 'kwkarlwang/bufresize.nvim',
+  config = conf.smart_splits,
+})
 
 plugin({ 'sindrets/winshift.nvim', config = conf.winshift })
 

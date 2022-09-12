@@ -102,7 +102,6 @@ local git = Hydra({
   },
 })
 
-local lsplines_enabled = false
 local lsp = Hydra({
   name = 'Lsp',
   heads = {
@@ -115,8 +114,10 @@ local lsp = Hydra({
       'c',
       function()
         require('lsp_lines').toggle()
-        lsplines_enabled = not lsplines_enabled
-        vim.notify(string.format('Line diagnostics %s', lsplines_enabled and 'enabled' or 'disabled'))
+        vim.g.lsplines_enabled = not vim.g.lsplines_enabled
+        vim.notify(
+          string.format('Line diagnostics %s', vim.g.lsplines_enabled and 'enabled' or 'disabled')
+        )
       end,
       { exit = true, desc = 'diagnostics' },
     },
