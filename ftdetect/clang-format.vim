@@ -1,1 +1,1 @@
-au BufRead,BufNewFile .clang-format set filetype=yaml
+au BufRead,BufNewFile .clang-format setlocal filetype=yaml
