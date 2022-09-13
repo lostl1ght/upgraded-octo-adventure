@@ -48,7 +48,7 @@ function config.setup_signs()
 end
 
 local function common_attach(client, bufnr)
-  setup_document_highlight(client, bufnr)
+  -- setup_document_highlight(client, bufnr)
 end
 
 local servers = {}

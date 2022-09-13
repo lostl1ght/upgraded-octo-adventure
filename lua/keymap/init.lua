@@ -58,58 +58,14 @@ xmap({
   opts('Hydra: git'),
 })
 
-local function TroubleToggle(subcommand)
-  local command = 'TroubleToggle '
-
-  if vim.bo.filetype == 'Trouble' then
-    require('bufresize').block_register()
-    vim.api.nvim_command(command .. subcommand)
-    require('bufresize').resize_close()
-  else
-    require('bufresize').block_register()
-    vim.api.nvim_command(command .. subcommand)
-    require('bufresize').resize_open()
-  end
-end
-
 local lsp = require('modules.lsp.lspconfig')
 nmap({
   { 'gr', vim.lsp.buf.rename, opts('Lsp: rename') },
-  {
-    'gd',
-    function()
-      TroubleToggle('lsp_definitions')
-    end,
-    opts('Lsp: definitions'),
-  },
-  {
-    'ge',
-    function()
-      TroubleToggle('lsp_references')
-    end,
-    opts('Lsp: references'),
-  },
-  {
-    'gt',
-    function()
-      TroubleToggle('lsp_type_definitions')
-    end,
-    opts('Lsp: type definitions'),
-  },
-  {
-    'gw',
-    function()
-      TroubleToggle('document_diagnostics')
-    end,
-    opts('Lsp: document diagnostics'),
-  },
-  {
-    'gW',
-    function()
-      TroubleToggle('workspace_diagnostics')
-    end,
-    opts('Lsp: workspace diagnostics'),
-  },
+  { 'gd', cmd('TroubleToggle lsp_definitions'), opts('Lsp: definitions') },
+  { 'ge', cmd('TroubleToggle lsp_references'), opts('Lsp: references') },
+  { 'gt', cmd('TroubleToggle lsp_type_definitions'), opts('Lsp: type definitions') },
+  { 'gw', cmd('TroubleToggle document_diagnostics'), opts('Lsp: document diagnostics') },
+  { 'gW', cmd('TroubleToggle workspace_diagnostics'), opts('Lsp: workspace diagnostics') },
   { 'K', vim.lsp.buf.hover, opts('Lsp: hover') },
   {
     'gf',

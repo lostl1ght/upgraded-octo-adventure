@@ -9,6 +9,7 @@ function opts:new(instance)
         nowait = false,
         expr = false,
         remap = false,
+        buffer = nil,
       },
     }
   setmetatable(instance, self)
@@ -51,6 +52,8 @@ function keymap.new_opts(...)
   for _, arg in pairs(args) do
     if type(arg) == 'string' then
       o.options.desc = arg
+    elseif type(arg) == 'number' then
+      o.options.buffer = arg
     else
       arg(o.options)()
     end
