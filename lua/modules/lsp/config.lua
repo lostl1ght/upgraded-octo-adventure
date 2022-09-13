@@ -53,6 +53,10 @@ end
 function config.trouble()
   require('trouble').setup({
     position = 'right',
+    action_keys = {
+      close = {},
+      jump_close = {},
+    },
   })
 end
 
