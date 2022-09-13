@@ -64,6 +64,7 @@ nmap({
   { 'gd', cmd('TroubleToggle lsp_definitions'), opts('Lsp: definitions') },
   { 'ge', cmd('TroubleToggle lsp_references'), opts('Lsp: references') },
   { 'gt', cmd('TroubleToggle lsp_type_definitions'), opts('Lsp: type definitions') },
+  { 'gi', cmd('TroubleToggle lsp_implementations'), opts('Lsp: type definitions') },
   { 'gw', cmd('TroubleToggle document_diagnostics'), opts('Lsp: document diagnostics') },
   { 'gW', cmd('TroubleToggle workspace_diagnostics'), opts('Lsp: workspace diagnostics') },
   { 'K', vim.lsp.buf.hover, opts('Lsp: hover') },
