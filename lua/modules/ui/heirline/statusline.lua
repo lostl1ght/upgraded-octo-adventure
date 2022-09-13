@@ -178,6 +178,7 @@ local FileIcon = {
   hl = function(self)
     return { fg = self.icon_color }
   end,
+  Space,
 }
 
 local FileType = {
@@ -193,6 +194,7 @@ local FileType = {
   hl = function(self)
     return { fg = self.icon_color }
   end,
+  Space,
 }
 
 local WorkDir = {
@@ -231,7 +233,6 @@ local FileNameBlock = {
     HydraHint,
     {
       FileIcon,
-      Space,
       FileName,
     },
   },
@@ -324,9 +325,7 @@ local HelpBufferStatusline = {
   VimMode,
   SearchResults,
   FileIcon,
-  Space,
   FileType,
-  Space,
   {
     provider = function()
       local filename = vim.api.nvim_buf_get_name(0)
@@ -364,25 +363,16 @@ local statusline = {
 
     if current_path == '' then
       pwd = vim.fn.fnamemodify(pwd, ':~')
-      current_path = nil
       filename = ' [No Name]'
     elseif current_path:find(pwd, 1, true) then
       filename = vim.fn.fnamemodify(current_path, ':t')
-      current_path = vim.fn.fnamemodify(current_path, ':~:.:h')
       pwd = vim.fn.fnamemodify(pwd, ':~') .. os_sep
-      if current_path == '.' then
-        current_path = nil
-      else
-        current_path = current_path .. os_sep
-      end
     else
       pwd = nil
       filename = vim.fn.fnamemodify(current_path, ':t')
-      current_path = vim.fn.fnamemodify(current_path, ':~:.:h') .. os_sep
     end
 
     self.pwd = pwd
-    self.current_path = current_path -- The opened file path relevant to pwd.
     self.filename = filename
   end,
   fallthrough = false,

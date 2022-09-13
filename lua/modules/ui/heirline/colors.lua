@@ -11,7 +11,7 @@ local hl = {
 
   WorkDir = { fg = colors.fujiGray, bold = true },
 
-  CurrentPath = { fg = colors.crystalBlue, bold = true },
+  CurrentPath = { fg = colors.springGreen, bold = true },
 
   FileName = {
     fg = colors.oldWhite,
