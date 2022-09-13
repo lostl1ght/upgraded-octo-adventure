@@ -21,6 +21,10 @@ local function setup_document_highlight(client, bufnr)
   })
 end
 
+local handlers = {
+  ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'single' }),
+}
+
 function config.lsp_formatting(bufnr)
   vim.lsp.buf.format({
     filter = function(client)
@@ -44,8 +48,6 @@ function config.setup_signs()
 end
 
 local function common_attach(client, bufnr)
-  local navic = require('nvim-navic')
-  navic.attach(client, bufnr)
   setup_document_highlight(client, bufnr)
 end
 
@@ -54,6 +56,7 @@ local servers = {}
 function servers.rust_analyzer()
   require('lspconfig').rust_analyzer.setup({
     settings = { ['rust-analyzer'] = { completion = { postfix = { enable = false } } } },
+    handlers = handlers,
     on_attach = function(client, bufnr)
       common_attach(client, bufnr)
     end,
@@ -71,6 +74,7 @@ function servers.sumneko_lua()
         telemetry = { enable = false },
       },
     },
+    handlers = handlers,
     on_attach = function(client, bufnr)
       common_attach(client, bufnr)
     end,
@@ -79,6 +83,7 @@ end
 
 function servers.hls()
   require('lspconfig').hls.setup({
+    handlers = handlers,
     on_attach = function(client, bufnr)
       common_attach(client, bufnr)
     end,
@@ -87,6 +92,7 @@ end
 
 function servers.texlab()
   require('lspconfig').texlab.setup({
+    handlers = handlers,
     on_attach = function(client, bufnr)
       common_attach(client, bufnr)
     end,
@@ -127,28 +133,6 @@ function config.setup()
   for _, func in pairs(servers) do
     func()
   end
-end
-
-function config.saga()
-  local saga = require('lspsaga')
-
-  saga.init_lsp_saga({
-    diagnostic_header = { ' ', ' ', ' ', ' ' },
-    code_action_icon = '',
-    code_action_lightbulb = {
-      enable_in_insert = false,
-      sign = false,
-    },
-    finder_icons = {
-      def = '  ',
-      ref = '  ',
-      link = '  ',
-    },
-    finder_request_timeout = 3000,
-    finder_action_keys = {
-      open = '<enter>',
-    },
-  })
 end
 
 return config

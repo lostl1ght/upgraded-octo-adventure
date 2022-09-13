@@ -35,7 +35,6 @@ local git = Hydra({
   hint = git_hint,
   config = {
     color = 'pink',
-    invoke_on_body = true,
     hint = {
       border = 'single',
     },
@@ -102,29 +101,6 @@ local git = Hydra({
   },
 })
 
-local lsp = Hydra({
-  name = 'Lsp',
-  heads = {
-    { 'J', cmd('Lspsaga diagnostic_jump_next'), { desc = 'next diag' } },
-    { 'K', cmd('Lspsaga diagnostic_jump_prev'), { desc = 'prev diag' } },
-    { 'd', cmd('Lspsaga show_line_diagnostics'), { desc = 'line diag' } },
-    { 't', cmd('TroubleToggle'), { exit = true, desc = 'trouble' } },
-    { 's', cmd('SymbolsOutline'), { exit = true, desc = 'outline' } },
-    {
-      'c',
-      function()
-        require('lsp_lines').toggle()
-        vim.g.lsplines_enabled = not vim.g.lsplines_enabled
-        vim.notify(
-          string.format('Line diagnostics %s', vim.g.lsplines_enabled and 'enabled' or 'disabled')
-        )
-      end,
-      { exit = true, desc = 'diagnostics' },
-    },
-    { '<Esc>', nil, { desc = false, exit = true } },
-  },
-})
-
 local splits = require('smart-splits')
 
 local window_hint = [[
@@ -140,9 +116,7 @@ _q_: exit
 ]]
 
 local function choose_buffer()
-  if #vim.fn.getbufinfo({ buflisted = true }) > 1 then
-    buffers:activate()
-  end
+  buffers:activate()
 end
 
 local windows = Hydra({
@@ -249,7 +223,6 @@ local debug = Hydra({
 local config = {
   buffers = buffers,
   git = git,
-  lsp = lsp,
   windows = windows,
   telescope = telescope,
   dap = debug,

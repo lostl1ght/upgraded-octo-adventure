@@ -1,6 +1,4 @@
-local colors = require('modules.ui.heirline.colors')
 local conditions = require('heirline.conditions')
-local navic = require('nvim-navic')
 local icons = require('modules.ui.heirline.icons').icons
 
 local Align = { provider = '%=' }
@@ -133,14 +131,6 @@ local GitChanges = {
   },
 }
 
-local Navic = {
-  condition = navic.is_available,
-  heirline.make_flexible_component(priority.Navic, {
-    provider = navic.get_location,
-  }, { provider = '' }),
-  hl = colors.Navic,
-}
-
 local Diagnostics = {
   condition = conditions.has_diagnostics,
   static = {
@@ -232,8 +222,6 @@ local winbar = {
     end,
   },
   {
-    Space,
-    Navic,
     Align,
     Diagnostics,
     GitChanges,

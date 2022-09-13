@@ -4,11 +4,6 @@ function config.lspconfig()
   require('modules.lsp.lspconfig').setup()
 end
 
-function config.lspsaga()
-  local lspconfig = require('modules.lsp.lspconfig')
-  lspconfig.saga()
-end
-
 function config.null_ls()
   local null = require('null-ls')
   null.setup({
@@ -56,7 +51,9 @@ function config.outline()
 end
 
 function config.trouble()
-  require('trouble').setup()
+  require('trouble').setup({
+    position = 'right',
+  })
 end
 
 function config.signature()

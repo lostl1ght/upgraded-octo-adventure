@@ -7,8 +7,6 @@ plugin({
   config = conf.lspconfig,
 })
 
-plugin({ 'glepnir/lspsaga.nvim', cmd = 'Lspsaga', branch = 'main', config = conf.lspsaga })
-
 plugin({
   'jose-elias-alvarez/null-ls.nvim',
   after = 'nvim-lspconfig',
