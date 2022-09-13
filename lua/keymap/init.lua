@@ -87,6 +87,7 @@ nmap({
     end,
     opts('Lsp: toggle diagnostics'),
   },
+  { 'ga', cmd('CodeActionMenu'), opts('Lsp: code actions') },
 })
 
 nmap({ '<leader>e', cmd('RnvimrToggle'), opts('Ranger') })

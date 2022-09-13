@@ -32,3 +32,5 @@ plugin({
   requires = 'antoinemadec/FixCursorHold.nvim',
   config = conf.lightbulb,
 })
+
+plugin({ 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu', config = conf.codeaction })

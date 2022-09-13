@@ -92,4 +92,8 @@ function config.lightbulb()
   vim.api.nvim_set_hl(0, 'LightBulbVirtualText', { fg = '#dca561' })
 end
 
+function config.codeaction()
+  vim.g.code_action_menu_show_diff = false
+end
+
 return config
