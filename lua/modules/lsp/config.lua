@@ -77,4 +77,19 @@ function config.lsplines()
   lspconfig.setup_signs()
 end
 
+function config.lightbulb()
+  require('nvim-lightbulb').setup({
+    sign = {
+      enabled = false,
+    },
+    virtual_text = {
+      enabled = true,
+      text = '',
+      hl_mode = 'combine',
+    },
+    autocmd = { enabled = true },
+  })
+  vim.api.nvim_set_hl(0, 'LightBulbVirtualText', { fg = '#dca561' })
+end
+
 return config

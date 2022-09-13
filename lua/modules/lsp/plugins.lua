@@ -25,3 +25,10 @@ plugin({
   after = 'nvim-lspconfig',
   config = conf.lsplines,
 })
+
+plugin({
+  'kosayoda/nvim-lightbulb',
+  after = 'nvim-lspconfig',
+  requires = 'antoinemadec/FixCursorHold.nvim',
+  config = conf.lightbulb,
+})
