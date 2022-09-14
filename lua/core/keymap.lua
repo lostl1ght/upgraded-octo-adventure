@@ -65,6 +65,26 @@ function keymap.cmd(str)
   return '<cmd>' .. str .. '<CR>'
 end
 
+local function get_pcmd(try_cmd, catch, catch_cmd)
+   local pcommand = { 'try', try_cmd }
+   if catch and catch:find('^E%d+$') then
+      table.insert(pcommand, table.concat{
+         'catch ', [[/^Vim\%((\a\+)\)\=:]], catch, [[:/]]
+      })
+   else
+      table.insert(pcommand, 'catch')
+   end
+   if catch_cmd and catch_cmd ~= '' then
+      table.insert(pcommand, catch_cmd)
+   end
+   table.insert(pcommand, 'endtry')
+   return table.concat(pcommand, ' | ')
+end
+
+function keymap.pcmd(try_cmd, catch, catch_cmd)
+   return keymap.cmd(get_pcmd(try_cmd, catch, catch_cmd))
+end
+
 -- visual
 function keymap.cu(str)
   return '<C-u><cmd>' .. str .. '<CR>'

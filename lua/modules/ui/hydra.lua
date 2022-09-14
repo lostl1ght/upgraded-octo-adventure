@@ -7,7 +7,7 @@ local buffers = Hydra({
   heads = {
     { ']', cmd('bn'), { desc = 'next buf' } },
     { '[', cmd('bp'), { desc = 'prev buf' } },
-    { 'c', cmd('bd'), { desc = 'close' } },
+    { 'c', pcmd('bd', 'E89'), { desc = 'close' } },
     { 'C', cmd('bd!'), { desc = 'force close' } },
     { 'q', nil, { exit = true, desc = false } },
   },
