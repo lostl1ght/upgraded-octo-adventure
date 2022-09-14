@@ -32,14 +32,20 @@ local git = Hydra({
     on_enter = function()
       pcmd('mkview', 'E32')
       vim.cmd('silent! %foldopen!')
-      gitsigns.toggle_linehl(true)
+      vim.bo.modifiable = false
+      vim.schedule(function()
+        gitsigns.toggle_linehl(true)
+      end)
     end,
     on_exit = function()
       local cursor_pos = vim.api.nvim_win_get_cursor(0)
       pcmd('loadview', 'E32')
       vim.api.nvim_win_set_cursor(0, cursor_pos)
       vim.cmd('normal zv')
-      gitsigns.toggle_linehl(false)
+      vim.schedule(function()
+        gitsigns.toggle_linehl(false)
+        gitsigns.toggle_deleted(false)
+      end)
     end,
   },
   heads = {
