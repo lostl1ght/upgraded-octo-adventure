@@ -14,11 +14,20 @@ nmap({
 
 nmap({
   {
-    '<leader>b',
+    ']b',
     function()
       require('modules.ui.hydra').buffers:activate()
+      vim.cmd('bn')
     end,
-    opts('Hydra: buffers'),
+    opts('Hydra: buffer next'),
+  },
+  {
+    '[b',
+    function()
+      require('modules.ui.hydra').buffers:activate()
+      vim.cmd('bp')
+    end,
+    opts('Hydra: buffer previous'),
   },
   {
     '<leader>w',
@@ -98,3 +107,5 @@ nmap({
   { '<c-j>', '<c-w>j', opts('Nvim: move down') },
   { '<c-k>', '<c-w>k', opts('Nvim: move up') },
 })
+
+nmap({ '<leader>b', cmd('Telescope buffers'), opts('Buffers: list') })

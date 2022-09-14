@@ -2,22 +2,13 @@ local Hydra = require('hydra')
 local cmd = require('hydra.keymap-util').cmd
 local pcmd = require('hydra.keymap-util').pcmd
 
-local function close_buffer()
-  if vim.bo.buftype == 'terminal' then
-    vim.cmd('bd!')
-  else
-    vim.cmd('bd')
-  end
-end
-
 local buffers = Hydra({
   name = 'Buffers',
   heads = {
-    { 'l', cmd('bn'), { desc = 'next buf' } },
-    { 'h', cmd('bp'), { desc = 'prev buf' } },
-    { 'b', cmd('Telescope buffers'), { exit = true, desc = 'bufs' } },
-    { 'c', close_buffer, { desc = 'close' } },
-    { '`', cmd('b#'), { desc = 'switch' } },
+    { ']', cmd('bn'), { desc = 'next buf' } },
+    { '[', cmd('bp'), { desc = 'prev buf' } },
+    { 'c', cmd('bd'), { desc = 'close' } },
+    { 'C', cmd('bd!'), { desc = 'force close' } },
     { 'q', nil, { exit = true, desc = false } },
   },
 })
@@ -51,6 +42,7 @@ local git = Hydra({
       vim.cmd('normal zv')
       gitsigns.toggle_linehl(false)
       gitsigns.toggle_signs(true)
+      gitsigns.toggle_deleted(false)
     end,
   },
   heads = {
@@ -111,13 +103,8 @@ _h_ ^ ^ _l_  _H_ ^ ^ _L_   _<C-h>_ _<C-l>_   _v_: vertically
 ^ ^ _j_ ^ ^  ^ ^ _J_ ^ ^   ^   _<C-j>_   ^   _c_: close
 focus^^^^^^  window^^^^^^  ^_=_: equalize^   _z_: maximize
 ^ ^ ^ ^ ^ ^  ^ ^ ^ ^ ^ ^   ^^ ^          ^   _o_: remain only
-_b_: choose buffer          ^   _w_: switch
-_q_: exit
+_b_: buffers ^^^^^^^^^^^    _f_: files  ^^    _w_: switch
 ]]
-
-local function choose_buffer()
-  buffers:activate()
-end
 
 local windows = Hydra({
   name = 'Windows',
@@ -170,10 +157,9 @@ local windows = Hydra({
     { 'z', cmd('MaximizerToggle!'), { desc = 'maximize' } },
     { 'o', '<C-w>o', { exit = true, desc = 'remain only' } },
     { 'c', pcmd('close', 'E444') },
-
-    { 'b', choose_buffer, { exit = true, desc = 'choose buffer' } },
-
-    { 'q', nil, { exit = true } },
+    { 'b', cmd('Telescope buffers'), { exit = true } },
+    { 'f', cmd('Telescope fd'), { exit = true } },
+    { 'q', nil, { exit = true, desc = false } },
   },
 })
 

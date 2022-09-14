@@ -16,6 +16,8 @@ nmap({
   { '<leader>`', cmd('b#'), opts('Buffer: switch') },
   { 'Q', 'q', opts('Macro') },
   { 'q', '<nop>', opts(remap) },
+  { '<leader>c', cmd('bd'), opts('Buffer: close') },
+  { '<leader>C', cmd('bd!'), opts('Buffer: force close') },
 })
 
 imap({
