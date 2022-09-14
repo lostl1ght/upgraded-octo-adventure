@@ -9,6 +9,14 @@ local autocmds = {
       group = vim.api.nvim_create_augroup('YankHighlight', {}),
     },
   },
+  {
+    'TermOpen',
+    {
+      callback = function()
+        vim.opt_local.number = false
+      end,
+    },
+  },
 }
 for _, v in ipairs(autocmds) do
   vim.api.nvim_create_autocmd(v[1], v[2])
