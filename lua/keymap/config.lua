@@ -10,7 +10,7 @@ nmap({ ' ', '' })
 xmap({ ' ', '' })
 
 nmap({
-  { '<f1>', '<nop>' },
+  { '<f1>', '<nop>', opts(remap) },
   { '<leader>h', cmd('noh'), opts('Basic: no highlight') },
   { '<leader>s', cmd('w'), opts('Basic: save') },
   { '<leader>`', cmd('b#'), opts('Buffer: switch') },
@@ -22,10 +22,10 @@ nmap({
 
 imap({
   { 'ii', '<esc>' },
-  { '<f1>', '<nop>' },
+  { '<f1>', '<nop>', opts(remap) },
 })
 
 tmap({
   { 'ii', '<c-\\><c-n>' },
-  { '<esc>', '<c-\\><c-n>' },
+  { '<esc>', '<c-\\><c-n>', opts(remap) },
 })

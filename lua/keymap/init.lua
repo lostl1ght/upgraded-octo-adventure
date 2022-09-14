@@ -44,7 +44,7 @@ nmap({
     opts('Hydra: git'),
   },
   {
-    '<leader>f',
+    '<leader>t',
     function()
       require('modules.ui.hydra').telescope:activate()
     end,
@@ -67,7 +67,6 @@ xmap({
   opts('Hydra: git'),
 })
 
-local lsp = require('modules.lsp.lspconfig')
 nmap({
   { 'gr', vim.lsp.buf.rename, opts('Lsp: rename') },
   { 'gd', cmd('TroubleToggle lsp_definitions'), opts('Lsp: definitions') },
@@ -80,7 +79,7 @@ nmap({
   {
     'gf',
     function()
-      lsp.lsp_formatting(0)
+      require('modules.lsp.lspconfig').lsp_formatting(0)
     end,
     opts('Lsp: format'),
   },
@@ -108,4 +107,7 @@ nmap({
   { '<c-k>', '<c-w>k', opts('Nvim: move up') },
 })
 
-nmap({ '<leader>b', cmd('Telescope buffers'), opts('Buffers: list') })
+nmap({
+  { '<leader>b', cmd('Telescope buffers'), opts('Buffers: list') },
+  { '<leader>f', cmd('Telescope fd'), opts('Buffers: list') },
+})
