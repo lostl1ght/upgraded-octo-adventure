@@ -33,7 +33,6 @@ local git = Hydra({
       pcmd('mkview', 'E32')
       vim.cmd('silent! %foldopen!')
       gitsigns.toggle_linehl(true)
-      gitsigns.toggle_signs(true)
     end,
     on_exit = function()
       local cursor_pos = vim.api.nvim_win_get_cursor(0)
@@ -41,8 +40,6 @@ local git = Hydra({
       vim.api.nvim_win_set_cursor(0, cursor_pos)
       vim.cmd('normal zv')
       gitsigns.toggle_linehl(false)
-      gitsigns.toggle_signs(true)
-      gitsigns.toggle_deleted(false)
     end,
   },
   heads = {
