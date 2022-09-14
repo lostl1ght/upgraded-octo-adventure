@@ -96,4 +96,17 @@ function config.codeaction()
   vim.g.code_action_menu_show_diff = false
 end
 
+function config.luadev()
+  require('lua-dev').setup({
+    override = function(root_dir, library)
+      if require('lua-dev.util').has_file(root_dir, '~/dev/nvim') then
+        library.enabled = true
+        library.runtime = true
+        library.types = true
+        library.plugins = true
+      end
+    end,
+  })
+end
+
 return config

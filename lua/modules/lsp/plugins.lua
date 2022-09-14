@@ -34,3 +34,5 @@ plugin({
 })
 
 plugin({ 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu', config = conf.codeaction })
+
+plugin({ 'folke/lua-dev.nvim' })
