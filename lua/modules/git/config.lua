@@ -1,23 +1,17 @@
 local config = {}
 
-function config.diffview()
-  require('diffview').setup({
-    enhanced_diff_hl = true,
-  })
-end
-
 function config.gitsigns()
   require('gitsigns').setup()
 end
 
-function config.neogit()
-  require('neogit').setup({
-    signs = {
-      section = { ' ', ' ' },
-      item = { '>', 'v' },
-      hunk = { '', '' },
-    },
-    integrations = { diffview = true },
+function config.lazygit()
+  require('lazygit').setup({
+    on_enter = function()
+      vim.keymap.del('t', 'ii', {})
+    end,
+    on_leave = function()
+      vim.keymap.set('t', 'ii', '<c-\\><c-n>', {})
+    end,
   })
 end
 

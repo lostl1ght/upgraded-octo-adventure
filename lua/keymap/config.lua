@@ -25,7 +25,4 @@ imap({
   { '<f1>', '<nop>', opts(remap) },
 })
 
-tmap({
-  { 'ii', '<c-\\><c-n>' },
-  { '<esc>', '<c-\\><c-n>', opts(remap) },
-})
+tmap({ 'ii', '<c-\\><c-n>' })

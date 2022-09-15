@@ -22,6 +22,6 @@ plugin({ 'sindrets/winshift.nvim', config = conf.winshift })
 
 plugin({ 'Akianonymus/nvim-colorizer.lua', config = conf.colorizer, cmd = 'ColorizerToggle' })
 
-plugin({ '~/dev/plugins/langmap_switch.nvim', config = conf.langmap_switch })
+plugin({ '~/dev/plugins/nvim-langmap-switch', config = conf.langmap_switch })
 
 plugin({ 'kevinhwang91/rnvimr', setup = conf.rnvimr, cmd = 'RnvimrToggle' })

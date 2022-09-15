@@ -8,9 +8,9 @@ plugin({
   requires = {
     'kyazdani42/nvim-web-devicons',
     'kanagawa.nvim',
-    'langmap_switch.nvim',
+    'nvim-langmap-switch',
   },
-  after = { 'kanagawa.nvim', 'langmap_switch.nvim' },
+  after = { 'kanagawa.nvim', 'nvim-langmap-switch' },
   config = conf.heirline,
 })
 

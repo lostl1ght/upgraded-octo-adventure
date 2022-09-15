@@ -91,7 +91,7 @@ local git = Hydra({
       { desc = 'blame show full' },
     },
     { '/', gitsigns.show, { exit = true, desc = 'show base file' } },
-    { 'g', cmd('Neogit'), { exit = true, desc = 'neogit', nowait = true } },
+    { 'g', cmd('LazyGit'), { exit = true, desc = 'lazygit', nowait = true } },
     { 'q', nil, { exit = true, nowait = true, desc = 'exit' } },
   },
 })
