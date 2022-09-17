@@ -1,12 +1,19 @@
 local config = {}
-
 function config.cmp()
   local cmp = require('cmp')
 
   local cmp_buffer = require('cmp_buffer')
   local luasnip = require('luasnip')
   vim.o.completeopt = 'menu,menuone,noselect'
+  local border = {
+    border = 'single',
+    winhighlight = 'Normal:Normal,FloatBorder:FloatermBorder,CursorLine:Visual,Search:None',
+  }
   cmp.setup({
+    window = {
+      completion = cmp.config.window.bordered(border),
+      documentation = cmp.config.window.bordered(border),
+    },
     mapping = {
       ['<C-d>'] = cmp.mapping.scroll_docs(-4),
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -39,12 +46,11 @@ function config.cmp()
     },
     sources = {
       { name = 'luasnip' },
-      { name = 'nvim_lua' },
       { name = 'nvim_lsp' },
       { name = 'path' },
       {
         name = 'buffer',
-        keyword_length = 5,
+        keyword_length = 4,
         option = {
           keyword_pattern = [[\k\+]],
         },
@@ -66,14 +72,12 @@ function config.cmp()
     },
     formatting = {
       format = require('lspkind').cmp_format({
-        with_text = true,
         menu = {
-          cmdline = '[cmd]',
           buffer = '[buf]',
-          nvim_lsp = '[lsp]',
-          nvim_lua = '[api]',
-          path = '[path]',
+          cmdline = '[cmd]',
           luasnip = '[snip]',
+          nvim_lsp = '[lsp]',
+          path = '[path]',
         },
       }),
     },
