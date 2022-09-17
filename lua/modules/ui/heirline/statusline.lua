@@ -9,12 +9,12 @@ local hydra = require('hydra.statusline')
 
 local os_sep = package.config:sub(1, 1)
 
--- Flexible components priorities
 local priority = {
-  CurrentPath = 60,
-  Git = 40,
-  WorkDir = 25,
-  Lsp = 10,
+  WorkDir = 60,
+  GitBranch = 40,
+  Lsp = 30,
+  Ruler = 20,
+  ScrollBar = 10,
 }
 
 local Align = { provider = '%=' }
@@ -181,22 +181,6 @@ local FileIcon = {
   Space,
 }
 
-local FileType = {
-  init = function(self)
-    self.filetype = vim.bo.filetype
-    local filename = self.filename
-    local extension = vim.fn.fnamemodify(filename, ':e')
-    _, self.icon_color = devicons.get_icon_color(filename, extension, { default = true })
-  end,
-  provider = function(self)
-    return self.filetype
-  end,
-  hl = function(self)
-    return { fg = self.icon_color }
-  end,
-  Space,
-}
-
 local WorkDir = {
   condition = function(self)
     return self.pwd
@@ -214,41 +198,17 @@ local WorkDir = {
   Space,
 }
 
-local FileName = {
-  provider = function(self)
-    return self.filename
-  end,
-  hl = hl.FileName,
-}
-
-local HydraHint = {
-  condition = function()
-    return hydra.get_hint()
-  end,
-  provider = hydra.get_hint,
-}
-
-local FileNameBlock = {
-  {
-    HydraHint,
-    {
-      FileIcon,
-      FileName,
-    },
-  },
-  -- This means that the statusline is cut here when there's not enough space.
-  { provider = '%<' },
-}
-
 local GitBranch = {
   condition = conditions.is_git_repo,
   init = function(self)
     self.git_status = vim.b.gitsigns_status_dict
   end,
+  heirline.make_flexible_component(priority.GitBranch, {
+    provider = function(self)
+      return table.concat({ ' ', self.git_status.head, ' ' })
+    end,
+  }, { provider = '' }),
   hl = hl.Git.branch,
-  provider = function(self)
-    return table.concat({ ' ', self.git_status.head, ' ' })
-  end,
 }
 
 local LspIndicator = {
@@ -277,7 +237,7 @@ local Lsp = {
   condition = conditions.lsp_attached,
   init = function(self)
     local names = {}
-    for _, server in ipairs(vim.lsp.buf_get_clients(0)) do
+    for _, server in ipairs(vim.lsp.get_active_clients()) do
       table.insert(names, server.name)
     end
     self.lsp_names = names
@@ -292,7 +252,9 @@ local Ruler = {
   -- %L  : number of lines in the buffer
   -- %c  : column number
   -- provider = ' %7(%l:%3L%)  %-2c ',
-  provider = '%(%l:%L%)  %-2c ',
+  heirline.make_flexible_component(priority.Ruler, {
+    provider = '%(%l:%L%)  %-2c ',
+  }, null),
   hl = { bold = true },
 }
 
@@ -300,12 +262,14 @@ local ScrollBar = {
   static = {
     sbar = { '█', '▇', '▆', '▅', '▄', '▃', '▂', '▁' },
   },
-  provider = function(self)
-    local curr_line = vim.api.nvim_win_get_cursor(0)[1]
-    local lines = vim.api.nvim_buf_line_count(0)
-    local i = math.floor((curr_line - 1) / lines * #self.sbar) + 1
-    return string.rep(self.sbar[i], 2)
-  end,
+  heirline.make_flexible_component(priority.ScrollBar, {
+    provider = function(self)
+      local curr_line = vim.api.nvim_win_get_cursor(0)[1]
+      local lines = vim.api.nvim_buf_line_count(0)
+      local i = math.floor((curr_line - 1) / lines * #self.sbar) + 1
+      return string.rep(self.sbar[i], 2)
+    end,
+  }, null),
   hl = hl.ScrollBar,
 }
 
@@ -325,7 +289,6 @@ local HelpBufferStatusline = {
   VimMode,
   SearchResults,
   FileIcon,
-  FileType,
   {
     provider = function()
       local filename = vim.api.nvim_buf_get_name(0)
@@ -346,8 +309,6 @@ local ActiveStatusline = {
   WorkDir,
   GitBranch,
   Align,
-  FileNameBlock,
-  Align,
   Lsp,
   Layout,
   Ruler,
@@ -357,7 +318,7 @@ local ActiveStatusline = {
 
 local statusline = {
   init = function(self)
-    local pwd = vim.fn.getcwd(0) -- Present working directory.
+    local pwd = vim.fn.getcwd(0)
     local current_path = vim.api.nvim_buf_get_name(0)
     local filename
 

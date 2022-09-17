@@ -7,6 +7,7 @@ local Space = setmetatable({ provider = ' ' }, {
     return { provider = string.rep(' ', n) }
   end,
 })
+local null = { provider = '' }
 
 local hl = require('modules.ui.heirline.colors')
 local devicons = require('nvim-web-devicons')
@@ -66,9 +67,7 @@ local CurrentPath = {
     provider = function(self)
       return vim.fn.pathshorten(self.current_path, 2)
     end,
-  }, {
-    provider = '',
-  }),
+  }, null),
   hl = hl.CurrentPath,
 }
 

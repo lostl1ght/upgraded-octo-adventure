@@ -3,7 +3,7 @@ local colors = require('kanagawa.colors').setup()
 local hl = {
   StatusLine = {
     fg = colors.oldWhite,
-    bg = colors.sumiInk2,
+    bg = colors.sumiInk1,
     bold = true,
   },
 
@@ -11,7 +11,7 @@ local hl = {
 
   WorkDir = { fg = colors.fujiGray, bold = true },
 
-  CurrentPath = { fg = colors.springGreen, bold = true },
+  CurrentPath = { fg = colors.autumnGreen, bold = true },
 
   FileName = {
     fg = colors.oldWhite,
