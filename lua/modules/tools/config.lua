@@ -15,15 +15,31 @@ end
 function config.telescope()
   require('telescope').setup({
     pickers = {
-      fd = {
+      find_files = {
         hidden = true,
-        theme = 'dropdown',
+        previewer = false,
+        layout_strategy = 'center',
+        sorting_strategy = 'ascending',
+        layout_config = {
+          height = 0.5,
+          width = 0.4,
+          prompt_position = 'top',
+        },
+      },
+      buffers = {
+        previewer = false,
+        layout_strategy = 'center',
+        sorting_strategy = 'ascending',
+        layout_config = {
+          height = 0.5,
+          width = 0.4,
+          prompt_position = 'top',
+        },
       },
       live_grep = {
-        theme = 'ivy',
+        layout_strategy = 'vertical',
       },
       help_tags = {
-        theme = 'ivy',
         mappings = {
           i = {
             ['<cr>'] = 'select_vertical',
@@ -33,14 +49,17 @@ function config.telescope()
           },
         },
       },
-      buffers = {
-        theme = 'dropdown',
-      },
-      keymaps = {
-        theme = 'dropdown',
+    },
+    extensions = {
+      fzf = {
+        fuzzy = true,
+        override_generic_sorter = true,
+        override_file_sorter = true,
+        case_mode = 'smart_case',
       },
     },
   })
+  require('telescope').load_extension('fzf')
 end
 
 function config.comment()

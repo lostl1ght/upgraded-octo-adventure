@@ -1,7 +1,12 @@
 local plugin = require('core.pack').register_plugin
 local conf = require('modules.tools.config')
 
-plugin({ 'nvim-telescope/telescope.nvim', cmd = 'Telescope', config = conf.telescope })
+plugin({
+  'nvim-telescope/telescope.nvim',
+  requires = { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+  cmd = 'Telescope',
+  config = conf.telescope,
+})
 
 plugin({ 'numToStr/Comment.nvim', config = conf.comment })
 

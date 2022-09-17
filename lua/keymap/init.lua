@@ -109,5 +109,5 @@ nmap({
 
 nmap({
   { '<leader>b', cmd('Telescope buffers'), opts('Buffers: list') },
-  { '<leader>f', cmd('Telescope fd'), opts('Buffers: list') },
+  { '<leader>f', cmd('Telescope find_files'), opts('Buffers: list') },
 })

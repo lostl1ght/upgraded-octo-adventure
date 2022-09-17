@@ -188,7 +188,7 @@ local telescope = Hydra({
     color = 'blue',
   },
   heads = {
-    { 'f', cmd('Telescope fd'), { desc = 'files' } },
+    { 'f', cmd('Telescope find_files'), { desc = 'files' } },
     { 'g', cmd('Telescope live_grep'), { desc = 'live grep' } },
     { 'h', cmd('Telescope help_tags'), { desc = 'vim help' } },
     { 'k', cmd('Telescope keymaps'), { desc = 'keymaps' } },
