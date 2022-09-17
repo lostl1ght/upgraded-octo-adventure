@@ -14,7 +14,7 @@ vim.opt.shiftwidth = 4
 vim.opt.number = true
 vim.opt.updatetime = 300
 vim.opt.showmode = false
-vim.opt.virtualedit = { 'block', 'onemore' }
+vim.opt.virtualedit = { 'block' }
 vim.opt.shiftround = true
 vim.opt.backup = false
 vim.opt.writebackup = false
@@ -49,6 +49,7 @@ vim.opt.undofile = true
 vim.opt.breakindent = true
 vim.opt.breakindentopt = { shift = 2, min = 20 }
 vim.opt.fillchars = { diff = '╱' }
+vim.opt.cmdheight = 1
 vim.g.tex_flavor = 'latex'
 vim.g.python3_host_prog = os.getenv('HOME') .. '/.pyenv/versions/neovim/bin/python3'
 vim.g.loaded_ruby_provider = 0
