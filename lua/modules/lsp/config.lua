@@ -58,6 +58,8 @@ end
 
 function config.signature()
   require('lsp_signature').setup({
+    doc_lines = 0,
+    hint_enable = false,
     hint_prefix = '➜ ',
     handler_opts = {
       border = 'rounded',
