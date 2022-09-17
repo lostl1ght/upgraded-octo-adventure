@@ -177,7 +177,7 @@ local windows = Hydra({
     { 'o', '<C-w>o', { exit = true, desc = 'remain only' } },
     { 'c', pcmd('close', 'E444') },
     { 'b', cmd('Telescope buffers'), { exit = true } },
-    { 'f', cmd('Telescope fd'), { exit = true } },
+    { 'f', cmd('Telescope find_files'), { exit = true } },
     { 'q', nil, { exit = true, desc = false } },
   },
 })

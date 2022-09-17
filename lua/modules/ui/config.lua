@@ -6,13 +6,9 @@ function config.kanagawa()
     undercurl = false,
     globalStatus = true,
     overrides = {
-      NeogitHunkHeader = { bg = colors.diff.text },
-      NeogitHunkHeaderHighlight = { fg = colors.git.changed, bg = colors.diff.text },
-      NeogitDiffContextHighlight = { bg = colors.diff.change },
-      NeogitDiffDeleteHighlight = { fg = colors.git.removed, bg = colors.diff.delete },
-      NeogitDiffAddHighlight = { fg = colors.git.added, bg = colors.diff.add },
       MatchParen = { fg = colors.springGreen, bg = colors.sumiInk3 },
       LspReferenceText = { link = 'MatchParen' },
+      CursorLine = { link = 'Visual' },
     },
   })
   vim.cmd('colorscheme kanagawa')
