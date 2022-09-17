@@ -3,7 +3,7 @@ local conf = require('modules.lsp.config')
 
 plugin({
   'neovim/nvim-lspconfig',
-  ft = { 'lua', 'rust', 'haskell', 'tex', 'bib' },
+  ft = { 'lua', 'rust', 'haskell', 'tex', 'bib', 'python', 'go' },
   config = conf.lspconfig,
 })
 
