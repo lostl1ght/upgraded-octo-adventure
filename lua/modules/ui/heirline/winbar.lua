@@ -57,7 +57,7 @@ local FileType = {
 
 local CurrentPath = {
   condition = function(self)
-    return self.current_path
+    return self.current_path and vim.o.filetype ~= 'rnvimr'
   end,
   heirline.make_flexible_component(priority.CurrentPath, {
     provider = function(self)
