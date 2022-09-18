@@ -188,12 +188,12 @@ local telescope = Hydra({
     color = 'blue',
   },
   heads = {
-    { 'f', cmd('Telescope find_files'), { desc = 'files' } },
-    { 'g', cmd('Telescope live_grep'), { desc = 'live grep' } },
-    { 'h', cmd('Telescope help_tags'), { desc = 'vim help' } },
-    { 'k', cmd('Telescope keymaps'), { desc = 'keymaps' } },
-    { '/', cmd('Telescope current_buffer_fuzzy_find'), { desc = 'search in file' } },
-    { '<enter>', cmd('Telescope'), { exit = true, desc = 'all pickers' } },
+    { 'f', function() vim.cmd('Telescope find_files') end, { desc = 'files' } },
+    { 'g', function() vim.cmd('Telescope live_grep') end, { desc = 'live grep' } },
+    { 'h', function() vim.cmd('Telescope help_tags') end, { desc = 'vim help' } },
+    { 'k', function() vim.cmd('Telescope keymaps') end, { desc = 'keymaps' } },
+    { '/', function() vim.cmd('Telescope current_buffer_fuzzy_find') end, { desc = 'search in file' } },
+    { '<enter>', function() vim.cmd('Telescope') end, { exit = true, desc = 'all pickers' } },
     { 'q', nil, { exit = true, desc = false } },
   },
 })
