@@ -52,7 +52,24 @@ nmap({
   { '<leader>th', cmd('Telescope help_tags'), opts('Telescope: help') },
 })
 
+local function t(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
 nmap({
-  { '<leader>b', cmd('Telescope buffers'), opts('Buffers: list') },
-  { '<leader>f', cmd('Telescope find_files'), opts('Buffers: list') },
+  {
+    ']b',
+    function()
+      vim.cmd('bn')
+      vim.fn['repeat#set'](':bn' .. t('<cr>'))
+    end,
+    opts('Buffer: next'),
+  },
+  {
+    '[b',
+    function()
+      vim.cmd('bp')
+      vim.fn['repeat#set'](':bp' .. t('<cr>'))
+    end,
+    opts('Buffer: previous'),
+  },
 })
