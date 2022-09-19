@@ -1,6 +1,6 @@
 require('keymap.config')
 local key = require('core.keymap')
-local nmap, xmap = key.nmap, key.xmap
+local nmap = key.nmap
 local opts = key.new_opts
 local cmd = key.cmd
 
@@ -10,61 +10,6 @@ nmap({
   { '<Leader>pc', cmd('PackerCompile'), opts('Packer: compile') },
   { '<Leader>ps', cmd('PackerSync'), opts('Packer: sync') },
   { '<Leader>pS', cmd('PackerStatus'), opts('Packer: status') },
-})
-
-nmap({
-  {
-    ']b',
-    function()
-      require('modules.ui.hydra').buffers:activate()
-      vim.cmd('bn')
-    end,
-    opts('Hydra: buffer next'),
-  },
-  {
-    '[b',
-    function()
-      require('modules.ui.hydra').buffers:activate()
-      vim.cmd('bp')
-    end,
-    opts('Hydra: buffer previous'),
-  },
-  {
-    '<leader>w',
-    function()
-      require('modules.ui.hydra').windows:activate()
-    end,
-    opts('Hydra: windows'),
-  },
-  {
-    '<leader>g',
-    function()
-      require('modules.ui.hydra').git:activate()
-    end,
-    opts('Hydra: git'),
-  },
-  {
-    '<leader>t',
-    function()
-      require('modules.ui.hydra').telescope:activate()
-    end,
-    opts('Hydra: telescope'),
-  },
-  {
-    '<leader>d',
-    function()
-      require('modules.ui.hydra').dap:activate()
-    end,
-    opts('Hydra: debug'),
-  },
-})
-
-xmap({
-  '<leader>g',
-  function()
-    require('modules.ui.hydra').git:activate()
-  end,
-  opts('Hydra: git'),
 })
 
 nmap({

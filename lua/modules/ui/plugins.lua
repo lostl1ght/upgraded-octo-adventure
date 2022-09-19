@@ -14,8 +14,6 @@ plugin({
   config = conf.heirline,
 })
 
-plugin({ 'anuvyklack/hydra.nvim' })
-
 plugin({ 'stevearc/dressing.nvim', config = conf.dressing })
 
 plugin({ 'j-hui/fidget.nvim', config = conf.fidget })

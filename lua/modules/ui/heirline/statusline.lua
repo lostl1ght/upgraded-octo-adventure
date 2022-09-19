@@ -5,7 +5,6 @@ local mode_colors = hl.ModeColors
 local conditions = require('heirline.conditions')
 local heirline = require('heirline.utils')
 local devicons = require('nvim-web-devicons')
-local hydra = require('hydra.statusline')
 
 local os_sep = package.config:sub(1, 1)
 
@@ -52,33 +51,12 @@ local NormalModeIndicator = {
   Space,
 }
 
-local HydraActive = {
-  condition = hydra.is_active,
-  heirline.surround({ icons.powerline.left_rounded, icons.powerline.right_rounded }, function()
-    return hl.Hydra[hydra.get_color()]
-  end, {
-    {
-      fallthrough = false,
-      ReadOnly,
-      { provider = icons.circle },
-    },
-    Space,
-    {
-      provider = function()
-        return hydra.get_name() or 'HYDRA'
-      end,
-    },
-    hl = { fg = hl.StatusLine.bg, force = true },
-  }),
-}
-
 local VimModeNormal = {
   condition = function(self)
     return self.mode == 'normal' or not conditions.is_active()
   end,
   {
     fallthrough = false,
-    HydraActive,
     NormalModeIndicator,
   },
 }

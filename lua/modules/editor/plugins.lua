@@ -25,3 +25,5 @@ plugin({
   after = 'nvim-treesitter',
   config = conf.matchup,
 })
+
+plugin({ 'tpope/vim-repeat' })
