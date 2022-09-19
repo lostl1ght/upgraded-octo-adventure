@@ -57,7 +57,7 @@ local FileType = {
 
 local CurrentPath = {
   condition = function(self)
-    return self.current_path and vim.o.filetype ~= 'rnvimr'
+    return self.current_path
   end,
   heirline.make_flexible_component(priority.CurrentPath, {
     provider = function(self)
@@ -182,30 +182,27 @@ local Diagnostics = {
 local os_sep = package.config:sub(1, 1)
 local winbar = {
   init = function(self)
-    local pwd = vim.fn.getcwd(0) -- Present working directory.
+    local pwd = vim.fn.getcwd(0)
     local current_path = vim.api.nvim_buf_get_name(0)
     local filename
 
     if current_path == '' then
-      pwd = vim.fn.fnamemodify(pwd, ':~')
       current_path = nil
       filename = ' [No Name]'
     elseif current_path:find(pwd, 1, true) then
       filename = vim.fn.fnamemodify(current_path, ':t')
       current_path = vim.fn.fnamemodify(current_path, ':~:.:h')
-      pwd = vim.fn.fnamemodify(pwd, ':~') .. os_sep
       if current_path == '.' then
         current_path = nil
       else
         current_path = current_path .. os_sep
       end
     else
-      pwd = nil
       filename = vim.fn.fnamemodify(current_path, ':t')
       current_path = vim.fn.fnamemodify(current_path, ':~:.:h') .. os_sep
     end
 
-    self.current_path = current_path -- The opened file path relevant to pwd.
+    self.current_path = current_path
     self.filename = filename
   end,
   fallthrough = false,
@@ -213,11 +210,21 @@ local winbar = {
     condition = function()
       return conditions.buffer_matches({
         buftype = { 'nofile', 'prompt', 'help', 'quickfix' },
-        filetype = { '^git.*', 'fugitive' },
+        filetype = { '^git.*', 'rnvimr', 'lazygit' },
       })
     end,
     init = function()
       vim.opt_local.winbar = nil
+    end,
+  },
+  {
+    condition = function()
+      return conditions.buffer_matches({
+        filetype = { 'rnvimr', 'lazygit' },
+      })
+    end,
+    init = function()
+      vim.opt_local.winbar = '%='
     end,
   },
   {
@@ -239,9 +246,21 @@ vim.api.nvim_create_autocmd('User', {
       'help',
       'quickfix',
     }, vim.bo[buf].buftype)
-    local filetype = vim.tbl_contains({ 'gitcommit', 'fugitive' }, vim.bo[buf].filetype)
+    local filetype = vim.tbl_contains({ 'gitcommit' }, vim.bo[buf].filetype)
     if buftype or filetype then
       vim.opt_local.winbar = nil
+    end
+  end,
+})
+
+
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'HeirlineInitWinbar',
+  callback = function(args)
+    local buf = args.buf
+    local filetype = vim.tbl_contains({ 'rnvimr', 'lazygit' }, vim.bo[buf].filetype)
+    if filetype then
+      vim.opt_local.winbar = '%='
     end
   end,
 })
