@@ -46,6 +46,10 @@ nmap({
 nmap({ '<leader>e', cmd('RnvimrToggle'), opts('Ranger') })
 
 nmap({
+  { '<leader>b', cmd('Telescope buffers'), opts('Telescope: buffers') },
+  { '<leader>f', cmd('Telescope find_files'), opts('Telescope: files') },
+  { '<leader>tg', cmd('Telescope live_grep'), opts('Telescope: grep') },
+  { '<leader>th', cmd('Telescope help_tags'), opts('Telescope: help') },
 })
 
 nmap({
