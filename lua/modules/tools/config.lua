@@ -1,13 +1,14 @@
 local config = {}
 
 function config.rnvimr()
+  vim.g.rnvimr_enable_ex = 1
   vim.g.rnvimr_enable_bw = 1
   vim.g.rnvimr_layout = {
     relative = 'editor',
-    width = math.floor(0.8 * vim.o.columns),
-    height = math.floor(0.8 * vim.o.lines),
-    col = math.floor(0.1 * vim.o.columns),
-    row = math.floor(0.1 * vim.o.lines),
+    width = math.floor(0.9 * vim.o.columns),
+    height = math.floor(0.9 * vim.o.lines),
+    col = math.floor(0.05 * vim.o.columns),
+    row = math.floor(0.05 * vim.o.lines),
     style = 'minimal',
   }
 end
