@@ -101,11 +101,7 @@ function config.smart_splits()
 end
 
 function config.winshift()
-  require('winshift').setup({
-    keymaps = {
-      disable_defaults = true,
-    },
-  })
+  require('winshift').setup({})
 end
 
 function config.colorizer()

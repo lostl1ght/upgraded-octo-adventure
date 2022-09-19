@@ -10,12 +10,12 @@ nmap({ ' ', '' })
 xmap({ ' ', '' })
 
 nmap({
-  { '<f1>', '<nop>', opts(remap) },
+  { '<f1>', '', opts(remap) },
   { '<leader>h', cmd('noh'), opts('Basic: no highlight') },
-  { '<leader>s', cmd('w'), opts('Basic: save') },
+  { '<leader>s', cmd('silent! w'), opts('Basic: save') },
   { '<leader>`', cmd('b#'), opts('Buffer: switch') },
   { 'Q', 'q', opts('Macro') },
-  { 'q', '<nop>', opts(remap) },
+  { 'q', '', opts(remap) },
   { '<leader>c', pcmd('bd', 'E89', 'echo "Save before closing"'), opts('Buffer: close') },
   { '<leader>C', cmd('bd!'), opts('Buffer: force close') },
   { '<c-l>', '<c-w>l', opts('Window: focus left') },

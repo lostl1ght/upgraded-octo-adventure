@@ -11,7 +11,7 @@ function config.lsp_formatting(bufnr)
     end,
     bufnr = bufnr,
   })
-  vim.cmd('w')
+  vim.cmd('silent! w')
 end
 
 function config.setup_signs()
