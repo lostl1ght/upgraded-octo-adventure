@@ -18,6 +18,10 @@ nmap({
   { 'q', '<nop>', opts(remap) },
   { '<leader>c', pcmd('bd', 'E89', 'echo "Save before closing"'), opts('Buffer: close') },
   { '<leader>C', cmd('bd!'), opts('Buffer: force close') },
+  { '<c-l>', '<c-w>l', opts('Window: focus left') },
+  { '<c-h>', '<c-w>h', opts('Window: focus right') },
+  { '<c-j>', '<c-w>j', opts('Window: focus down') },
+  { '<c-k>', '<c-w>k', opts('Window: focus up') },
 })
 
 imap({

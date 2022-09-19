@@ -46,10 +46,6 @@ nmap({
 nmap({ '<leader>e', cmd('RnvimrToggle'), opts('Ranger') })
 
 nmap({
-  { '<c-l>', '<c-w>l', opts('Nvim: move left') },
-  { '<c-h>', '<c-w>h', opts('Nvim: move right') },
-  { '<c-j>', '<c-w>j', opts('Nvim: move down') },
-  { '<c-k>', '<c-w>k', opts('Nvim: move up') },
 })
 
 nmap({
