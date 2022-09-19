@@ -93,6 +93,7 @@ end
 function config.smart_splits()
   require('smart-splits').setup({
     resize_mode = {
+      quit_key = 'q',
       hooks = {
         on_leave = require('bufresize').register,
       },
