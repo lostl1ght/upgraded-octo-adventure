@@ -16,4 +16,4 @@ plugin({
 
 plugin({ 'stevearc/dressing.nvim', config = conf.dressing })
 
-plugin({ 'j-hui/fidget.nvim', config = conf.fidget })
+plugin({ 'vigoux/notifier.nvim', config = conf.notifier })

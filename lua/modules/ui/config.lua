@@ -29,10 +29,13 @@ function config.dressing()
   })
 end
 
-function config.fidget()
-  require('fidget').setup({
-    window = {
-      relative = 'editor',
+function config.notifier()
+  require('notifier').setup({
+    status_width = function()
+      return math.floor(0.66 * vim.o.columns)
+    end,
+    notify = {
+      clear_time = 2500,
     },
   })
 end
