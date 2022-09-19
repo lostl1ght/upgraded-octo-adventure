@@ -52,6 +52,8 @@ nmap({
   { '<leader>th', cmd('Telescope help_tags'), opts('Telescope: help') },
 })
 
+nmap({ '<leader>g', cmd('LazyGit'), opts('LazyGit') })
+
 local function t(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
