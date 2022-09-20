@@ -9,65 +9,80 @@ local VerticalLine = {
 
 local TabNumber = {
   provider = function(self)
-    return string.format('%%%dT %d.%%T', self.tabnr, self.tabnr)
+    return string.format('%%%dT %d. %%T', self.tabnr, self.tabnr)
   end,
   hl = hl.Tabpage,
+}
+
+local WinCount = {
+  condition = function(self)
+    return self.win_count > 1
+  end,
+  provider = function(self)
+    return string.format('%%%dT [%d]%%T', self.tabnr, self.win_count)
+  end,
+  hl = hl.WinCount,
+}
+
+local ActiveFile = {
+  provider = function(self)
+    return string.format('%%%dT%s %%T', self.tabnr, self.filename)
+  end,
+  hl = hl.ActiveFile,
 }
 
 local WinModified = {
   condition = function(self)
-    return self.has_modified
+    return self.modified
   end,
   provider = function(self)
-    return string.format('%%%dT %s %%T', self.tabnr, icons.small_circle)
+    return string.format('%%%dT%s %%T', self.tabnr, icons.small_circle)
   end,
   hl = hl.ModeColors.modified,
 }
 
-local WinCount = {
-  provider = function(self)
-    return string.format(
-      '%%%dT %d window%s%%T',
-      self.tabnr,
-      self.win_count,
-      self.win_count == 1 and '' or 's'
-    )
-  end,
-  hl = hl.Tabpage,
-}
-
 local TabpageClose = {
   condition = function(self)
-    return not self.has_modified
+    return not self.modified
   end,
   provider = function(self)
-    return '%' .. self.tabnr .. 'X ' .. icons.cross .. ' %X'
+    return string.format('%%%dX%s %%X', self.tabnr, icons.cross)
   end,
   hl = hl.Tabpage,
 }
 
 local TabPage = {
   init = function(self)
-    self.has_modified = false
+    self.modified = false
     local buflist = vim.fn.tabpagebuflist(self.tabnr)
-    self.win_count = #buflist
     for _, v in ipairs(buflist) do
       if vim.bo[v].modified then
-        self.has_modified = true
+        self.modified = true
         break
       end
     end
+    self.win_count = 0
+    for _, v in ipairs(buflist) do
+      if vim.bo[v].buflisted then
+        self.win_count = self.win_count + 1
+      end
+    end
+    local winnr = vim.fn.tabpagewinnr(self.tabnr)
+    local f = vim.fn.bufname(buflist[winnr])
+    local filename = f ~= '' and vim.fn.fnamemodify(f, ':t') or '[No File]'
+    self.filename = filename
   end,
   VerticalLine,
-  TabNumber,
   WinCount,
+  TabNumber,
+  ActiveFile,
   WinModified,
   TabpageClose,
 }
 
 local TabPages = {
   condition = function()
-    return #vim.api.nvim_list_tabpages() >= 2
+    return #vim.api.nvim_list_tabpages() > 1
   end,
   { provider = '%=' },
   utils.make_tablist(TabPage),

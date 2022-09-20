@@ -61,6 +61,22 @@ local hl = {
       return { fg = colors.surimiOrange }
     end
   end,
+
+  WinCount = function(self)
+    if not self.is_active then
+      return { fg = colors.fujiGray }
+    else
+      return { fg = colors.surimiOrange }
+    end
+  end,
+
+  ActiveFile = function(self)
+    if not self.is_active then
+      return { fg = colors.fujiGray, bold = true }
+    else
+      return { fg = colors.oldWhite, bold = true }
+    end
+  end,
 }
 
 local mode_colors = {
