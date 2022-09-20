@@ -85,6 +85,7 @@ local FileModified = {
   end,
   provider = icons.small_circle,
   hl = hl.ModeColors.modified,
+  Space,
 }
 
 local FileNameBlock = {

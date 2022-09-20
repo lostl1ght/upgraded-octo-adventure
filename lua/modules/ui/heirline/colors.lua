@@ -1,6 +1,7 @@
 local colors = require('kanagawa.colors').setup()
 
 local hl = {
+  -- statusline
   StatusLine = {
     fg = colors.oldWhite,
     bg = colors.sumiInk1,
@@ -9,8 +10,22 @@ local hl = {
 
   ReadOnly = { fg = colors.samuraiRed },
 
+  SearchResults = { fg = colors.sumiInk0, bg = colors.waveAqua2 },
+
   WorkDir = { fg = colors.fujiGray, bold = true },
 
+  LspIndicator = { fg = colors.dragonBlue },
+
+  LspServer = { fg = colors.dragonBlue, bold = true },
+
+  Layout = { fg = colors.samuraiRed },
+
+  ScrollBar = {
+    bg = colors.sumiInk2,
+    fg = colors.oldWhite,
+  },
+
+  -- winbar
   CurrentPath = { fg = colors.autumnGreen, bold = true },
 
   FileName = {
@@ -25,9 +40,6 @@ local hl = {
     removed = { fg = colors.autumnRed, bold = true },
   },
 
-  LspIndicator = { fg = colors.dragonBlue },
-  LspServer = { fg = colors.dragonBlue, bold = true },
-
   Diagnostic = {
     error = { fg = colors.samuraiRed },
     warn = { fg = colors.roninYellow },
@@ -35,24 +47,14 @@ local hl = {
     hint = { fg = colors.dragonBlue },
   },
 
-  ScrollBar = {
-    bg = colors.sumiInk2,
-    fg = colors.oldWhite,
-  },
-
-  SearchResults = { fg = colors.sumiInk0, bg = colors.waveAqua2 },
-
+  -- tabline
   Tabpage = function(self)
     if not self.is_active then
       return { fg = colors.fujiGray }
     else
-      return { fg = colors.fujiWhite }
+      return { fg = colors.oldWhite }
     end
   end,
-
-  Navic = { fg = colors.oldWhite },
-
-  Layout = { fg = colors.samuraiRed },
 
   VerticalLine = function(self)
     if not self.is_active then
@@ -94,6 +96,7 @@ local mode_colors = {
   command = colors.waveAqua2,
   shell = colors.surimiOrange,
   terminal = colors.surimiOrange,
+  confirm = colors.fujiWhite,
   none = colors.autumnRed,
 }
 
