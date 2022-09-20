@@ -26,7 +26,7 @@ nmap({
 
 imap({
   { 'ii', '<esc>' },
-  { '<f1>', '<nop>', opts(remap) },
+  { '<f1>', '', opts(remap) },
 })
 
 tmap({ 'ii', '<c-\\><c-n>' })
