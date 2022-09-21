@@ -1,3 +1,20 @@
-vim.api.nvim_create_user_command('DapHydra', function()
-  require('modules.ui.hydra').dap:activate()
-end, { nargs = 0 })
+local cmds = {
+  {
+    'DapHydra',
+    function()
+      require('modules.ui.hydra').dap:activate()
+    end,
+    { nargs = 0 },
+  },
+  {
+    'SessionHydra',
+    function()
+      require('modules.ui.hydra').session:activate()
+    end,
+    { nargs = 0 },
+  },
+}
+
+for _, v in ipairs(cmds) do
+  vim.api.nvim_create_user_command(unpack(v))
+end
