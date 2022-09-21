@@ -249,17 +249,16 @@ local telescope = Hydra({
   },
 })
 
-local hint = [[
+local debug_hint = [[
 _c_: continue   _b_: breakpoint  _i_: step into  _e_: eval
 _t_: terminate  _s_: step over   _o_: step out   _q_: exit
 ]]
 
 local debug = Hydra({
   name = 'DEBUG',
-  hint = hint,
+  hint = debug_hint,
   config = {
     color = 'pink',
-    invoke_on_body = true,
     hint = {
       border = 'single',
     },
@@ -276,12 +275,36 @@ local debug = Hydra({
   },
 })
 
+local session_hint = [[
+_l_: last _L_: load _c_: dir _s_: save _d_: delete
+]]
+
+local session = Hydra({
+  name = 'SESSIONS',
+  hint = session_hint,
+  config = {
+    color = 'blue',
+    hint = {
+      border = 'single',
+    },
+  },
+  heads = {
+    { 'q', nil, { exit = true, desc = false } },
+    { 'L', cmd('SessionManager load_session'), {} },
+    { 'c', cmd('SessionManager load_currend_dir_session'), {} },
+    { 's', cmd('SessionManager save_current_session'), {} },
+    { 'd', cmd('SessionManager delete_session'), {} },
+    { 'l', cmd('SessionManager load_last_session'), {} },
+  },
+})
+
 local config = {
   buffers = buffers,
   git = git,
   windows = windows,
   telescope = telescope,
   dap = debug,
+  session = session,
 }
 
 return config
