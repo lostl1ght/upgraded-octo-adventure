@@ -4,13 +4,12 @@ local conf = require('modules.tools.config')
 plugin({
   'nvim-telescope/telescope.nvim',
   requires = { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
-  cmd = 'Telescope',
   config = conf.telescope,
 })
 
 plugin({ 'numToStr/Comment.nvim', config = conf.comment })
 
-plugin({ 'rmagatti/auto-session', config = conf.autosession })
+plugin({ 'Shatur/neovim-session-manager', config = conf.session })
 
 plugin({ 'szw/vim-maximizer' })
 

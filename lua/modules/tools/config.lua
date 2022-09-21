@@ -67,12 +67,11 @@ function config.comment()
   require('Comment').setup({ ignore = '^$' })
 end
 
-function config.autosession()
-  require('auto-session').setup({
-    log_level = 'error',
-    auto_session_root_dir = vim.fn.stdpath('cache') .. '/sessions/',
-    auto_session_create_enabled = false,
-    cwd_change_handling = nil,
+function config.session()
+  require('session_manager').setup({
+    sessions_dir = vim.fn.stdpath('cache') .. '/sessions/',
+    autoload_mode = require('session_manager.config').AutoloadMode.CurrentDir,
+    autosave_only_in_session = true,
   })
 end
 
