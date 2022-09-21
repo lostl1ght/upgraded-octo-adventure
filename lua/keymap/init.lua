@@ -46,15 +46,53 @@ nmap({
 nmap({ '<leader>e', cmd('RnvimrToggle'), opts('Ranger') })
 
 nmap({
-  { '<leader>b', cmd('Telescope buffers'), opts('Telescope: buffers') },
   { '<leader>f', cmd('Telescope find_files'), opts('Telescope: files') },
-  { '<leader>tg', cmd('Telescope live_grep'), opts('Telescope: grep') },
-  { '<leader>th', cmd('Telescope help_tags'), opts('Telescope: help') },
+  { '<leader>b', cmd('Telescope buffers'), opts('Telescope: buffers') },
 })
 
-nmap({ '<leader>g', cmd('LazyGit'), opts('LazyGit') })
-
 nmap({
-  { ']b', cmd('bn'), opts('Buffer: next') },
-  { '[b', cmd('bn'), opts('Buffer: previous') },
+  {
+    '<leader>g',
+    function()
+      require('modules.ui.hydra').git:activate()
+    end,
+    opts('Hydra: git'),
+  },
+  {
+    '<leader>t',
+    function()
+      require('modules.ui.hydra').telescope:activate()
+    end,
+    opts('Hydra: telescope'),
+  },
+  {
+    ']b',
+    function()
+      require('modules.ui.hydra').buffers:activate()
+      vim.cmd('bn')
+    end,
+    opts('Hydra: buffers'),
+  },
+  {
+    '[b',
+    function()
+      require('modules.ui.hydra').buffers:activate()
+      vim.cmd('bp')
+    end,
+    opts('Hydra: buffers'),
+  },
+  {
+    '<leader>w',
+    function()
+      require('modules.ui.hydra').windows:activate()
+    end,
+    opts('Hydra: windows'),
+  },
+  {
+    '<leader>t',
+    function()
+      require('modules.ui.hydra').telescope:activate()
+    end,
+    opts('Hydra: telescope'),
+  },
 })
