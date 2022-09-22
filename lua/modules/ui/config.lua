@@ -40,4 +40,9 @@ function config.notifier()
   })
 end
 
+function config.hydra()
+  vim.api.nvim_set_hl(0, 'HydraHint', { link = 'Normal' })
+  vim.api.nvim_set_hl(0, 'HydraBorder', { link = 'FloatermBorder' })
+end
+
 return config
