@@ -16,7 +16,15 @@ local buffers = Hydra({
   heads = {
     { ']', cmd('bn'), { desc = 'next buf' } },
     { '[', cmd('bp'), { desc = 'prev buf' } },
-    { 'c', pcmd('bd', 'E89'), { desc = 'close' } },
+    {
+      'c',
+      function()
+        if not vim.o.modified then
+          vim.cmd('bd')
+        end
+      end,
+      { desc = 'close' },
+    },
     { 'C', cmd('bd!'), { desc = 'force close' } },
     { 'q', nil, { exit = true, desc = false } },
   },
@@ -182,13 +190,7 @@ local windows = Hydra({
     { 's', pcmd('split', 'E36') },
     { 'v', pcmd('vsplit', 'E36') },
     { 'w', '<C-w>w', { exit = true } },
-    {
-      'z',
-      function()
-        vim.cmd('WindowsMaximaze')
-      end,
-      { desc = 'maximize' },
-    },
+    { 'z', cmd('MaximizerToggle!'), { desc = 'maximize' } },
     { 'o', '<C-w>o', { exit = true, desc = 'remain only' } },
     { 'c', pcmd('close', 'E444') },
     { 'b', cmd('Telescope buffers'), { exit = true } },
