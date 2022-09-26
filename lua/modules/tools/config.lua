@@ -75,27 +75,10 @@ function config.session()
   })
 end
 
-function config.bufresize()
-  require('bufresize').setup({
-    register = {
-      keys = {},
-      trigger_events = { 'BufWinEnter', 'WinEnter' },
-    },
-    resize = {
-      keys = {},
-      trigger_events = { 'VimResized' },
-      increment = false,
-    },
-  })
-end
-
 function config.smart_splits()
   require('smart-splits').setup({
     resize_mode = {
       quit_key = 'q',
-      hooks = {
-        on_leave = require('bufresize').register,
-      },
     },
   })
 end

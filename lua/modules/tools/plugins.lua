@@ -15,12 +15,8 @@ plugin({ 'szw/vim-maximizer' })
 
 plugin({
   'mrjones2014/smart-splits.nvim',
-  requires = 'kwkarlwang/bufresize.nvim',
-  after = 'bufresize.nvim',
   config = conf.smart_splits,
 })
-
-plugin({ 'kwkarlwang/bufresize.nvim', config = conf.bufresize })
 
 plugin({ 'sindrets/winshift.nvim', config = conf.winshift })
 
