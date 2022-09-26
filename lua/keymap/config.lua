@@ -2,7 +2,7 @@ local keymap = require('core.keymap')
 local nmap, imap, tmap, xmap = keymap.nmap, keymap.imap, keymap.tmap, keymap.xmap
 local opts = keymap.new_opts
 local remap = keymap.remap
-local cmd, pcmd = keymap.cmd, keymap.pcmd
+local cmd = keymap.cmd
 
 vim.g.mapleader = ' '
 
@@ -12,11 +12,21 @@ xmap({ ' ', '' })
 nmap({
   { '<f1>', '', opts(remap) },
   { '<leader>h', cmd('noh'), opts('Basic: no highlight') },
-  { '<leader>s', cmd('silent! w'), opts('Basic: save') },
+  { '<leader>s', cmd('silent w'), opts('Basic: save') },
   { '<leader>`', cmd('b#'), opts('Buffer: switch') },
   { 'Q', 'q', opts('Macro') },
   { 'q', '', opts(remap) },
-  { '<leader>c', pcmd('bd', 'E89', 'echo "Save before closing"'), opts('Buffer: close') },
+  {
+    '<leader>c',
+    function()
+      if vim.o.modified then
+        vim.notify('Save before closing')
+      else
+        vim.cmd('bd')
+      end
+    end,
+    opts('Buffer: close'),
+  },
   { '<leader>C', cmd('bd!'), opts('Buffer: force close') },
   { '<c-l>', '<c-w>l', opts('Window: focus left') },
   { '<c-h>', '<c-w>h', opts('Window: focus right') },
