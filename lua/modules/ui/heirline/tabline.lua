@@ -2,16 +2,24 @@ local hl = require('modules.ui.heirline.colors')
 local utils = require('heirline.utils')
 local icons = require('modules.ui.heirline.icons').icons
 
+local Space = {
+  provider = function(self)
+    return string.format('%%%dT %%T', self.tabnr)
+  end,
+}
+
 local VerticalLine = {
   provider = '│',
   hl = hl.VerticalLine,
+  Space,
 }
 
 local TabNumber = {
   provider = function(self)
-    return string.format('%%%dT %d. %%T', self.tabnr, self.tabnr)
+    return string.format('%%%dT%d.%%T', self.tabnr, self.tabnr)
   end,
-  hl = hl.Tabpage,
+  hl = hl.TabpageClose,
+  Space,
 }
 
 local WinCount = {
@@ -19,16 +27,17 @@ local WinCount = {
     return self.win_count > 1
   end,
   provider = function(self)
-    return string.format('%%%dT [%d]%%T', self.tabnr, self.win_count)
+    return string.format('%%%dT(%d) %%T', self.tabnr, self.win_count)
   end,
   hl = hl.WinCount,
 }
 
 local ActiveFile = {
   provider = function(self)
-    return string.format('%%%dT%s %%T', self.tabnr, self.filename)
+    return string.format('%%%dT[%s]%%T', self.tabnr, self.filename)
   end,
   hl = hl.ActiveFile,
+  Space,
 }
 
 local WinModified = {
@@ -36,9 +45,10 @@ local WinModified = {
     return self.modified
   end,
   provider = function(self)
-    return string.format('%%%dT%s %%T', self.tabnr, icons.small_circle)
+    return string.format('%%%dT%s%%T', self.tabnr, icons.small_circle)
   end,
   hl = hl.ModeColors.modified,
+  Space,
 }
 
 local TabpageClose = {
@@ -46,9 +56,10 @@ local TabpageClose = {
     return not self.modified
   end,
   provider = function(self)
-    return string.format('%%%dX%s %%X', self.tabnr, icons.cross)
+    return string.format('%%%dX%s%%X', self.tabnr, icons.cross)
   end,
-  hl = hl.Tabpage,
+  hl = hl.TabpageClose,
+  Space,
 }
 
 local TabPage = {
@@ -69,13 +80,13 @@ local TabPage = {
     end
     local winnr = vim.fn.tabpagewinnr(self.tabnr)
     local f = vim.fn.bufname(buflist[winnr])
-    local filename = f ~= '' and vim.fn.fnamemodify(f, ':t') or '[No File]'
+    local filename = f ~= '' and vim.fn.fnamemodify(f, ':t') or 'No File'
     self.filename = filename
   end,
   VerticalLine,
-  WinCount,
   TabNumber,
   ActiveFile,
+  WinCount,
   WinModified,
   TabpageClose,
 }

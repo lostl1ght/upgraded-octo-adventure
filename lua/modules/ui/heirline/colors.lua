@@ -48,7 +48,15 @@ local hl = {
   },
 
   -- tabline
-  Tabpage = function(self)
+  TabNumber = function(self)
+    if not self.is_active then
+      return { fg = colors.fujiGray }
+    else
+      return { fg = colors.oldWhite, bold = true }
+    end
+  end,
+
+  TabpageClose = function(self)
     if not self.is_active then
       return { fg = colors.fujiGray }
     else
@@ -66,7 +74,7 @@ local hl = {
 
   WinCount = function(self)
     if not self.is_active then
-      return { fg = colors.fujiGray }
+      return { fg = colors.fujiGray, bold = true }
     else
       return { fg = colors.surimiOrange }
     end
@@ -74,7 +82,7 @@ local hl = {
 
   ActiveFile = function(self)
     if not self.is_active then
-      return { fg = colors.fujiGray, bold = true }
+      return { fg = colors.fujiGray }
     else
       return { fg = colors.oldWhite, bold = true }
     end
