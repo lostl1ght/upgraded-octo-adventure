@@ -32,7 +32,7 @@ end
 function config.notifier()
   require('notifier').setup({
     status_width = function()
-      return math.floor(0.66 * vim.o.columns)
+      return math.floor(vim.o.columns / 3)
     end,
     notify = {
       clear_time = 2500,
