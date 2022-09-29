@@ -16,6 +16,6 @@ plugin({
 
 plugin({ 'stevearc/dressing.nvim', config = conf.dressing })
 
-plugin({ '~/dev/plugins/notifier.nvim', config = conf.notifier })
+plugin({ 'vigoux/notifier.nvim', config = conf.notifier })
 
-plugin({ 'anuvyklack/hydra.nvim', config = conf.hydra  })
+plugin({ 'anuvyklack/hydra.nvim', config = conf.hydra })
