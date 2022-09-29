@@ -25,3 +25,5 @@ plugin({ 'Akianonymus/nvim-colorizer.lua', config = conf.colorizer, cmd = 'Color
 plugin({ '~/dev/plugins/nvim-langmap-switch', config = conf.langmap_switch })
 
 plugin({ 'kevinhwang91/rnvimr', setup = conf.rnvimr })
+
+plugin({ 'IndianBoy42/tree-sitter-just', ft = 'just', config = conf.just })

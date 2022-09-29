@@ -102,4 +102,8 @@ function config.langmap_switch()
   require('langmap_switch').setup({ keymap = 'russian-jcukenwin' })
 end
 
+function config.just()
+  require('tree-sitter-just').setup({})
+end
+
 return config
