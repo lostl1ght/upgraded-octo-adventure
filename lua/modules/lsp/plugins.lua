@@ -3,7 +3,7 @@ local conf = require('modules.lsp.config')
 
 plugin({
   'neovim/nvim-lspconfig',
-  ft = { 'lua', 'rust', 'haskell', 'tex', 'bib', 'python', 'go' },
+  ft = { 'lua', 'rust', 'tex', 'bib', 'python', 'go', 'c', 'cpp' },
   config = conf.lspconfig,
 })
 
@@ -34,4 +34,4 @@ plugin({
 
 plugin({ 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu', config = conf.codeaction })
 
-plugin({ 'folke/lua-dev.nvim' })
+plugin({ 'folke/lua-dev.nvim', ft = 'lua' })

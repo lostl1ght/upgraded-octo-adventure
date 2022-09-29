@@ -7,7 +7,7 @@ local handlers = {
 function config.lsp_formatting(bufnr)
   vim.lsp.buf.format({
     filter = function(client)
-      return client.name == 'null-ls'
+      return client.name == 'null-ls' or client.name == 'clangd'
     end,
     bufnr = bufnr,
   })
@@ -88,6 +88,10 @@ end
 
 function servers.pyright()
   require('lspconfig').pyright.setup({ handlers = handlers })
+end
+
+function servers.clangd()
+  require('lspconfig').clangd.setup({ handlers = handlers })
 end
 
 function config.setup()
