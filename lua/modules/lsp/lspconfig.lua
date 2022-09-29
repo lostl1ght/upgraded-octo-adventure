@@ -50,10 +50,6 @@ function servers.sumneko_lua()
   })
 end
 
-function servers.hls()
-  require('lspconfig').hls.setup({ handlers = handlers })
-end
-
 function servers.texlab()
   require('lspconfig').texlab.setup({
     handlers = handlers,
