@@ -32,8 +32,10 @@ nmap({
   {
     'gl',
     function()
-      require('lsp_lines').toggle()
       vim.g.lsplines_enabled = not vim.g.lsplines_enabled
+      vim.diagnostic.config({
+        virtual_lines = vim.g.lsplines_enabled,
+      })
       vim.notify(
         string.format('Line diagnostics %s', vim.g.lsplines_enabled and 'enabled' or 'disabled')
       )
