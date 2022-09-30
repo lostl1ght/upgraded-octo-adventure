@@ -21,6 +21,8 @@ nmap({
     function()
       if vim.o.modified then
         vim.notify('Save before closing')
+      elseif vim.o.buftype == 'terminal' then
+        vim.notify('Kill the terminal')
       else
         vim.cmd('bd')
       end
