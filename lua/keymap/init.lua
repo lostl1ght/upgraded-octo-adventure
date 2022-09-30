@@ -28,7 +28,7 @@ nmap({
     end,
     opts('Lsp: format'),
   },
-  { 'gs', cmd('SymbolsOutline'), opts('Lsp: document symbols') },
+  { 'gs', cmd('AerialToggle'), opts('Lsp: document symbols') },
   {
     'gl',
     function()

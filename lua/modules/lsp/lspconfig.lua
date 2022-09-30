@@ -32,6 +32,7 @@ function servers.rust_analyzer()
   require('lspconfig').rust_analyzer.setup({
     settings = { ['rust-analyzer'] = { completion = { postfix = { enable = false } } } },
     handlers = handlers,
+    on_attach = require('aerial').on_attach,
   })
 end
 
@@ -47,12 +48,14 @@ function servers.sumneko_lua()
       },
     },
     handlers = handlers,
+    on_attach = require('aerial').on_attach,
   })
 end
 
 function servers.texlab()
   require('lspconfig').texlab.setup({
     handlers = handlers,
+    on_attach = require('aerial').on_attach,
     settings = {
       texlab = {
         auxDirectory = 'latex.out',
@@ -83,15 +86,24 @@ function servers.texlab()
 end
 
 function servers.gopls()
-  require('lspconfig').gopls.setup({ handlers = handlers })
+  require('lspconfig').gopls.setup({
+    handlers = handlers,
+    on_attach = require('aerial').on_attach,
+  })
 end
 
 function servers.pyright()
-  require('lspconfig').pyright.setup({ handlers = handlers })
+  require('lspconfig').pyright.setup({
+    handlers = handlers,
+    on_attach = require('aerial').on_attach,
+  })
 end
 
 function servers.clangd()
-  require('lspconfig').clangd.setup({ handlers = handlers })
+  require('lspconfig').clangd.setup({
+    handlers = handlers,
+    on_attach = require('aerial').on_attach,
+  })
 end
 
 function config.setup()

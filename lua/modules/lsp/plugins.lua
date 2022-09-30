@@ -14,8 +14,6 @@ plugin({
   config = conf.null_ls,
 })
 
-plugin({ 'simrat39/symbols-outline.nvim', cmd = 'SymbolsOutline', config = conf.outline })
-
 plugin({ 'folke/trouble.nvim', cmd = 'TroubleToggle', config = conf.trouble })
 
 plugin({ 'ray-x/lsp_signature.nvim', after = 'nvim-lspconfig', config = conf.signature })
@@ -35,3 +33,5 @@ plugin({
 plugin({ 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu', config = conf.codeaction })
 
 plugin({ 'folke/lua-dev.nvim', ft = 'lua' })
+
+plugin({ 'stevearc/aerial.nvim', config = conf.aerial })
