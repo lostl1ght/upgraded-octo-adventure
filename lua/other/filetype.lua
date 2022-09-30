@@ -6,10 +6,9 @@ vim.filetype.add({
       end
     end,
     go = function()
-      return 'go',
-        function(bufnr)
-          vim.bo[bufnr].expandtab = false
-        end
+      return 'go', function(bufnr)
+        vim.bo[bufnr].expandtab = false
+      end
     end,
     fish = function()
       return 'fish', function(bufnr)
