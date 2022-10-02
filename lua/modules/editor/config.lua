@@ -70,10 +70,10 @@ function config.surround()
 end
 
 function config.registers()
-  require("registers").setup({
+  require('registers').setup({
     window = {
-      border = 'single'
-    }
+      border = 'single',
+    },
   })
 end
 
@@ -85,6 +85,26 @@ function config.matchup()
       include_match_words = true,
     },
   })
+end
+
+function config.tmux()
+  local tmux = require('tmux')
+  tmux.setup({
+    copy_sync = {
+      enable = false,
+    },
+    navigation = {
+      cycle_navigation = false,
+      enable_default_keybindings = false,
+    },
+    resize = {
+      enable_default_keybindings = false,
+    },
+  })
+  vim.keymap.set('n', '<c-h>', tmux.move_left, {})
+  vim.keymap.set('n', '<c-j>', tmux.move_bottom, {})
+  vim.keymap.set('n', '<c-k>', tmux.move_top, {})
+  vim.keymap.set('n', '<c-l>', tmux.move_right, {})
 end
 
 return config

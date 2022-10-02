@@ -25,3 +25,8 @@ plugin({
   after = 'nvim-treesitter',
   config = conf.matchup,
 })
+
+plugin({
+  'aserowy/tmux.nvim',
+  config = conf.tmux,
+})
