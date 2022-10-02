@@ -21,13 +21,7 @@ nmap({
   { 'gw', cmd('TroubleToggle document_diagnostics'), opts('Lsp: document diagnostics') },
   { 'gW', cmd('TroubleToggle workspace_diagnostics'), opts('Lsp: workspace diagnostics') },
   { 'K', vim.lsp.buf.hover, opts('Lsp: hover') },
-  {
-    'gf',
-    function()
-      require('modules.lsp.lspconfig').lsp_formatting(0)
-    end,
-    opts('Lsp: format'),
-  },
+  { 'gf', cmd('LspFormat'), opts('Lsp: format') },
   { 'gs', cmd('AerialToggle'), opts('Lsp: document symbols') },
   {
     'gl',

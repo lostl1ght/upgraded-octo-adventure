@@ -1,11 +1,5 @@
 local config = {}
 
-function config.lspconfig()
-  local lspconfig = require('modules.lsp.lspconfig')
-  lspconfig.setup()
-  lspconfig.setup_signs()
-end
-
 function config.null_ls()
   local null = require('null-ls')
   null.setup({

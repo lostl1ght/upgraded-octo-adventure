@@ -2,31 +2,25 @@ local plugin = require('core.pack').register_plugin
 local conf = require('modules.lsp.config')
 
 plugin({
-  'neovim/nvim-lspconfig',
-  ft = { 'lua', 'rust', 'tex', 'bib', 'python', 'go', 'c', 'cpp' },
-  config = conf.lspconfig,
-})
-
-plugin({
   'jose-elias-alvarez/null-ls.nvim',
-  after = 'nvim-lspconfig',
   requires = 'nvim-lua/plenary.nvim',
   config = conf.null_ls,
+  event = 'LspAttach',
 })
 
-plugin({ 'folke/trouble.nvim', cmd = 'TroubleToggle', config = conf.trouble })
+plugin({ 'folke/trouble.nvim', event = 'LspAttach', config = conf.trouble })
 
-plugin({ 'ray-x/lsp_signature.nvim', after = 'nvim-lspconfig', config = conf.signature })
+plugin({ 'ray-x/lsp_signature.nvim', event = 'LspAttach', config = conf.signature })
 
 plugin({
   'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
-  after = 'nvim-lspconfig',
+  event = 'LspAttach',
   config = conf.lsplines,
 })
 
 plugin({
   'kosayoda/nvim-lightbulb',
-  after = 'nvim-lspconfig',
+  event = 'LspAttach',
   config = conf.lightbulb,
 })
 
