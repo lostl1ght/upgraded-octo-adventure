@@ -14,13 +14,18 @@ vim.schedule(function()
     handlers = handlers,
     on_attach = require('aerial').on_attach,
   })
-
-  vim.api.nvim_create_user_command('CargoReload', function()
-    vim.lsp.buf_request(0, 'rust-analyzer/reloadWorkspace', nil, function(err)
-      if err then
-        error(tostring(err))
-      end
-      vim.notify('Cargo workspace reloaded')
-    end)
-  end, { nargs = 0 })
 end)
+
+if not vim.g.rust_analyzer_cmds then
+  vim.g.rust_analyzer_cmds = true
+  vim.schedule(function()
+    vim.api.nvim_create_user_command('CargoReload', function()
+      vim.lsp.buf_request(0, 'rust-analyzer/reloadWorkspace', nil, function(err)
+        if err then
+          error(tostring(err))
+        end
+        vim.notify('Cargo workspace reloaded')
+      end)
+    end, { nargs = 0 })
+  end)
+end

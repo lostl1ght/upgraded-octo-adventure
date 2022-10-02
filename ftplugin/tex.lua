@@ -52,29 +52,35 @@ vim.schedule(function()
       },
     },
   })
-
-  vim.api.nvim_create_user_command('TexlabBuild', function()
-    local params = {
-      textDocument = { uri = vim.uri_from_bufnr(0) },
-    }
-    vim.lsp.buf_request(0, 'textDocument/build', params, function(err, result)
-      if err then
-        error(tostring(err))
-      end
-      vim.notify('Build ' .. texlab_build_status[result.status])
-    end)
-  end)
-
-  vim.api.nvim_create_user_command('TexlabForward', function()
-    local params = {
-      textDocument = { uri = vim.uri_from_bufnr(0) },
-      position = { line = vim.fn.line('.') - 1, character = vim.fn.col('.') },
-    }
-    vim.lsp.buf_request(0, 'textDocument/forwardSearch', params, function(err, result)
-      if err then
-        error(tostring(err))
-      end
-      vim.notify('Search ' .. texlab_forward_status[result.status])
-    end)
-  end)
 end)
+
+if not vim.g.texlab_cmds then
+  vim.g.texlab_cmds = true
+
+  vim.schedule(function()
+    vim.api.nvim_create_user_command('TexlabBuild', function()
+      local params = {
+        textDocument = { uri = vim.uri_from_bufnr(0) },
+      }
+      vim.lsp.buf_request(0, 'textDocument/build', params, function(err, result)
+        if err then
+          error(tostring(err))
+        end
+        vim.notify('Build ' .. texlab_build_status[result.status])
+      end)
+    end)
+
+    vim.api.nvim_create_user_command('TexlabForward', function()
+      local params = {
+        textDocument = { uri = vim.uri_from_bufnr(0) },
+        position = { line = vim.fn.line('.') - 1, character = vim.fn.col('.') },
+      }
+      vim.lsp.buf_request(0, 'textDocument/forwardSearch', params, function(err, result)
+        if err then
+          error(tostring(err))
+        end
+        vim.notify('Search ' .. texlab_forward_status[result.status])
+      end)
+    end)
+  end)
+end
