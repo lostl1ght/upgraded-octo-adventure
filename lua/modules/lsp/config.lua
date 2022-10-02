@@ -1,7 +1,9 @@
 local config = {}
 
 function config.lspconfig()
-  require('modules.lsp.lspconfig').setup()
+  local lspconfig = require('modules.lsp.lspconfig')
+  lspconfig.setup()
+  lspconfig.setup_signs()
 end
 
 function config.null_ls()
@@ -41,8 +43,6 @@ function config.lsplines()
     virtual_text = false,
     virtual_lines = vim.g.lsplines_enabled,
   })
-  local lspconfig = require('modules.lsp.lspconfig')
-  lspconfig.setup_signs()
 end
 
 function config.lightbulb()
