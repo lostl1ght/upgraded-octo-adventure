@@ -70,7 +70,11 @@ function config.surround()
 end
 
 function config.registers()
-  vim.g.registers_window_border = 'single'
+  require("registers").setup({
+    window = {
+      border = 'single'
+    }
+  })
 end
 
 function config.matchup()
