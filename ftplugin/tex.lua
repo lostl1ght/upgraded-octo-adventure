@@ -2,25 +2,12 @@ local handlers = {
   ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'single' }),
 }
 
-local texlab_build_status = vim.tbl_add_reverse_lookup({
-  Success = 0,
-  Error = 1,
-  Failure = 2,
-  Cancelled = 3,
-})
-
-local texlab_forward_status = vim.tbl_add_reverse_lookup({
-  Success = 0,
-  Error = 1,
-  Failure = 2,
-  Unconfigured = 3,
-})
-
 vim.schedule(function()
   vim.lsp.start({
     name = 'texlab',
     cmd = { 'texlab' },
     root_dir = vim.fs.dirname(vim.fs.find({
+      '.latexmkrc',
       '.git',
     }, { upward = true })[1]),
     handlers = handlers,
@@ -56,6 +43,20 @@ end)
 
 if not vim.g.texlab_cmds then
   vim.g.texlab_cmds = true
+
+  local texlab_build_status = vim.tbl_add_reverse_lookup({
+    Success = 0,
+    Error = 1,
+    Failure = 2,
+    Cancelled = 3,
+  })
+
+  local texlab_forward_status = vim.tbl_add_reverse_lookup({
+    Success = 0,
+    Error = 1,
+    Failure = 2,
+    Unconfigured = 3,
+  })
 
   vim.schedule(function()
     vim.api.nvim_create_user_command('TexlabBuild', function()
