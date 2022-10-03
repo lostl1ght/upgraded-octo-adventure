@@ -15,16 +15,15 @@ local cmds = {
   },
   {
     'LspFormat',
-    function(args)
+    function()
       vim.lsp.buf.format({
         filter = function(client)
           return client.name == 'null-ls' or client.name == 'clangd'
         end,
-        bufnr = args.args ~= '' and tonumber(args.args) or 0,
       })
       vim.cmd('silent w')
     end,
-    { nargs = '?' },
+    { nargs = 0 },
   },
   {
     'LspInfo',
