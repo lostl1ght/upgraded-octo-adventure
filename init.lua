@@ -1,2 +1,2 @@
-pcall(require, 'impatient')
+require('core.prelude')
 require('core')
