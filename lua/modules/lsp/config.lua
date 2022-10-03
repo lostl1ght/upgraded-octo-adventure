@@ -1,5 +1,110 @@
 local config = {}
 
+function config.lspconfig()
+  local handlers = {
+    ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'single' }),
+  }
+  local aerial = require('aerial')
+  local lspconfig = require('lspconfig')
+
+  lspconfig.sumneko_lua.setup({
+    name = 'sumneko-lua',
+    cmd = { 'lua-language-server' },
+    root_dir = function()
+      return vim.fs.dirname(vim.fs.find({
+        '.luarc.json',
+        '.luacheckrc',
+        '.stylua.toml',
+        'stylua.toml',
+        'selene.toml',
+        '.git',
+      }, { upward = true })[1])
+    end,
+    settings = {
+      Lua = {
+        completion = { autoRequire = false, keywordSnippet = 'Disable' },
+        runtime = { version = 'LuaJIT' },
+        diagnostics = { globals = { 'vim' } },
+        workspace = { library = vim.api.nvim_get_runtime_file('', true) },
+        telemetry = { enable = false },
+      },
+    },
+    handlers = handlers,
+    on_attach = aerial.on_attach,
+  })
+
+  lspconfig.rust_analyzer.setup({
+    name = 'rust-analyzer',
+    cmd = { 'rust-analyzer' },
+    root_dir = function()
+      return vim.fs.dirname(vim.fs.find({
+        'Cargo.toml',
+        'rust-project.json',
+        '.git',
+      }, { upward = true })[1])
+    end,
+    settings = { ['rust-analyzer'] = { completion = { postfix = { enable = false } } } },
+    handlers = handlers,
+    on_attach = aerial.on_attach,
+  })
+
+  lspconfig.clangd.setup({
+    name = 'clangd',
+    cmd = { 'clangd' },
+    root_dir = function()
+      return vim.fs.dirname(vim.fs.find({
+        '.clangd',
+        '.clang-tidy',
+        '.clang-format',
+        'compile_commands.json',
+        'compile_flags.txt',
+        '.git',
+      }, { upward = true })[1])
+    end,
+    handlers = handlers,
+    on_attach = aerial.on_attach,
+  })
+
+  lspconfig.texlab.setup({
+    name = 'texlab',
+    cmd = { 'texlab' },
+    root_dir = function()
+      return vim.fs.dirname(vim.fs.find({
+        '.latexmkrc',
+        '.git',
+      }, { upward = true })[1])
+    end,
+    settings = {
+      texlab = {
+        auxDirectory = 'latex.out',
+        bibtexFormatter = 'texlab',
+        build = {
+          args = { '%f' },
+          executable = 'latexrun',
+          forwardSearchAfter = false,
+          onSave = false,
+        },
+        chktex = {
+          onEdit = false,
+          onOpenAndSave = false,
+        },
+        diagnosticsDelay = 300,
+        formatterLineLength = 80,
+        forwardSearch = {
+          executable = 'evince',
+          args = { '%p' },
+        },
+        latexFormatter = 'latexindent',
+        latexindent = {
+          modifyLineBreaks = false,
+        },
+      },
+    },
+    handlers = handlers,
+    on_attach = aerial.on_attach,
+  })
+end
+
 function config.null_ls()
   local null = require('null-ls')
   null.setup({
