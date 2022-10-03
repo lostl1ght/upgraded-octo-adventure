@@ -48,6 +48,7 @@ function Packer:load_packer()
   local use = packer.use
   self:load_plugins()
   use({ 'wbthomason/packer.nvim', opt = true })
+  use({ 'lewis6991/impatient.nvim' })
   for _, repo in ipairs(self.repos) do
     use(repo)
   end
@@ -85,7 +86,7 @@ function plugins.register_plugin(repo)
 end
 
 function plugins.auto_compile()
-  local file = vim.fn.expand('%:p')
+  local file = assert(vim.fn.expand('%:p', nil, {}))
   if not file:match(vim_path) then
     return
   end
