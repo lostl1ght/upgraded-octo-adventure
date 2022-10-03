@@ -11,16 +11,16 @@ Packer.__index = Packer
 function Packer:load_plugins()
   self.repos = {}
 
-  local get_plugins_list = function()
+  local function get_list()
     local list = {}
-    local tmp = vim.split(fn.globpath(modules_dir, '*/plugins.lua'), '\n')
+    local tmp = vim.fs.find('plugins.lua', { path = modules_dir, type = 'file', limit = math.huge })
     for _, f in ipairs(tmp) do
-      list[#list + 1] = string.match(f, 'lua/(.+).lua$')
+      table.insert(list, string.match(f, 'lua/(.+).lua$'))
     end
     return list
   end
 
-  local plugins_file = get_plugins_list()
+  local plugins_file = get_list()
   for _, m in ipairs(plugins_file) do
     require(m)
   end
