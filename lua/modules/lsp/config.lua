@@ -113,6 +113,9 @@ function config.null_ls()
       null.builtins.formatting.rustfmt.with({
         extra_args = { '--edition', '2021' },
       }),
+      null.builtins.formatting.latexindent.with({
+        filetypes = { 'tex', 'bib' },
+      }),
     },
   })
 end
