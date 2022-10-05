@@ -60,4 +60,9 @@ function config.ufo()
   vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
   vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
 end
+
+function config.illum()
+  require('illuminate').configure()
+end
+
 return config

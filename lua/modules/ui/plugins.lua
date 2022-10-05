@@ -21,3 +21,5 @@ plugin({ 'vigoux/notifier.nvim', config = conf.notifier })
 plugin({ 'anuvyklack/hydra.nvim', config = conf.hydra })
 
 plugin({ 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async', config = conf.ufo })
+
+plugin({ 'RRethy/vim-illuminate', config = conf.illum })
