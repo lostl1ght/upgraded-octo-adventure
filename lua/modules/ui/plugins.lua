@@ -23,3 +23,5 @@ plugin({ 'anuvyklack/hydra.nvim', config = conf.hydra })
 plugin({ 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async', config = conf.ufo })
 
 plugin({ 'RRethy/vim-illuminate', config = conf.illum })
+
+plugin({ '~/dev/plugins/nvim-langmap-switch', config = conf.langmap_switch })

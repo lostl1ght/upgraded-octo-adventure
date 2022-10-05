@@ -65,4 +65,8 @@ function config.illum()
   require('illuminate').configure()
 end
 
+function config.langmap_switch()
+  require('langmap_switch').setup({ keymap = 'russian-jcukenwin' })
+end
+
 return config
