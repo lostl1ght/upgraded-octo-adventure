@@ -37,7 +37,7 @@ function config.notifier()
       return math.floor(vim.o.columns / 3)
     end,
     notify = {
-      clear_time = 2500,
+      clear_time = 5000,
     },
   })
 end

@@ -11,7 +11,7 @@ plugin({ 'windwp/nvim-autopairs', config = conf.autopairs })
 
 plugin({ 'declancm/cinnamon.nvim', config = conf.cinnamon })
 
-plugin({ 'kylechui/nvim-surround', tag = '*', config = conf.surround })
+plugin({ 'kylechui/nvim-surround', config = conf.surround })
 
 plugin({ 'tversteeg/registers.nvim', config = conf.registers })
 
