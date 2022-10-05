@@ -13,7 +13,13 @@ nmap({
   { '<f1>', '', opts(remap) },
   { '<leader>h', cmd('noh'), opts('Basic: no highlight') },
   { '<leader>s', cmd('silent w'), opts('Basic: save') },
-  { '<leader>`', cmd('b#'), opts('Buffer: switch') },
+  {
+    '<leader>`',
+    function()
+      pcall(vim.cmd, 'b#')
+    end,
+    opts('Buffer: switch'),
+  },
   { 'Q', 'q', opts('Macro') },
   { 'q', '', opts(remap) },
   {
@@ -24,12 +30,12 @@ nmap({
       elseif vim.o.buftype == 'terminal' then
         vim.notify('Kill the terminal')
       else
-        vim.cmd('bd')
+        vim.cmd('Bd')
       end
     end,
     opts('Buffer: close'),
   },
-  { '<leader>C', cmd('bd!'), opts('Buffer: force close') },
+  { '<leader>C', cmd('Bd!'), opts('Buffer: force close') },
 })
 
 imap({

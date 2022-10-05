@@ -28,3 +28,5 @@ plugin({
   'aserowy/tmux.nvim',
   config = conf.tmux,
 })
+
+plugin({ 'famiu/bufdelete.nvim' })
