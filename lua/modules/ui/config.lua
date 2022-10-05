@@ -6,12 +6,14 @@ function config.kanagawa()
     undercurl = false,
     globalStatus = true,
     overrides = {
-      MatchParen = { fg = colors.springGreen, bg = colors.sumiInk3 },
-      LspReferenceText = { link = 'MatchParen' },
       CursorLine = { link = 'Visual' },
+      LazyGitNormal = { link = 'Normal' },
+      LazyGitBorder = { link = 'FloatermBorder' },
+      FoldColumn = { fg = colors.sumiInk3 },
     },
   })
   vim.cmd('colorscheme kanagawa')
+  vim.api.nvim_set_hl(0, 'MatchParen', { bold = true, underline = true })
 end
 
 function config.heirline()
