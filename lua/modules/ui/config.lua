@@ -9,6 +9,8 @@ function config.kanagawa()
       CursorLine = { link = 'Visual' },
       LazyGitNormal = { link = 'Normal' },
       LazyGitBorder = { link = 'FloatermBorder' },
+      LfNormal = { link = 'Normal' },
+      LfBorder = { link = 'FloatermBorder' },
       FoldColumn = { fg = colors.sumiInk3 },
     },
   })

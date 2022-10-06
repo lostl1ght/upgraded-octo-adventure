@@ -1,18 +1,5 @@
 local config = {}
 
-function config.rnvimr()
-  vim.g.rnvimr_enable_ex = 1
-  vim.g.rnvimr_enable_bw = 1
-  vim.g.rnvimr_layout = {
-    relative = 'editor',
-    width = math.floor(0.9 * vim.o.columns),
-    height = math.floor(0.9 * vim.o.lines),
-    col = math.floor(0.05 * vim.o.columns),
-    row = math.floor(0.05 * vim.o.lines),
-    style = 'minimal',
-  }
-end
-
 function config.telescope()
   require('telescope').setup({
     pickers = {
@@ -98,9 +85,15 @@ function config.colorizer()
   })
 end
 
-
 function config.just()
   require('tree-sitter-just').setup({})
+end
+
+function config.lf()
+  require('lf').setup({
+    lfrc = vim.fs.normalize('~/.config/lf/lfrc_nvim'),
+    border = 'single',
+  })
 end
 
 return config

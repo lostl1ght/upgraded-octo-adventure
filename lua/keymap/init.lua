@@ -39,7 +39,7 @@ nmap({
   { 'ga', cmd('CodeActionMenu'), opts('Lsp: code actions') },
 })
 
-nmap({ '<leader>e', cmd('RnvimrToggle'), opts('Ranger') })
+nmap({ '<leader>e', cmd('Lf'), opts('Lf') })
 
 nmap({
   { '<leader>f', cmd('Telescope find_files'), opts('Telescope: files') },
