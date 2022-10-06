@@ -4,9 +4,6 @@ local icons = util.icons
 local mode_colors = hl.ModeColors
 local conditions = require('heirline.conditions')
 local heirline = require('heirline.utils')
-local devicons = require('nvim-web-devicons')
-
-local os_sep = package.config:sub(1, 1)
 
 local priority = {
   WorkDir = 60,
@@ -166,21 +163,6 @@ local SearchResults = {
   Space,
 }
 
-local FileIcon = {
-  init = function(self)
-    local filename = self.filename
-    local extension = vim.fn.fnamemodify(filename, ':e')
-    self.icon, self.icon_color = devicons.get_icon_color(filename, extension, { default = true })
-  end,
-  provider = function(self)
-    return self.icon
-  end,
-  hl = function(self)
-    return { fg = self.icon_color }
-  end,
-  Space,
-}
-
 local WorkDir = {
   condition = function(self)
     return self.pwd
@@ -281,28 +263,14 @@ local Layout = {
   Space,
 }
 
-local HelpBufferStatusline = {
-  condition = function()
-    return vim.bo.filetype == 'help'
-  end,
-  Space,
-  VimMode,
-  SearchResults,
-  FileIcon,
-  {
-    provider = function()
-      local filename = vim.api.nvim_buf_get_name(0)
-      return vim.fn.fnamemodify(filename, ':t')
-    end,
-    hl = hl.FileName,
-  },
-  Align,
-  Ruler,
-  ScrollBar,
-  Space,
-}
+local statusline = {
+  init = function(self)
+    local current_path = vim.api.nvim_buf_get_name(0)
 
-local ActiveStatusline = {
+    self.pwd = vim.fn.fnamemodify(vim.loop.cwd(), ':~')
+    self.filename = vim.fn.fnamemodify(current_path, ':t')
+  end,
+  hl = hl.StatusLine,
   Space,
   VimMode,
   SearchResults,
@@ -314,32 +282,6 @@ local ActiveStatusline = {
   Ruler,
   ScrollBar,
   Space,
-}
-
-local statusline = {
-  init = function(self)
-    local pwd = vim.fn.getcwd(0)
-    local current_path = vim.api.nvim_buf_get_name(0)
-    local filename
-
-    if current_path == '' then
-      pwd = vim.fn.fnamemodify(pwd, ':~')
-      filename = ' [No Name]'
-    elseif current_path:find(pwd, 1, true) then
-      filename = vim.fn.fnamemodify(current_path, ':t')
-      pwd = vim.fn.fnamemodify(pwd, ':~') .. os_sep
-    else
-      pwd = nil
-      filename = vim.fn.fnamemodify(current_path, ':t')
-    end
-
-    self.pwd = pwd
-    self.filename = filename
-  end,
-  fallthrough = false,
-  hl = hl.StatusLine,
-  HelpBufferStatusline,
-  ActiveStatusline,
 }
 
 return { StatusLine = statusline }
