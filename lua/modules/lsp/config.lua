@@ -139,8 +139,7 @@ end
 
 function config.lsplines()
   vim.g.lsplines_enabled = false
-  local lsplines = require('lsp_lines')
-  lsplines.setup()
+  require('lsp_lines').setup()
   vim.diagnostic.config({
     virtual_text = false,
     virtual_lines = vim.g.lsplines_enabled,
@@ -182,25 +181,7 @@ end
 function config.aerial()
   require('aerial').setup({
     backends = { 'lsp', 'treesitter' },
-    filter_kind = {
-      'Class',
-      'Constant',
-      'Constructor',
-      'Enum',
-      'EnumMember',
-      'Event',
-      'Field',
-      'Function',
-      'Interface',
-      'Key',
-      'Method',
-      'Module',
-      'Namespace',
-      'Property',
-      'Struct',
-      'TypeParameter',
-      'Variable',
-    },
+    filter_kind = false,
   })
 end
 

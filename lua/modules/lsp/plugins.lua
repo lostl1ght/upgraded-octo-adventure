@@ -1,6 +1,10 @@
 local plugin = require('core.pack').register_plugin
 local conf = require('modules.lsp.config')
 
+plugin({ 'stevearc/aerial.nvim', ft = { 'lua', 'rust', 'c', 'cpp' }, config = conf.aerial })
+
+plugin({ 'folke/lua-dev.nvim', ft = 'lua', config = conf.luadev })
+
 plugin({ 'neovim/nvim-lspconfig', after = 'aerial.nvim', config = conf.lspconfig })
 
 plugin({
@@ -27,7 +31,3 @@ plugin({
 })
 
 plugin({ 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu', config = conf.codeaction })
-
-plugin({ 'folke/lua-dev.nvim', ft = 'lua' })
-
-plugin({ 'stevearc/aerial.nvim', ft = { 'lua', 'rust', 'c', 'cpp' }, config = conf.aerial })
