@@ -16,6 +16,16 @@ local autocmds = {
       end,
     },
   },
+  {
+    'BufRead',
+    {
+      callback = function ()
+        if vim.bo.readonly then
+          vim.bo.modifiable = false
+        end
+      end
+    }
+  }
 }
 for _, v in ipairs(autocmds) do
   vim.api.nvim_create_autocmd(unpack(v))
