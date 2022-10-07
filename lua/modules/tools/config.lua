@@ -90,6 +90,9 @@ function config.just()
 end
 
 function config.lf()
+  vim.g.lf_hijack_netrw = true
+  vim.api.nvim_set_hl(0, 'LfBorder', { link = 'FloatermBorder' })
+  vim.api.nvim_set_hl(0, 'LfNormal', { link = 'Normal' })
   require('lf').setup({
     lfrc = vim.fs.normalize('~/.config/lf/lfrc_nvim'),
     border = 'single',

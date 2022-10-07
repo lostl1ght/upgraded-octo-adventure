@@ -6,16 +6,11 @@ function config.kanagawa()
     undercurl = false,
     globalStatus = true,
     overrides = {
-      CursorLine = { link = 'Visual' },
-      LazyGitNormal = { link = 'Normal' },
-      LazyGitBorder = { link = 'FloatermBorder' },
-      LfNormal = { link = 'Normal' },
-      LfBorder = { link = 'FloatermBorder' },
       FoldColumn = { fg = colors.sumiInk3 },
+      YankHighlight = { fg = colors.autumnYellow, bg = colors.winterYellow },
     },
   })
   vim.cmd('colorscheme kanagawa')
-  vim.api.nvim_set_hl(0, 'MatchParen', { bold = true, underline = true })
 end
 
 function config.heirline()

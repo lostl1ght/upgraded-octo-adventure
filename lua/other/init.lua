@@ -11,3 +11,7 @@ local signs = {
 for _, sign in ipairs(signs) do
   vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = '' })
 end
+
+local hl = vim.api.nvim_set_hl
+hl(0, 'CursorLine', { link = 'Visual' })
+hl(0, 'MatchParen', { bold = true, underline = true })

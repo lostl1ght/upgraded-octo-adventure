@@ -1,4 +1,3 @@
-vim.api.nvim_set_hl(0, 'YankHighlight', { fg = '#DCA561', bg = '#49443C' })
 local autocmds = {
   {
     'TextYankPost',
