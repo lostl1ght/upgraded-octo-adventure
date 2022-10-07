@@ -294,7 +294,7 @@ local session = Hydra({
   heads = {
     { 'q', nil, { exit = true, desc = false } },
     { 'L', cmd('SessionManager load_session'), {} },
-    { 'c', cmd('SessionManager load_currend_dir_session'), {} },
+    { 'c', cmd('SessionManager load_current_dir_session'), {} },
     { 's', cmd('SessionManager save_current_session'), {} },
     { 'd', cmd('SessionManager delete_session'), {} },
     { 'l', cmd('SessionManager load_last_session'), {} },
