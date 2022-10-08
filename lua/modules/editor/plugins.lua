@@ -7,7 +7,7 @@ plugin({ 'nvim-treesitter/nvim-treesitter', config = conf.treesitter })
 
 plugin({ 'windwp/nvim-autopairs', config = conf.autopairs })
 
--- plugin({ 'abecodes/tabout.nvim', require = 'nvim-treesitter', after = 'nvim-cmp', config = conf.tabout })
+plugin({ 'abecodes/tabout.nvim', require = 'nvim-treesitter', after = 'nvim-cmp', config = conf.tabout })
 
 plugin({ 'declancm/cinnamon.nvim', config = conf.cinnamon })
 
