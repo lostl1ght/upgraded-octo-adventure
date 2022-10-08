@@ -5,14 +5,25 @@ local opts = key.new_opts
 local cmd = key.cmd
 
 nmap({
+  {
+    '<leader>c',
+    function()
+      if vim.o.modified then
+        vim.notify('Save before closing')
+      elseif vim.o.buftype == 'terminal' then
+        vim.notify('Kill the terminal')
+      else
+        vim.cmd('Bd')
+      end
+    end,
+    opts('Buffer: close'),
+  },
+  { '<leader>C', cmd('Bd!'), opts('Buffer: force close') },
   { '<Leader>pu', cmd('PackerUpdate'), opts('Packer: update') },
   { '<Leader>pi', cmd('PackerInstall'), opts('Packer: install') },
   { '<Leader>pc', cmd('PackerCompile'), opts('Packer: compile') },
   { '<Leader>ps', cmd('PackerSync'), opts('Packer: sync') },
   { '<Leader>pS', cmd('PackerStatus'), opts('Packer: status') },
-})
-
-nmap({
   { 'gr', vim.lsp.buf.rename, opts('Lsp: rename') },
   { 'gd', cmd('TroubleToggle lsp_definitions'), opts('Lsp: definitions') },
   { 'ge', cmd('TroubleToggle lsp_references'), opts('Lsp: references') },
@@ -37,18 +48,12 @@ nmap({
     opts('Lsp: toggle diagnostics'),
   },
   { 'ga', cmd('CodeActionMenu'), opts('Lsp: code actions') },
-})
-
-nmap({ '<leader>e', cmd('Lf'), opts('Lf') })
-
-nmap({
   { '<leader>f', cmd('Telescope find_files'), opts('Telescope: files') },
   { '<leader>b', cmd('Telescope buffers'), opts('Telescope: buffers') },
-})
-
-nmap({
+  { '<leader>e', cmd('LfOpen'), opts('Lf') },
+  { '<leader>g', cmd('LazyGit'), opts('Lazygit') },
   {
-    '<leader>g',
+    '<leader>G',
     function()
       require('modules.ui.hydra').git:activate()
     end,
@@ -83,12 +88,5 @@ nmap({
       require('modules.ui.hydra').windows:activate()
     end,
     opts('Hydra: windows'),
-  },
-  {
-    '<leader>t',
-    function()
-      require('modules.ui.hydra').telescope:activate()
-    end,
-    opts('Hydra: telescope'),
   },
 })
