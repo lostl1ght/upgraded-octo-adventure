@@ -33,9 +33,9 @@ local buffers = Hydra({
 local gitsigns = require('gitsigns')
 
 local git_hint = [[
-_K_: prev hunk   _s_: stage hunk        _d_: show deleted   _b_: blame line       _r_: reset hunk
-_J_: next hunk   _u_: undo last stage   _p_: preview hunk   _B_: blame show full  _R_: reset buffer
-_g_: lazygit     _S_: stage buffer      ^ ^                 _/_: show base file
+_K_: prev hunk      _s_: stage hunk        _d_: show deleted   _b_: blame line       _r_: reset hunk
+_J_: next hunk      _u_: undo last stage   _p_: preview hunk   _B_: blame show full  _R_: reset buffer
+^ ^                 _S_: stage buffer      ^ ^                 _/_: show base file
 ]]
 
 local git = Hydra({
@@ -123,8 +123,7 @@ local git = Hydra({
       end,
       { desc = 'blame show full' },
     },
-    { '/', gitsigns.show, { exit = true, desc = 'show base file' } },
-    { 'g', cmd('LazyGit'), { exit = true, desc = 'lazygit', nowait = true } },
+    { '/', gitsigns.show, { exit = true, nowait = true, desc = 'show base file' } },
     { 'q', nil, { exit = true, nowait = true, desc = false } },
   },
 })
