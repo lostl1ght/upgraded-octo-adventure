@@ -189,7 +189,7 @@ local winbar = {
 
     if current_path == '' then
       current_path = nil
-      filename = ' [No Name]'
+      filename = ' [No File]'
     elseif current_path:find(pwd, 1, true) then
       filename = vim.fn.fnamemodify(current_path, ':t')
       current_path = vim.fn.fnamemodify(current_path, ':~:.:h')
@@ -203,15 +203,15 @@ local winbar = {
       current_path = vim.fn.fnamemodify(current_path, ':~:.:h') .. os_sep
     end
 
-    if vim.o.filetype == 'lazygit' or vim.o.filetype == 'rnvimr' then
+    if vim.o.filetype == 'lazygit' or vim.o.filetype == 'lf' then
       self.current_path = nil
     else
       self.current_path = current_path
     end
     if vim.o.filetype == 'lazygit' then
       self.filename = 'Lazygit'
-    elseif vim.o.filetype == 'rnvimr' then
-      self.filename = 'Ranger'
+    elseif vim.o.filetype == 'lf' then
+      self.filename = 'Lf'
     else
       self.filename = filename
     end
