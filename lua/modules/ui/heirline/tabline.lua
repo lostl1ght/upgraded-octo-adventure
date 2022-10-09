@@ -2,11 +2,19 @@ local hl = require('modules.ui.heirline.colors')
 local utils = require('heirline.utils')
 local icons = require('modules.ui.heirline.icons').icons
 
-local Space = {
+local Space = setmetatable({
   provider = function(self)
     return string.format('%%%dT %%T', self.tabnr)
   end,
-}
+}, {
+  __call = function(_, n)
+    return {
+      provider = function(self)
+        return string.format('%%%dT%s%%T', self.tabnr, string.rep(' ', n))
+      end,
+    }
+  end,
+})
 
 local VerticalLine = {
   provider = '│',
