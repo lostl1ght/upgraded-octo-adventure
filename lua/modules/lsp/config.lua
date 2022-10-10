@@ -4,7 +4,6 @@ function config.lspconfig()
   local handlers = {
     ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'single' }),
   }
-  local aerial = require('aerial')
   local lspconfig = require('lspconfig')
 
   lspconfig.sumneko_lua.setup({
@@ -22,6 +21,9 @@ function config.lspconfig()
     end,
     settings = {
       Lua = {
+        hint = {
+          enable = true,
+        },
         completion = { autoRequire = false, keywordSnippet = 'Disable' },
         runtime = { version = 'LuaJIT' },
         diagnostics = { globals = { 'vim' } },
@@ -30,7 +32,6 @@ function config.lspconfig()
       },
     },
     handlers = handlers,
-    on_attach = aerial.on_attach,
   })
 
   lspconfig.rust_analyzer.setup({
@@ -45,7 +46,6 @@ function config.lspconfig()
     end,
     settings = { ['rust-analyzer'] = { completion = { postfix = { enable = false } } } },
     handlers = handlers,
-    on_attach = aerial.on_attach,
   })
 
   lspconfig.clangd.setup({
@@ -62,7 +62,6 @@ function config.lspconfig()
       }, { upward = true })[1])
     end,
     handlers = handlers,
-    on_attach = aerial.on_attach,
   })
 
   lspconfig.texlab.setup({
@@ -101,7 +100,6 @@ function config.lspconfig()
       },
     },
     handlers = handlers,
-    on_attach = aerial.on_attach,
   })
 end
 

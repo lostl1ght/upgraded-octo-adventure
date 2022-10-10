@@ -1,11 +1,11 @@
 local plugin = require('core.pack').register_plugin
 local conf = require('modules.lsp.config')
 
-plugin({ 'stevearc/aerial.nvim', ft = { 'lua', 'rust', 'c', 'cpp' }, config = conf.aerial })
+plugin({ 'stevearc/aerial.nvim', module = 'aerial', config = conf.aerial })
 
 plugin({ 'folke/lua-dev.nvim', ft = 'lua', config = conf.luadev })
 
-plugin({ 'neovim/nvim-lspconfig', after = 'aerial.nvim', config = conf.lspconfig })
+plugin({ 'neovim/nvim-lspconfig', ft = { 'lua', 'rust', 'c', 'cpp' }, config = conf.lspconfig })
 
 plugin({
   'jose-elias-alvarez/null-ls.nvim',
