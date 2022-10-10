@@ -24,7 +24,6 @@ plugin({ 'Akianonymus/nvim-colorizer.lua', config = conf.colorizer, cmd = 'Color
 
 plugin({ 'IndianBoy42/tree-sitter-just', ft = 'just', config = conf.just })
 
-plugin({
-  '~/dev/plugins/nvim-lf',
-  config = conf.lf,
-})
+plugin({ '~/dev/plugins/nvim-lf', config = conf.lf })
+
+plugin({ 'dstein64/vim-startuptime', cmd = 'StartupTime' })
