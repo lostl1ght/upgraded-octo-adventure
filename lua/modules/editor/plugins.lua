@@ -15,11 +15,4 @@ plugin({ 'tversteeg/registers.nvim', config = conf.registers })
 
 plugin({ 'ggandor/lightspeed.nvim' })
 
-plugin({
-  'andymass/vim-matchup',
-  requires = 'nvim-treesitter',
-  after = 'nvim-treesitter',
-  config = conf.matchup,
-})
-
 plugin({ 'famiu/bufdelete.nvim' })

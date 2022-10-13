@@ -62,6 +62,16 @@ function config.illum()
   require('illuminate').configure()
 end
 
+function config.matchup()
+  vim.g.matchup_matchparen_offscreen = { method = 'popup' }
+  require('nvim-treesitter.configs').setup({
+    matchup = {
+      enable = true,
+      include_match_words = true,
+    },
+  })
+end
+
 function config.langmap_switch()
   require('langmap_switch').setup({ keymap = 'russian-jcukenwin' })
 end

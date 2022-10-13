@@ -24,4 +24,11 @@ plugin({ 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async', confi
 
 plugin({ 'RRethy/vim-illuminate', config = conf.illum })
 
+plugin({
+  'andymass/vim-matchup',
+  requires = 'nvim-treesitter',
+  after = 'nvim-treesitter',
+  config = conf.matchup,
+})
+
 plugin({ '~/dev/plugins/nvim-langmap-switch', config = conf.langmap_switch })
