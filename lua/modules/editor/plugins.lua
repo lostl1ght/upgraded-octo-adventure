@@ -9,8 +9,6 @@ plugin({ 'windwp/nvim-autopairs', config = conf.autopairs })
 
 plugin({ 'abecodes/tabout.nvim', require = 'nvim-treesitter', after = 'nvim-cmp', config = conf.tabout })
 
-plugin({ 'declancm/cinnamon.nvim', config = conf.cinnamon })
-
 plugin({ 'kylechui/nvim-surround', config = conf.surround })
 
 plugin({ 'tversteeg/registers.nvim', config = conf.registers })
@@ -22,11 +20,6 @@ plugin({
   requires = 'nvim-treesitter',
   after = 'nvim-treesitter',
   config = conf.matchup,
-})
-
-plugin({
-  'aserowy/tmux.nvim',
-  config = conf.tmux,
 })
 
 plugin({ 'famiu/bufdelete.nvim' })

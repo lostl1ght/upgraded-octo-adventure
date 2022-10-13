@@ -11,8 +11,6 @@ plugin({ 'numToStr/Comment.nvim', config = conf.comment })
 
 plugin({ 'Shatur/neovim-session-manager', config = conf.session })
 
-plugin({ 'szw/vim-maximizer' })
-
 plugin({
   'mrjones2014/smart-splits.nvim',
   config = conf.smart_splits,

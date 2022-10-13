@@ -136,9 +136,9 @@ local window_hint = [[
 ^ ^ _k_ ^ ^  ^ ^ _K_ ^ ^   ^   _<C-k>_   ^   _s_: horizontally 
 _h_ ^ ^ _l_  _H_ ^ ^ _L_   _<C-h>_ _<C-l>_   _v_: vertically
 ^ ^ _j_ ^ ^  ^ ^ _J_ ^ ^   ^   _<C-j>_   ^   _c_: close
-focus^^^^^^  window^^^^^^  ^_=_: equalize^   _z_: maximize
+focus^^^^^^  window^^^^^^  ^_=_: equalize^   _w_: switch
 _S_: swap ^  ^ ^^^^^^^ ^   ^^ ^          ^   _o_: remain only
-_b_: buffers ^^^^^^^^^^^    _f_: files   ^   _w_: switch
+_b_: buffers ^^^^^^^^^^^    _f_: files   ^
 ]]
 
 local windows = Hydra({
@@ -190,7 +190,6 @@ local windows = Hydra({
     { 's', pcmd('split', 'E36') },
     { 'v', pcmd('vsplit', 'E36') },
     { 'w', '<C-w>w', { exit = true } },
-    { 'z', cmd('MaximizerToggle!'), { desc = 'maximize' } },
     { 'o', '<C-w>o', { exit = true, desc = 'remain only' } },
     { 'c', pcmd('close', 'E444') },
     { 'b', cmd('Telescope buffers'), { exit = true } },
