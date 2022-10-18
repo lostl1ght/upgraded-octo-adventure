@@ -10,7 +10,7 @@ function config.kanagawa()
       YankHighlight = { fg = colors.autumnYellow, bg = colors.winterYellow },
     },
   })
-  vim.cmd('colorscheme kanagawa')
+  vim.cmd.colorscheme('kanagawa')
 end
 
 function config.heirline()
