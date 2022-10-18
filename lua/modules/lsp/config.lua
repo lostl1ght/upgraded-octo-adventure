@@ -164,9 +164,9 @@ function config.codeaction()
 end
 
 function config.luadev()
-  require('lua-dev').setup({
+  require('neodev').setup({
     override = function(root_dir, library)
-      if require('lua-dev.util').has_file(root_dir, '~/dev/nvim') then
+      if require('neodev.util').has_file(root_dir, '~/dev/nvim') then
         library.enabled = true
         library.runtime = true
         library.types = true

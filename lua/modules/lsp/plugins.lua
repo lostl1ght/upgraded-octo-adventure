@@ -3,7 +3,7 @@ local conf = require('modules.lsp.config')
 
 plugin({ 'stevearc/aerial.nvim', module = 'aerial', config = conf.aerial })
 
-plugin({ 'folke/lua-dev.nvim', ft = 'lua', config = conf.luadev })
+plugin({ 'folke/neodev.nvim', ft = 'lua', config = conf.luadev })
 
 plugin({ 'neovim/nvim-lspconfig', ft = { 'lua', 'rust', 'c', 'cpp' }, config = conf.lspconfig })
 
