@@ -62,7 +62,7 @@ function keymap.new_opts(...)
 end
 
 function keymap.cmd(str)
-  return '<cmd>' .. str .. '<CR>'
+  return '<cmd>' .. str .. '<cr>'
 end
 
 local function get_pcmd(try_cmd, catch, catch_cmd)
