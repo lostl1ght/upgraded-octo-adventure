@@ -71,7 +71,7 @@ function config.smart_splits()
 end
 
 function config.winshift()
-  require('winshift').setup({})
+  require('winshift').setup({ focused_hl_group = 'Visual' })
 end
 
 function config.colorizer()
