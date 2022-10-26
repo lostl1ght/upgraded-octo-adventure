@@ -85,9 +85,15 @@ function config.noice()
     lsp = {
       hover = {
         enabled = true,
+        opts = {
+          position = { row = 2, col = 2 },
+        },
       },
       signature = {
         enabled = true,
+        opts = {
+          position = { row = 2, col = 2 },
+        },
       },
       documentation = {
         opts = {
