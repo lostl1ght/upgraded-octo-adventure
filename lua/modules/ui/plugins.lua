@@ -32,3 +32,11 @@ plugin({
 })
 
 plugin({ '~/dev/plugins/nvim-langmap-switch', config = conf.langmap_switch })
+
+plugin({
+  'folke/noice.nvim',
+  config = conf.noice,
+  requires = {
+    'MunifTanjim/nui.nvim',
+  },
+})

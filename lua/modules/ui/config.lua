@@ -28,17 +28,6 @@ function config.dressing()
   })
 end
 
-function config.notifier()
-  require('notifier').setup({
-    status_width = function()
-      return math.floor(vim.o.columns / 3)
-    end,
-    notify = {
-      clear_time = 5000,
-    },
-  })
-end
-
 function config.hydra()
   vim.api.nvim_set_hl(0, 'HydraHint', { link = 'Normal' })
   vim.api.nvim_set_hl(0, 'HydraBorder', { link = 'FloatermBorder' })
@@ -74,6 +63,36 @@ end
 
 function config.langmap_switch()
   require('langmap_switch').setup({ keymap = 'russian-jcukenwin' })
+end
+
+function config.noice()
+  require('noice').setup({
+    popupmenu = {
+      backend = 'cmp',
+    },
+    messages = {
+      enabled = true,
+      view = 'mini',
+      view_error = 'mini',
+      view_warn = 'mini',
+      view_history = 'split',
+      view_search = 'virtualtext',
+    },
+    notify = {
+      enabled = true,
+      view = 'mini',
+    },
+    lsp = {
+      hover = {
+        enabled = true,
+      },
+      documentation = {
+        opts = {
+          border = 'single',
+        },
+      },
+    },
+  })
 end
 
 return config

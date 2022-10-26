@@ -5,29 +5,37 @@ plugin({ 'stevearc/aerial.nvim', module = 'aerial', config = conf.aerial })
 
 plugin({ 'folke/neodev.nvim', ft = 'lua', config = conf.luadev })
 
-plugin({ 'neovim/nvim-lspconfig', ft = { 'lua', 'rust', 'c', 'cpp' }, config = conf.lspconfig })
+plugin({ 'neovim/nvim-lspconfig', ft = { 'lua', 'rust', 'c', 'cpp', 'python' }, config = conf.lspconfig })
 
 plugin({
   'jose-elias-alvarez/null-ls.nvim',
   requires = 'nvim-lua/plenary.nvim',
   config = conf.null_ls,
-  event = 'LspAttach',
+  after = 'nvim-lspconfig',
 })
 
-plugin({ 'folke/trouble.nvim', event = 'LspAttach', config = conf.trouble })
+plugin({
+  'ray-x/lsp_signature.nvim',
+  config = conf.signature,
+  after = 'nvim-lspconfig',
+})
 
-plugin({ 'ray-x/lsp_signature.nvim', event = 'LspAttach', config = conf.signature })
+plugin({
+  'folke/trouble.nvim',
+  config = conf.trouble,
+  after = 'nvim-lspconfig',
+})
 
 plugin({
   'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
-  event = 'LspAttach',
   config = conf.lsplines,
+  after = 'nvim-lspconfig',
 })
 
 plugin({
   'kosayoda/nvim-lightbulb',
-  event = 'LspAttach',
   config = conf.lightbulb,
+  after = 'nvim-lspconfig',
 })
 
 plugin({ 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu', config = conf.codeaction })

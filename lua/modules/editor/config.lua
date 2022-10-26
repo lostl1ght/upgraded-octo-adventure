@@ -3,8 +3,11 @@ local config = {}
 function config.treesitter()
   require('nvim-treesitter.configs').setup({
     ensure_installed = {
+      'bash',
       'jsonc',
       'lua',
+      'markdown',
+      'regex',
       'rust',
       'toml',
       'vim',

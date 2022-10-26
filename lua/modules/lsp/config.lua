@@ -1,9 +1,6 @@
 local config = {}
 
 function config.lspconfig()
-  local handlers = {
-    ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'single' }),
-  }
   local lspconfig = require('lspconfig')
 
   lspconfig.sumneko_lua.setup({
@@ -31,7 +28,6 @@ function config.lspconfig()
         telemetry = { enable = false },
       },
     },
-    handlers = handlers,
   })
 
   lspconfig.rust_analyzer.setup({
@@ -45,7 +41,6 @@ function config.lspconfig()
       }, { upward = true })[1])
     end,
     settings = { ['rust-analyzer'] = { completion = { postfix = { enable = false } } } },
-    handlers = handlers,
   })
 
   local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -64,7 +59,6 @@ function config.lspconfig()
       }, { upward = true })[1])
     end,
     capabilities = capabilities,
-    handlers = handlers,
   })
 
   lspconfig.texlab.setup({
@@ -102,8 +96,8 @@ function config.lspconfig()
         },
       },
     },
-    handlers = handlers,
   })
+  lspconfig.pyright.setup({})
 end
 
 function config.null_ls()
