@@ -1,8 +1,7 @@
 local plugin = require('core.pack').register_plugin
 local conf = require('modules.completion.config')
 
-plugin({ 'onsails/lspkind.nvim', event = { 'InsertEnter', 'CmdLineEnter' } })
-plugin({ 'L3MON4D3/LuaSnip', config = conf.luasnip, event = { 'InsertEnter', 'CmdLineEnter' } })
+plugin({ 'L3MON4D3/LuaSnip', config = conf.luasnip, module = 'luasnip' })
 
 plugin({
   'hrsh7th/nvim-cmp',
@@ -11,11 +10,9 @@ plugin({
     { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
     { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },
     { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
-    { 'hrsh7th/cmp-buffer' },
-    { 'L3MON4D3/LuaSnip' },
-    { 'onsails/lspkind.nvim' },
+    { 'hrsh7th/cmp-buffer', module = 'cmp_buffer' },
+    { 'onsails/lspkind.nvim', module = 'lspkind' },
   },
-  after = { 'lspkind.nvim', 'LuaSnip' },
+  event = { 'InsertEnter', 'CmdLineEnter' },
+  config = conf.cmp,
 })
-
-plugin({ 'hrsh7th/cmp-buffer', after = 'nvim-cmp', config = conf.cmp })
