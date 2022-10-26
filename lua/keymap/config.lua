@@ -22,10 +22,10 @@ nmap({
   },
   { 'Q', 'q', opts('Macro') },
   { 'q', '', opts(remap) },
-  { '<c-l>', '<c-w>l', opts('Window: right')},
-  { '<c-k>', '<c-w>k', opts('Window: up')},
-  { '<c-j>', '<c-w>j', opts('Window: down')},
-  { '<c-h>', '<c-w>h', opts('Window: left')},
+  { '<c-l>', '<c-w>l', opts('Window: right') },
+  { '<c-k>', '<c-w>k', opts('Window: up') },
+  { '<c-j>', '<c-w>j', opts('Window: down') },
+  { '<c-h>', '<c-w>h', opts('Window: left') },
 })
 
 imap({
