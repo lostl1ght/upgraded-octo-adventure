@@ -86,6 +86,9 @@ function config.noice()
       hover = {
         enabled = true,
       },
+      signature = {
+        enabled = true,
+      },
       documentation = {
         opts = {
           border = 'single',

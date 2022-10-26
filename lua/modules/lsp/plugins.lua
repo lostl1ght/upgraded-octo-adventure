@@ -15,12 +15,6 @@ plugin({
 })
 
 plugin({
-  'ray-x/lsp_signature.nvim',
-  config = conf.signature,
-  after = 'nvim-lspconfig',
-})
-
-plugin({
   'folke/trouble.nvim',
   config = conf.trouble,
   after = 'nvim-lspconfig',

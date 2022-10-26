@@ -122,17 +122,6 @@ function config.trouble()
   })
 end
 
-function config.signature()
-  require('lsp_signature').setup({
-    doc_lines = 0,
-    hint_enable = false,
-    hint_prefix = '➜ ',
-    handler_opts = {
-      border = 'rounded',
-    },
-  })
-end
-
 function config.lsplines()
   vim.g.lsplines_enabled = false
   require('lsp_lines').setup()
