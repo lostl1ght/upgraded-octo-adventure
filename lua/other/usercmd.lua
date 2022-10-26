@@ -18,7 +18,7 @@ local cmds = {
     function()
       vim.lsp.buf.format({
         filter = function(client)
-          return client.name == 'null-ls' or client.name == 'clangd'
+          return client.name == 'null-ls'
         end,
       })
       vim.cmd('silent w')

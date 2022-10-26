@@ -48,6 +48,8 @@ function config.lspconfig()
     handlers = handlers,
   })
 
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities.offsetEncoding = { 'utf-16' }
   lspconfig.clangd.setup({
     name = 'clangd',
     cmd = { 'clangd' },
@@ -61,6 +63,7 @@ function config.lspconfig()
         '.git',
       }, { upward = true })[1])
     end,
+    capabilities = capabilities,
     handlers = handlers,
   })
 
@@ -114,6 +117,7 @@ function config.null_ls()
       null.builtins.formatting.latexindent.with({
         filetypes = { 'tex', 'bib' },
       }),
+      null.builtins.formatting.clang_format,
     },
   })
 end
