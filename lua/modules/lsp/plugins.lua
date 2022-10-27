@@ -5,13 +5,32 @@ plugin({ 'stevearc/aerial.nvim', cmd = 'AerialToggle', config = conf.aerial })
 
 plugin({ 'folke/neodev.nvim', ft = 'lua', config = conf.luadev })
 
-plugin({ 'neovim/nvim-lspconfig', ft = { 'lua', 'rust', 'c', 'cpp', 'python' }, config = conf.lspconfig })
+plugin({
+  'neovim/nvim-lspconfig',
+  ft = {
+    'lua',
+    'rust',
+    'c',
+    'cpp',
+    'python',
+    'html',
+    'htmldjango',
+    'typescriptreact',
+    'javascriptreact',
+    'css',
+    'sass',
+    'scss',
+    'less',
+  },
+  config = conf.lspconfig,
+})
 
 plugin({
   'jose-elias-alvarez/null-ls.nvim',
   requires = 'nvim-lua/plenary.nvim',
   config = conf.null_ls,
   after = 'nvim-lspconfig',
+  ft = { 'json', 'jsonc', 'yaml', 'markdown' },
 })
 
 plugin({

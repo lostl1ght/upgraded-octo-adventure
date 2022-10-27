@@ -98,6 +98,15 @@ function config.lspconfig()
     },
   })
   lspconfig.pyright.setup({})
+  lspconfig.emmet_ls.setup({
+    init_options = {
+      html = {
+        options = {
+          ['output.indent'] = '  ',
+        },
+      },
+    },
+  })
 end
 
 function config.null_ls()
@@ -112,6 +121,7 @@ function config.null_ls()
         filetypes = { 'tex', 'bib' },
       }),
       null.builtins.formatting.clang_format,
+      null.builtins.formatting.prettier,
     },
   })
 end
