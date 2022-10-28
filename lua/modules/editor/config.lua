@@ -3,21 +3,29 @@ local config = {}
 function config.treesitter()
   require('nvim-treesitter.configs').setup({
     ensure_installed = {
+      -- basic
       'bash',
-      'c',
-      'cpp',
-      'css',
-      'html',
-      'http',
       'jsonc',
       'lua',
       'markdown',
-      'python',
       'regex',
-      'rust',
       'toml',
       'vim',
       'yaml',
+
+      -- needed
+      'c',
+      'cpp',
+      'css',
+      'fish',
+      'git_rebase',
+      'gitattributes',
+      'gitignore',
+      'html',
+      'http',
+      'proto',
+      'python',
+      'rust',
     },
     highlight = {
       enable = true,
