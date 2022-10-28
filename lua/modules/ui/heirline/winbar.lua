@@ -221,7 +221,7 @@ local winbar = {
     condition = function()
       return conditions.buffer_matches({
         buftype = { 'nofile', 'prompt', 'help', 'quickfix' },
-        filetype = { '^git.*' },
+        filetype = {},
       })
     end,
     init = function()
@@ -247,7 +247,7 @@ vim.api.nvim_create_autocmd('User', {
       'help',
       'quickfix',
     }, vim.bo[buf].buftype)
-    local filetype = vim.tbl_contains({ 'gitcommit' }, vim.bo[buf].filetype)
+    local filetype = vim.tbl_contains({}, vim.bo[buf].filetype)
     if buftype or filetype then
       vim.opt_local.winbar = nil
     end
