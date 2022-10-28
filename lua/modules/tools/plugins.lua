@@ -27,9 +27,8 @@ plugin({ '~/dev/plugins/nvim-lf', config = conf.lf })
 plugin({ 'dstein64/vim-startuptime', cmd = 'StartupTime' })
 
 plugin({
-  'iamcco/markdown-preview.nvim',
-  run = function()
-    vim.fn['mkdp#util#install']()
-  end,
-  cmd = { 'MarkdownPreview', 'MarkdownPreviewToggle' },
+  'toppair/peek.nvim',
+  run = 'deno task --quiet build:fast',
+  config = conf.peek,
+  module = 'peek'
 })

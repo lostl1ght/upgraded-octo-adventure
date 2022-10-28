@@ -99,4 +99,8 @@ function config.lf()
   })
 end
 
+function config.peek()
+  require('peek').setup({})
+end
+
 return config
