@@ -83,22 +83,28 @@ function config.noice()
       view = 'mini',
     },
     lsp = {
+      override = {
+        ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
+        ['vim.lsp.util.stylize_markdown'] = true,
+        ['cmp.entry.get_documentation'] = true,
+      },
       hover = {
-        enabled = true,
         opts = {
           position = { row = 2, col = 2 },
         },
       },
       signature = {
-        enabled = true,
         opts = {
           position = { row = 2, col = 2 },
         },
       },
       documentation = {
         opts = {
-          border = 'single',
+          border = { style = 'single', padding = { 0, 0 } },
         },
+      },
+      message = {
+        view = 'mini',
       },
     },
   })
