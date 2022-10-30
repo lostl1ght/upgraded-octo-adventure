@@ -8,6 +8,7 @@ function config.treesitter()
       'jsonc',
       'lua',
       'markdown',
+      'markdown_inline',
       'regex',
       'toml',
       'vim',

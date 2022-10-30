@@ -30,5 +30,5 @@ plugin({
   'toppair/peek.nvim',
   run = 'deno task --quiet build:fast',
   config = conf.peek,
-  module = 'peek'
+  module = 'peek',
 })

@@ -13,5 +13,4 @@ for _, sign in ipairs(signs) do
 end
 
 local hl = vim.api.nvim_set_hl
-hl(0, 'CursorLine', { link = 'Visual' })
 hl(0, 'MatchParen', { bold = true, underline = true })
