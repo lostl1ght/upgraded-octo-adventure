@@ -67,19 +67,15 @@ end
 
 function config.noice()
   require('noice').setup({
-    popupmenu = {
-      backend = 'cmp',
-    },
     messages = {
-      enabled = true,
       view = 'mini',
       view_error = 'mini',
       view_warn = 'mini',
-      view_history = 'split',
-      view_search = 'virtualtext',
+    },
+    popupmenu = {
+      backend = 'cmp',
     },
     notify = {
-      enabled = true,
       view = 'mini',
     },
     lsp = {
@@ -98,13 +94,13 @@ function config.noice()
           position = { row = 2, col = 2 },
         },
       },
+      message = {
+        view = 'mini',
+      },
       documentation = {
         opts = {
           border = { style = 'single', padding = { 0, 0 } },
         },
-      },
-      message = {
-        view = 'mini',
       },
     },
   })
