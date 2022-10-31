@@ -21,7 +21,7 @@ local cmds = {
           return client.name == 'null-ls'
         end,
       })
-      vim.cmd('silent w')
+      vim.api.nvim_cmd({ cmd = 'write' }, {})
     end,
     { nargs = 0 },
   },

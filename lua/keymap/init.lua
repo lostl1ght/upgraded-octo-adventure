@@ -1,10 +1,50 @@
-require('keymap.config')
-local key = require('core.keymap')
-local nmap = key.nmap
-local opts = key.new_opts
-local cmd = key.cmd
+local keymap = require('core.keymap')
+local nmap, imap, tmap, xmap = keymap.nmap, keymap.imap, keymap.tmap, keymap.xmap
+local opts = keymap.new_opts
+local cmd = keymap.cmd
+local remap = keymap.remap
+
+vim.g.mapleader = ' '
+
+xmap({ ' ', '' })
+
+imap({
+  { 'ii', '<esc>' },
+  { '<f1>', '', opts(remap) },
+})
+
+tmap({ 'ii', '<c-\\><c-n>' })
 
 nmap({
+  { ' ', '' },
+  { '<f1>', '', opts(remap) },
+  {
+    '<leader>h',
+    function()
+      vim.api.nvim_cmd({ cmd = 'nohlsearch' }, {})
+    end,
+    opts('Basic: no highlight'),
+  },
+  {
+    '<leader>s',
+    function()
+      vim.api.nvim_cmd({ cmd = 'write' }, {})
+    end,
+    opts('Basic: save'),
+  },
+  {
+    '<leader>`',
+    function()
+      vim.api.nvim_cmd({ cmd = 'buffer', args = { '#' } }, {})
+    end,
+    opts('Buffer: switch'),
+  },
+  { 'Q', 'q', opts('Macro') },
+  { 'q', '', opts(remap) },
+  { '<c-l>', '<c-w>l', opts('Window: right') },
+  { '<c-k>', '<c-w>k', opts('Window: up') },
+  { '<c-j>', '<c-w>j', opts('Window: down') },
+  { '<c-h>', '<c-w>h', opts('Window: left') },
   {
     '<leader>c',
     function()
@@ -13,12 +53,18 @@ nmap({
       elseif vim.o.buftype == 'terminal' then
         vim.notify('Kill the terminal')
       else
-        vim.cmd('Bd')
+        vim.api.nvim_cmd({ cmd = 'bdelete' }, {})
       end
     end,
     opts('Buffer: close'),
   },
-  { '<leader>C', cmd('Bd!'), opts('Buffer: force close') },
+  {
+    '<leader>C',
+    function()
+      vim.api.nvim_cmd({ cmd = 'bdelete', bang = true }, {})
+    end,
+    opts('Buffer: force close'),
+  },
   { '<Leader>pu', cmd('PackerUpdate'), opts('Packer: update') },
   { '<Leader>pi', cmd('PackerInstall'), opts('Packer: install') },
   { '<Leader>pc', cmd('PackerCompile'), opts('Packer: compile') },
@@ -70,7 +116,7 @@ nmap({
     ']b',
     function()
       require('modules.ui.hydra').buffers:activate()
-      vim.cmd('bn')
+      vim.api.nvim_cmd({ cmd = 'bnext' }, {})
     end,
     opts('Hydra: buffers'),
   },
@@ -78,7 +124,7 @@ nmap({
     '[b',
     function()
       require('modules.ui.hydra').buffers:activate()
-      vim.cmd('bp')
+      vim.api.nvim_cmd({ cmd = 'bprevious' }, {})
     end,
     opts('Hydra: buffers'),
   },

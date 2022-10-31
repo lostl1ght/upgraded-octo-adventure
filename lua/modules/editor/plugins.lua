@@ -45,8 +45,6 @@ plugin({ 'sindrets/winshift.nvim', config = conf.winshift, cmd = 'WinShift' })
 -- Other tools
 plugin({ 'dstein64/vim-startuptime', cmd = 'StartupTime' })
 
-plugin({ 'famiu/bufdelete.nvim' })
-
 plugin({ 'Shatur/neovim-session-manager', config = conf.session })
 
 plugin({ 'NvChad/nvim-colorizer.lua', config = conf.colorizer, cmd = 'ColorizerToggle' })
