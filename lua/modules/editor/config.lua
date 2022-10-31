@@ -1,5 +1,6 @@
 local config = {}
 
+-- Treesitter
 function config.treesitter()
   require('nvim-treesitter.configs').setup({
     ensure_installed = {
@@ -33,10 +34,24 @@ function config.treesitter()
       additional_vim_regex_highlighting = false,
     },
   })
+  require('tree-sitter-just').setup({})
 end
 
+-- Editing
 function config.autopairs()
   require('nvim-autopairs').setup()
+end
+
+function config.surround()
+  require('nvim-surround').setup()
+end
+
+function config.registers()
+  require('registers').setup({
+    window = {
+      border = 'single',
+    },
+  })
 end
 
 function config.tabout()
@@ -63,16 +78,105 @@ function config.tabout()
   })
 end
 
-function config.surround()
-  require('nvim-surround').setup()
+function config.comment()
+  require('Comment').setup({ ignore = '^$' })
 end
 
-function config.registers()
-  require('registers').setup({
-    window = {
-      border = 'single',
+-- Navigation
+function config.telescope()
+  require('telescope').setup({
+    pickers = {
+      find_files = {
+        hidden = true,
+        previewer = false,
+        layout_strategy = 'center',
+        sorting_strategy = 'ascending',
+        layout_config = {
+          height = 0.5,
+          width = 0.4,
+          prompt_position = 'top',
+        },
+      },
+      buffers = {
+        previewer = false,
+        layout_strategy = 'center',
+        sorting_strategy = 'ascending',
+        layout_config = {
+          height = 0.5,
+          width = 0.4,
+          prompt_position = 'top',
+        },
+      },
+      live_grep = {
+        layout_strategy = 'vertical',
+      },
+      help_tags = {
+        mappings = {
+          i = {
+            ['<cr>'] = 'select_vertical',
+          },
+          n = {
+            ['<cr>'] = 'select_vertical',
+          },
+        },
+      },
+    },
+    extensions = {
+      fzf = {
+        fuzzy = true,
+        override_generic_sorter = true,
+        override_file_sorter = true,
+        case_mode = 'smart_case',
+      },
     },
   })
+  require('telescope').load_extension('fzf')
+end
+
+function config.lf()
+  vim.g.lf_hijack_netrw = true
+  vim.api.nvim_set_hl(0, 'LfBorder', { link = 'FloatermBorder' })
+  vim.api.nvim_set_hl(0, 'LfNormal', { link = 'Normal' })
+  require('lf').setup({
+    lfrc = vim.fs.normalize('~/.config/lf/lfrc_nvim'),
+    border = 'single',
+  })
+end
+
+function config.smart_splits()
+  require('smart-splits').setup({
+    resize_mode = {
+      quit_key = 'q',
+    },
+  })
+end
+
+function config.winshift()
+  require('winshift').setup({ focused_hl_group = 'Visual' })
+end
+
+-- Other tools
+function config.session()
+  require('session_manager').setup({
+    sessions_dir = vim.fn.stdpath('cache') .. '/sessions/',
+    autoload_mode = require('session_manager.config').AutoloadMode.CurrentDir,
+    autosave_only_in_session = true,
+  })
+end
+
+function config.colorizer()
+  require('colorizer').setup({
+    filetypes = { '*' },
+    user_default_options = {
+      RGB = false,
+      RRGGBB = true,
+      names = false,
+    },
+  })
+end
+
+function config.peek()
+  require('peek').setup({})
 end
 
 return config

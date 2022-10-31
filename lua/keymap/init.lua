@@ -50,7 +50,7 @@ nmap({
   { 'ga', cmd('CodeActionMenu'), opts('Lsp: code actions') },
   { '<leader>f', cmd('Telescope find_files'), opts('Telescope: files') },
   { '<leader>b', cmd('Telescope buffers'), opts('Telescope: buffers') },
-  { '<leader>e', cmd('LfOpen'), opts('Lf') },
+  { '<leader>e', cmd('LfToggle'), opts('Lf') },
   { '<leader>g', cmd('Lazygit'), opts('Lazygit') },
   {
     '<leader>G',

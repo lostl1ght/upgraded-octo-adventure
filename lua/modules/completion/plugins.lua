@@ -14,5 +14,6 @@ plugin({
     { 'onsails/lspkind.nvim', module = 'lspkind' },
   },
   event = { 'InsertEnter', 'CmdLineEnter' },
+  module = 'cmp',
   config = conf.cmp,
 })
