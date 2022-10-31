@@ -13,6 +13,7 @@ local autocmds = {
     {
       callback = function()
         vim.opt_local.number = false
+        vim.opt_local.relativenumber = false
         vim.b.miniindentscope_disable = true
       end,
       group = vim.api.nvim_create_augroup('TermNumbers', {}),
