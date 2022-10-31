@@ -16,8 +16,13 @@ imap({
 tmap({ 'ii', '<c-\\><c-n>' })
 
 nmap({
+  --+-------+
+  --+ Basic +
+  --+-------+
   { ' ', '' },
   { '<f1>', '', opts(remap) },
+  { 'Q', 'q', opts('Macro') },
+  { 'q', '', opts(remap) },
   {
     '<leader>h',
     function()
@@ -32,6 +37,9 @@ nmap({
     end,
     opts('Basic: save'),
   },
+  --+---------+
+  --+ Buffers +
+  --+---------+
   {
     '<leader>`',
     function()
@@ -39,12 +47,6 @@ nmap({
     end,
     opts('Buffer: switch'),
   },
-  { 'Q', 'q', opts('Macro') },
-  { 'q', '', opts(remap) },
-  { '<c-l>', '<c-w>l', opts('Window: right') },
-  { '<c-k>', '<c-w>k', opts('Window: up') },
-  { '<c-j>', '<c-w>j', opts('Window: down') },
-  { '<c-h>', '<c-w>h', opts('Window: left') },
   {
     '<leader>c',
     function()
@@ -65,19 +67,34 @@ nmap({
     end,
     opts('Buffer: force close'),
   },
+  { ']b', '<Plug>(CybuNext)', opts('Buffer: next') },
+  { '[b', '<Plug>(CybuPrev)', opts('Buffer: prev') },
+  --+---------+
+  --+ Windows +
+  --+---------+
+  { '<c-l>', '<c-w>l', opts('Window: right') },
+  { '<c-k>', '<c-w>k', opts('Window: up') },
+  { '<c-j>', '<c-w>j', opts('Window: down') },
+  { '<c-h>', '<c-w>h', opts('Window: left') },
+  --+--------+
+  --+ Packer +
+  --+--------+
   { '<Leader>pu', cmd('PackerUpdate'), opts('Packer: update') },
   { '<Leader>pi', cmd('PackerInstall'), opts('Packer: install') },
   { '<Leader>pc', cmd('PackerCompile'), opts('Packer: compile') },
   { '<Leader>ps', cmd('PackerSync'), opts('Packer: sync') },
   { '<Leader>pS', cmd('PackerStatus'), opts('Packer: status') },
+  --+-----+
+  --+ LSP +
+  --+-----+
   { 'gr', vim.lsp.buf.rename, opts('Lsp: rename') },
+  { 'K', vim.lsp.buf.hover, opts('Lsp: hover') },
   { 'gd', cmd('TroubleToggle lsp_definitions'), opts('Lsp: definitions') },
   { 'ge', cmd('TroubleToggle lsp_references'), opts('Lsp: references') },
   { 'gy', cmd('TroubleToggle lsp_type_definitions'), opts('Lsp: type definitions') },
   { 'gi', cmd('TroubleToggle lsp_implementations'), opts('Lsp: type definitions') },
   { 'gw', cmd('TroubleToggle document_diagnostics'), opts('Lsp: document diagnostics') },
   { 'gW', cmd('TroubleToggle workspace_diagnostics'), opts('Lsp: workspace diagnostics') },
-  { 'K', vim.lsp.buf.hover, opts('Lsp: hover') },
   { 'gf', cmd('LspFormat'), opts('Lsp: format') },
   { 'gs', cmd('AerialToggle'), opts('Lsp: document symbols') },
   {
@@ -94,10 +111,9 @@ nmap({
     opts('Lsp: toggle diagnostics'),
   },
   { 'ga', cmd('CodeActionMenu'), opts('Lsp: code actions') },
-  { '<leader>f', cmd('Telescope find_files'), opts('Telescope: files') },
-  { '<leader>b', cmd('Telescope buffers'), opts('Telescope: buffers') },
-  { '<leader>e', cmd('LfToggle'), opts('Lf') },
-  { '<leader>g', cmd('Lazygit'), opts('Lazygit') },
+  --+-------+
+  --+ Hydra +
+  --+-------+
   {
     '<leader>G',
     function()
@@ -135,6 +151,11 @@ nmap({
     end,
     opts('Hydra: windows'),
   },
-  { ']b', '<Plug>(CybuNext)', opts('Buffer: next') },
-  { '[b', '<Plug>(CybuPrev)', opts('Buffer: prev') },
+  --+-------+
+  --+ Tools +
+  --+-------+
+  { '<leader>f', cmd('Telescope find_files'), opts('Telescope: files') },
+  { '<leader>b', cmd('Telescope buffers'), opts('Telescope: buffers') },
+  { '<leader>e', cmd('LfToggle'), opts('Lf') },
+  { '<leader>g', cmd('Lazygit'), opts('Lazygit') },
 })
