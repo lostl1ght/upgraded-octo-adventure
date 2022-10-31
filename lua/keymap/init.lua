@@ -16,9 +16,9 @@ imap({
 tmap({ 'ii', '<c-\\><c-n>' })
 
 nmap({
-  --+-------+
-  --+ Basic +
-  --+-------+
+  -- +-------+
+  -- + Basic +
+  -- +-------+
   { ' ', '' },
   { '<f1>', '', opts(remap) },
   { 'Q', 'q', opts('Macro') },
@@ -33,13 +33,13 @@ nmap({
   {
     '<leader>s',
     function()
-      vim.api.nvim_cmd({ cmd = 'write' }, {})
+      vim.api.nvim_cmd({ cmd = 'write', mods = { silent = true } }, {})
     end,
     opts('Basic: save'),
   },
-  --+---------+
-  --+ Buffers +
-  --+---------+
+  -- +---------+
+  -- + Buffers +
+  -- +---------+
   {
     '<leader>`',
     function()
@@ -69,33 +69,45 @@ nmap({
   },
   { ']b', '<Plug>(CybuNext)', opts('Buffer: next') },
   { '[b', '<Plug>(CybuPrev)', opts('Buffer: prev') },
-  --+---------+
-  --+ Windows +
-  --+---------+
+  -- +---------+
+  -- + Windows +
+  -- +---------+
   { '<c-l>', '<c-w>l', opts('Window: right') },
   { '<c-k>', '<c-w>k', opts('Window: up') },
   { '<c-j>', '<c-w>j', opts('Window: down') },
   { '<c-h>', '<c-w>h', opts('Window: left') },
-  --+--------+
-  --+ Packer +
-  --+--------+
+  -- +--------+
+  -- + Packer +
+  -- +--------+
   { '<Leader>pu', cmd('PackerUpdate'), opts('Packer: update') },
   { '<Leader>pi', cmd('PackerInstall'), opts('Packer: install') },
   { '<Leader>pc', cmd('PackerCompile'), opts('Packer: compile') },
   { '<Leader>ps', cmd('PackerSync'), opts('Packer: sync') },
   { '<Leader>pS', cmd('PackerStatus'), opts('Packer: status') },
-  --+-----+
-  --+ LSP +
-  --+-----+
-  { 'gr', vim.lsp.buf.rename, opts('Lsp: rename') },
+  -- +-----+
+  -- + LSP +
+  -- +-----+
   { 'K', vim.lsp.buf.hover, opts('Lsp: hover') },
+  { 'gr', vim.lsp.buf.rename, opts('Lsp: rename') },
   { 'gd', cmd('TroubleToggle lsp_definitions'), opts('Lsp: definitions') },
   { 'ge', cmd('TroubleToggle lsp_references'), opts('Lsp: references') },
   { 'gy', cmd('TroubleToggle lsp_type_definitions'), opts('Lsp: type definitions') },
   { 'gi', cmd('TroubleToggle lsp_implementations'), opts('Lsp: type definitions') },
   { 'gw', cmd('TroubleToggle document_diagnostics'), opts('Lsp: document diagnostics') },
   { 'gW', cmd('TroubleToggle workspace_diagnostics'), opts('Lsp: workspace diagnostics') },
-  { 'gf', cmd('LspFormat'), opts('Lsp: format') },
+  {
+    '<plug>(LspFormat)',
+    function()
+      vim.lsp.buf.format({
+        filter = function(client)
+          return client.name == 'null-ls'
+        end,
+      })
+      pcall(vim.api.nvim_cmd, { cmd = 'write', mods = { silent = true } }, {})
+    end,
+    opts(),
+  },
+  { 'gf', '<plug>(LspFormat)', opts('Lsp: format') },
   { 'gs', cmd('AerialToggle'), opts('Lsp: document symbols') },
   {
     'gl',
@@ -111,9 +123,9 @@ nmap({
     opts('Lsp: toggle diagnostics'),
   },
   { 'ga', cmd('CodeActionMenu'), opts('Lsp: code actions') },
-  --+-------+
-  --+ Hydra +
-  --+-------+
+  -- +-------+
+  -- + Hydra +
+  -- +-------+
   {
     '<leader>G',
     function()
@@ -151,9 +163,9 @@ nmap({
     end,
     opts('Hydra: windows'),
   },
-  --+-------+
-  --+ Tools +
-  --+-------+
+  -- +-------+
+  -- + Tools +
+  -- +-------+
   { '<leader>f', cmd('Telescope find_files'), opts('Telescope: files') },
   { '<leader>b', cmd('Telescope buffers'), opts('Telescope: buffers') },
   { '<leader>e', cmd('LfToggle'), opts('Lf') },
