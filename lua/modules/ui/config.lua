@@ -119,4 +119,8 @@ function config.noice()
   })
 end
 
+function config.indentscope()
+  require('mini.indentscope').setup()
+end
+
 return config

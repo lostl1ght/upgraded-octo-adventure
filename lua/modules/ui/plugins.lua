@@ -38,3 +38,8 @@ plugin({
     'MunifTanjim/nui.nvim',
   },
 })
+
+plugin({
+  'echasnovski/mini.indentscope',
+  config = conf.indentscope,
+})
