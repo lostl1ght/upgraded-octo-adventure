@@ -6,7 +6,7 @@ plugin({ 'rebelot/kanagawa.nvim', config = conf.kanagawa })
 plugin({
   'rebelot/heirline.nvim',
   requires = {
-    'kyazdani42/nvim-web-devicons',
+    'nvim-tree/nvim-web-devicons',
     'kanagawa.nvim',
     'nvim-langmap-switch',
   },
@@ -17,8 +17,6 @@ plugin({
 plugin({ 'stevearc/dressing.nvim', config = conf.dressing })
 
 plugin({ 'anuvyklack/hydra.nvim', config = conf.hydra })
-
-plugin({ 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async', config = conf.ufo })
 
 plugin({ 'RRethy/vim-illuminate', config = conf.illum })
 

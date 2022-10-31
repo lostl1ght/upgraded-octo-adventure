@@ -46,20 +46,6 @@ function config.hydra()
   vim.api.nvim_set_hl(0, 'HydraBorder', { link = 'FloatermBorder' })
 end
 
-function config.ufo()
-  vim.o.foldcolumn = 'auto'
-  vim.o.foldlevel = 99
-  vim.o.foldlevelstart = 99
-  vim.o.foldenable = true
-  require('ufo').setup({
-    provider_selector = function()
-      return { 'treesitter', 'indent' }
-    end,
-  })
-  vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-  vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
-end
-
 function config.illum()
   require('illuminate').configure()
 end
