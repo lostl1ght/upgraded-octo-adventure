@@ -42,6 +42,8 @@ plugin({ 'mrjones2014/smart-splits.nvim', config = conf.smart_splits, module = '
 
 plugin({ 'sindrets/winshift.nvim', config = conf.winshift, cmd = 'WinShift' })
 
+plugin({ 'ghillb/cybu.nvim', config = conf.cybu })
+
 -- Other tools
 plugin({ 'dstein64/vim-startuptime', cmd = 'StartupTime' })
 

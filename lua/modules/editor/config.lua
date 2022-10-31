@@ -155,6 +155,15 @@ function config.winshift()
   require('winshift').setup({ focused_hl_group = 'Visual' })
 end
 
+function config.cybu()
+  require('cybu').setup({
+    style = {
+      border = 'single',
+    },
+    display_time = 1250,
+  })
+end
+
 -- Other tools
 function config.session()
   require('session_manager').setup({

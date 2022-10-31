@@ -135,4 +135,6 @@ nmap({
     end,
     opts('Hydra: windows'),
   },
+  { ']b', '<Plug>(CybuNext)', opts('Buffer: next') },
+  { '[b', '<Plug>(CybuPrev)', opts('Buffer: prev') },
 })
