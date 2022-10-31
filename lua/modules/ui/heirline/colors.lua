@@ -1,4 +1,25 @@
-local colors = require('kanagawa.colors').setup()
+-- stylua: ignore
+local colors = {
+  autumnGreen  = 7771242,  -- #76946a
+  autumnRed    = 12795971, -- #c34043
+  autumnYellow = 14460257, -- #dca561
+  crystalBlue  = 8297688,  -- #7e9cd8
+  dragonBlue   = 6653332,  -- #658594
+  fujiGray     = 7500137,  -- #727169
+  fujiWhite    = 14473146, -- #dcd7ba
+  lightBlue    = 10736853, -- #a3d4d5
+  oldWhite     = 13156499, -- #c8c093
+  oniViolet    = 9797560,  -- #957fb8
+  peachRed     = 16735586, -- #ff5d62
+  roninYellow  = 16752187, -- #ff9e3b
+  sakuraPink   = 13794969, -- #d27e99
+  samuraiRed   = 15213604, -- #e82424
+  sumiInk0     = 1447453,  -- #16161d
+  sumiInk1     = 2039592,  -- #1f1f28
+  sumiInk2     = 2763319,  -- #2a2a37
+  surimiOrange = 16752742, -- #ffa066
+  waveAqua2    = 8038559,  -- #7aa89f
+}
 
 local hl = {
   -- statusline
