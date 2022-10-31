@@ -82,6 +82,10 @@ function config.comment()
   require('Comment').setup({ ignore = '^$' })
 end
 
+function config.ai()
+  require('mini.ai').setup()
+end
+
 -- Navigation
 function config.telescope()
   require('telescope').setup({

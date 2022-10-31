@@ -27,6 +27,8 @@ plugin({
 
 plugin({ 'numToStr/Comment.nvim', config = conf.comment })
 
+plugin({ 'echasnovski/mini.ai', config = conf.ai })
+
 -- Navitaion
 plugin({ 'ggandor/lightspeed.nvim' })
 
