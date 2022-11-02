@@ -11,7 +11,7 @@ function config.kanagawa()
       bg = 4801596,   -- #49443c
     },
     MiniIndentscopeSymbol = {
-      fg = 6985097,   -- #6a9589
+      fg = 2969447,   -- #2D4F67
     },
   }
   require('kanagawa').setup({
@@ -20,7 +20,7 @@ function config.kanagawa()
     overrides = {
       FoldColumn = colors.FoldColumn,
       YankHighlight = colors.YankHighlight,
-      MiniIndentscopeSymbol = colors.MiniIndentscope,
+      MiniIndentscopeSymbol = colors.MiniIndentscopeSymbol,
     },
   })
   vim.cmd.colorscheme('kanagawa')
