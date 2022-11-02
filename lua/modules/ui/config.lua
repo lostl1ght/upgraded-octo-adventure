@@ -47,7 +47,9 @@ function config.hydra()
 end
 
 function config.illum()
-  require('illuminate').configure()
+  require('illuminate').configure({
+    filetypes_denylist = { 'noice', 'registers' },
+  })
 end
 
 function config.matchup()
@@ -106,7 +108,7 @@ function config.noice()
 end
 
 function config.indentscope()
-  require('mini.indentscope').setup()
+  require('mini.indentscope').setup({})
 end
 
 return config
