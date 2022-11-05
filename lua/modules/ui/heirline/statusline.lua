@@ -168,15 +168,20 @@ local WorkDir = {
     return self.pwd
   end,
   hl = hl.WorkDir,
-  heirline.make_flexible_component(priority.WorkDir, {
-    provider = function(self)
-      return self.pwd
-    end,
-  }, {
-    provider = function(self)
-      return vim.fn.pathshorten(self.pwd)
-    end,
-  }, null),
+  {
+    flexible = priority.WorkDir,
+    {
+      provider = function(self)
+        return self.pwd
+      end,
+    },
+    {
+      provider = function(self)
+        return vim.fn.pathshorten(self.pwd)
+      end,
+    },
+    null,
+  },
   Space,
 }
 
@@ -185,11 +190,15 @@ local GitBranch = {
   init = function(self)
     self.git_status = vim.b.gitsigns_status_dict
   end,
-  heirline.make_flexible_component(priority.GitBranch, {
-    provider = function(self)
-      return table.concat({ ' ', self.git_status.head, ' ' })
-    end,
-  }, { provider = '' }),
+  {
+    flexible = priority.GitBranch,
+    {
+      provider = function(self)
+        return table.concat({ ' ', self.git_status.head, ' ' })
+      end,
+    },
+    { provider = '' },
+  },
   hl = hl.Git.branch,
 }
 
@@ -224,7 +233,11 @@ local Lsp = {
     end
     self.lsp_names = names
   end,
-  heirline.make_flexible_component(priority.Lsp, LspServer, LspIndicator),
+  {
+    flexible = priority.Lsp,
+    LspServer,
+    LspIndicator,
+  },
   hl = hl.LspServer,
 }
 
@@ -234,9 +247,13 @@ local Ruler = {
   -- %L  : number of lines in the buffer
   -- %c  : column number
   -- provider = ' %7(%l:%3L%)  %-2c ',
-  heirline.make_flexible_component(priority.Ruler, {
-    provider = '%(%l:%L%)  %-2c ',
-  }, null),
+  {
+    flexible = priority.Ruler,
+    {
+      provider = '%(%l:%L%)  %-2c ',
+    },
+    null,
+  },
   hl = { bold = true },
 }
 
@@ -244,14 +261,18 @@ local ScrollBar = {
   static = {
     sbar = { '█', '▇', '▆', '▅', '▄', '▃', '▂', '▁' },
   },
-  heirline.make_flexible_component(priority.ScrollBar, {
-    provider = function(self)
-      local curr_line = vim.api.nvim_win_get_cursor(0)[1]
-      local lines = vim.api.nvim_buf_line_count(0)
-      local i = math.floor((curr_line - 1) / lines * #self.sbar) + 1
-      return string.rep(self.sbar[i], 2)
-    end,
-  }, null),
+  {
+    flexible = priority.ScrollBar,
+    {
+      provider = function(self)
+        local curr_line = vim.api.nvim_win_get_cursor(0)[1]
+        local lines = vim.api.nvim_buf_line_count(0)
+        local i = math.floor((curr_line - 1) / lines * #self.sbar) + 1
+        return string.rep(self.sbar[i], 2)
+      end,
+    },
+    null,
+  },
   hl = hl.ScrollBar,
 }
 

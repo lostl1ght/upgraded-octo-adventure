@@ -11,7 +11,6 @@ local null = { provider = '' }
 
 local hl = require('modules.ui.heirline.colors')
 local devicons = require('nvim-web-devicons')
-local heirline = require('heirline.utils')
 
 local priority = {
   CurrentPath = 10,
@@ -26,11 +25,15 @@ local FileIcon = {
     local extension = vim.fn.fnamemodify(filename, ':e')
     self.icon, self.icon_color = devicons.get_icon_color(filename, extension, { default = true })
   end,
-  heirline.make_flexible_component(priority.FileIcon, {
-    provider = function(self)
-      return self.icon
-    end,
-  }, { provider = '' }),
+  {
+    flexible = priority.FileIcon,
+    {
+      provider = function(self)
+        return self.icon
+      end,
+    },
+    { provider = '' },
+  },
   hl = function(self)
     return { fg = self.icon_color }
   end,
@@ -44,11 +47,16 @@ local FileType = {
     local extension = vim.fn.fnamemodify(filename, ':e')
     _, self.icon_color = devicons.get_icon_color(filename, extension, { default = true })
   end,
-  heirline.make_flexible_component(priority.FileType, {
-    provider = function(self)
-      return self.filetype
-    end,
-  }, { provider = '' }),
+  {
+
+    flexible = priority.FileType,
+    {
+      provider = function(self)
+        return self.filetype
+      end,
+    },
+    { provider = '' },
+  },
   hl = function(self)
     return { fg = self.icon_color }
   end,
@@ -59,15 +67,20 @@ local CurrentPath = {
   condition = function(self)
     return self.current_path
   end,
-  heirline.make_flexible_component(priority.CurrentPath, {
-    provider = function(self)
-      return self.current_path
-    end,
-  }, {
-    provider = function(self)
-      return vim.fn.pathshorten(self.current_path, 2)
-    end,
-  }, null),
+  {
+    flexible = priority.CurrentPath,
+    {
+      provider = function(self)
+        return self.current_path
+      end,
+    },
+    {
+      provider = function(self)
+        return vim.fn.pathshorten(self.current_path, 2)
+      end,
+    },
+    null,
+  },
   hl = hl.CurrentPath,
 }
 
