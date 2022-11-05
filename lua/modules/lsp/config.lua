@@ -119,6 +119,13 @@ function config.null_ls()
       }),
       null.builtins.formatting.latexindent.with({
         filetypes = { 'tex', 'bib' },
+        extra_args = {
+          '-c',
+          '/tmp',
+          '-m',
+          '-l',
+          vim.fs.normalize('~/.config/latexindent/defaultSettings.yaml'),
+        },
       }),
       null.builtins.formatting.clang_format,
       null.builtins.formatting.prettier,
