@@ -1,6 +1,6 @@
 local fn, uv, api = vim.fn, vim.loop, vim.api
 local vim_path = vim.fn.stdpath('config')
-local data_dir = string.format('%s/site/', vim.fn.stdpath('data'))
+local data_dir = vim.fn.stdpath('data') .. '/site/'
 local modules_dir = vim_path .. '/lua/modules'
 local packer_compiled = data_dir .. 'lua/packer_compiled.lua'
 local packer = nil
@@ -36,7 +36,6 @@ function Packer:load_packer()
     git = { clone_timeout = 120 },
     disable_commands = true,
     display = {
-      open_fn = require('packer.util').float,
       working_sym = 'ﰭ',
       error_sym = '',
       done_sym = '',
