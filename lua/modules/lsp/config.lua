@@ -1,18 +1,30 @@
 local config = {}
 
 function config.lspconfig()
+  require('neodev').setup({
+    override = function(root_dir, library)
+      if require('neodev.util').has_file(root_dir, '~/dev/nvim') then
+        library.enabled = true
+        library.runtime = true
+        library.types = true
+        library.plugins = true
+      end
+    end,
+    lspconfig = false,
+  })
+
   local lspconfig = require('lspconfig')
 
   lspconfig.sumneko_lua.setup({
     name = 'sumneko-lua',
     cmd = { 'lua-language-server' },
+    before_init = require('neodev.lsp').before_init,
     root_dir = function()
       return vim.fs.dirname(vim.fs.find({
         '.luarc.json',
         '.luacheckrc',
         '.stylua.toml',
         'stylua.toml',
-        'selene.toml',
         '.git',
       }, { upward = true })[1])
     end,
@@ -22,9 +34,6 @@ function config.lspconfig()
           enable = true,
         },
         completion = { autoRequire = false, keywordSnippet = 'Disable' },
-        runtime = { version = 'LuaJIT' },
-        diagnostics = { globals = { 'vim' } },
-        workspace = { library = vim.api.nvim_get_runtime_file('', true) },
         telemetry = { enable = false },
       },
     },
@@ -165,19 +174,6 @@ end
 
 function config.codeaction()
   vim.g.code_action_menu_show_diff = false
-end
-
-function config.luadev()
-  require('neodev').setup({
-    override = function(root_dir, library)
-      if require('neodev.util').has_file(root_dir, '~/dev/nvim') then
-        library.enabled = true
-        library.runtime = true
-        library.types = true
-        library.plugins = true
-      end
-    end,
-  })
 end
 
 function config.aerial()

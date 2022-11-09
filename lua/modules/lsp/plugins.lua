@@ -3,26 +3,20 @@ local conf = require('modules.lsp.config')
 
 plugin({ 'stevearc/aerial.nvim', cmd = 'AerialToggle', config = conf.aerial })
 
-plugin({ 'folke/neodev.nvim', ft = 'lua', config = conf.luadev })
-
 plugin({
   'neovim/nvim-lspconfig',
+  requires = { 'folke/neodev.nvim' },
   ft = {
-    'lua',
-    'rust',
     'bib',
     'c',
     'cpp',
     'css',
-    'python',
     'html',
     'htmldjango',
-    'javascriptreact',
-    'less',
-    'sass',
-    'scss',
+    'lua',
+    'python',
+    'rust',
     'tex',
-    'typescriptreact',
   },
   config = conf.lspconfig,
 })
