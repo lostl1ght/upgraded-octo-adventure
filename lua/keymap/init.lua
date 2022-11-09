@@ -141,22 +141,6 @@ nmap({
     opts('Hydra: telescope'),
   },
   {
-    ']b',
-    function()
-      require('modules.ui.hydra').buffers:activate()
-      vim.api.nvim_cmd({ cmd = 'bnext' }, {})
-    end,
-    opts('Hydra: buffers'),
-  },
-  {
-    '[b',
-    function()
-      require('modules.ui.hydra').buffers:activate()
-      vim.api.nvim_cmd({ cmd = 'bprevious' }, {})
-    end,
-    opts('Hydra: buffers'),
-  },
-  {
     '<leader>w',
     function()
       require('modules.ui.hydra').windows:activate()

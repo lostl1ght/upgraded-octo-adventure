@@ -4,34 +4,6 @@ local pcmd = require('hydra.keymap-util').pcmd
 
 local Config = {}
 
-local buffers_hint = [[
-_[_: prev _]_: next _c_: close _C_: force close
-]]
-Config.buffers = Hydra({
-  name = 'BUFFERS',
-  hint = buffers_hint,
-  config = {
-    hint = {
-      border = 'single',
-    },
-  },
-  heads = {
-    { ']', cmd('bn'), { desc = 'next buf' } },
-    { '[', cmd('bp'), { desc = 'prev buf' } },
-    {
-      'c',
-      function()
-        if not vim.o.modified then
-          vim.cmd('bd')
-        end
-      end,
-      { desc = 'close' },
-    },
-    { 'C', cmd('bd!'), { desc = 'force close' } },
-    { 'q', nil, { exit = true, desc = false } },
-  },
-})
-
 local gitsigns = require('gitsigns')
 
 local git_hint = [[
