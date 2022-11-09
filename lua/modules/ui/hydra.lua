@@ -49,7 +49,6 @@ local git = Hydra({
     on_enter = function()
       pcmd('mkview', 'E32')
       vim.cmd('silent! %foldopen!')
-      vim.bo.modifiable = false
       vim.schedule(function()
         gitsigns.toggle_linehl(true)
       end)
@@ -98,24 +97,8 @@ local git = Hydra({
     { 'p', gitsigns.preview_hunk, { desc = 'preview hunk' } },
     { 'd', gitsigns.toggle_deleted, { nowait = true, desc = 'toggle deleted' } },
     { 'b', gitsigns.blame_line, { desc = 'blame' } },
-    {
-      'R',
-      function()
-        vim.bo.modifiable = true
-        gitsigns.reset_buffer()
-        vim.bo.modifiable = false
-      end,
-      { desc = 'reset buffer' },
-    },
-    {
-      'r',
-      function()
-        vim.bo.modifiable = true
-        gitsigns.reset_hunk()
-        vim.bo.modifiable = false
-      end,
-      { desc = 'reset buffer' },
-    },
+    { 'R', gitsigns.reset_buffer, { desc = 'reset buffer' } },
+    { 'r', gitsigns.reset_hunk, { desc = 'reset hunk' } },
     {
       'B',
       function()
