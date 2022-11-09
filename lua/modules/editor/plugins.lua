@@ -40,11 +40,11 @@ plugin({
 
 plugin({ '~/dev/plugins/nvim-lf', config = conf.lf })
 
-plugin({ 'mrjones2014/smart-splits.nvim', config = conf.smart_splits, module = 'smart-splits' })
-
 plugin({ 'sindrets/winshift.nvim', config = conf.winshift, cmd = 'WinShift' })
 
 plugin({ 'ghillb/cybu.nvim', config = conf.cybu })
+
+plugin({ 'aserowy/tmux.nvim', config = conf.tmux })
 
 -- Other tools
 plugin({ 'dstein64/vim-startuptime', cmd = 'StartupTime' })

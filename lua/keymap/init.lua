@@ -72,10 +72,10 @@ nmap({
   -- +---------+
   -- + Windows +
   -- +---------+
-  { '<c-l>', '<c-w>l', opts('Window: right') },
-  { '<c-k>', '<c-w>k', opts('Window: up') },
-  { '<c-j>', '<c-w>j', opts('Window: down') },
-  { '<c-h>', '<c-w>h', opts('Window: left') },
+  { '<c-l>', require('tmux').move_right, opts('Window: right') },
+  { '<c-k>', require('tmux').move_top, opts('Window: up') },
+  { '<c-j>', require('tmux').move_bottom, opts('Window: down') },
+  { '<c-h>', require('tmux').move_left, opts('Window: left') },
   -- +--------+
   -- + Packer +
   -- +--------+

@@ -113,14 +113,14 @@ Config.git = Hydra({
   },
 })
 
-local splits = require('smart-splits')
+local tmux = require('tmux')
 
 local window_hint = [[
 ^^^^^^^^^^^^     Move      ^^    Size   ^^   ^^     Split
 ^^^^^^^^^^^^-------------  ^^-----------^^   ^^---------------
-^ ^ _k_ ^ ^  ^ ^ _K_ ^ ^   ^   _<C-k>_   ^   _s_: horizontally 
-_h_ ^ ^ _l_  _H_ ^ ^ _L_   _<C-h>_ _<C-l>_   _v_: vertically
-^ ^ _j_ ^ ^  ^ ^ _J_ ^ ^   ^   _<C-j>_   ^   _c_: close
+^ ^ _k_ ^ ^  ^ ^ _K_ ^ ^   ^   _<c-k>_   ^   _s_: horizontally
+_h_ ^ ^ _l_  _H_ ^ ^ _L_   _<c-h>_ _<c-l>_   _v_: vertically
+^ ^ _j_ ^ ^  ^ ^ _J_ ^ ^   ^   _<c-j>_   ^   _c_: close
 focus^^^^^^  window^^^^^^  ^_=_: equalize^   _w_: switch
 _S_: swap ^  ^ ^^^^^^^ ^   ^^ ^          ^   _o_: remain only
 _b_: buffers ^^^^^^^^^^^    _f_: files   ^
@@ -146,36 +146,16 @@ Config.windows = Hydra({
     { 'L', cmd('WinShift right') },
     { 'S', cmd('WinShift swap'), { exit = true } },
 
-    {
-      '<C-h>',
-      function()
-        splits.resize_left(2)
-      end,
-    },
-    {
-      '<C-j>',
-      function()
-        splits.resize_down(2)
-      end,
-    },
-    {
-      '<C-k>',
-      function()
-        splits.resize_up(2)
-      end,
-    },
-    {
-      '<C-l>',
-      function()
-        splits.resize_right(2)
-      end,
-    },
-    { '=', '<C-w>=', { desc = 'equalize' } },
+    { '<c-h>', tmux.resize_left },
+    { '<c-j>', tmux.resize_bottom },
+    { '<c-k>', tmux.resize_top },
+    { '<c-l>', tmux.resize_right },
+    { '=', '<c-w>=', { desc = 'equalize' } },
 
     { 's', pcmd('split', 'E36') },
     { 'v', pcmd('vsplit', 'E36') },
-    { 'w', '<C-w>w', { exit = true } },
-    { 'o', '<C-w>o', { exit = true, desc = 'remain only' } },
+    { 'w', '<c-w>w', { exit = true } },
+    { 'o', '<c-w>o', { exit = true, desc = 'remain only' } },
     { 'c', pcmd('close', 'E444') },
     { 'b', cmd('Telescope buffers'), { exit = true } },
     { 'f', cmd('Telescope find_files'), { exit = true } },

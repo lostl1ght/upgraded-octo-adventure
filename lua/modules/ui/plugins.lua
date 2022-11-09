@@ -7,16 +7,19 @@ plugin({
   'rebelot/heirline.nvim',
   requires = {
     'nvim-tree/nvim-web-devicons',
-    'kanagawa.nvim',
     'nvim-langmap-switch',
   },
-  after = { 'kanagawa.nvim', 'nvim-langmap-switch' },
+  after = { 'nvim-langmap-switch' },
   config = conf.heirline,
 })
 
 plugin({ 'stevearc/dressing.nvim', config = conf.dressing })
 
-plugin({ 'anuvyklack/hydra.nvim', config = conf.hydra })
+plugin({
+  'anuvyklack/hydra.nvim',
+  requires = { 'lewis6991/gitsigns.nvim', 'aserowy/tmux.nvim' },
+  config = conf.hydra,
+})
 
 plugin({ 'RRethy/vim-illuminate', config = conf.illum })
 

@@ -147,14 +147,6 @@ function config.lf()
   })
 end
 
-function config.smart_splits()
-  require('smart-splits').setup({
-    resize_mode = {
-      quit_key = 'q',
-    },
-  })
-end
-
 function config.winshift()
   require('winshift').setup({ focused_hl_group = 'Visual' })
 end
@@ -165,6 +157,22 @@ function config.cybu()
       border = 'single',
     },
     display_time = 1250,
+  })
+end
+
+function config.tmux()
+  require('tmux').setup({
+    copy_sync = {
+      enable = false,
+    },
+    navigation = {
+      enable_default_keybindings = false,
+    },
+    resize = {
+      enable_default_keybindings = true,
+      resize_step_x = 3,
+      resize_step_y = 3,
+    },
   })
 end
 
