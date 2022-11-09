@@ -2,7 +2,7 @@ local cmds = {
   {
     'DapHydra',
     function()
-      require('modules.ui.hydra').dap:activate()
+      require('modules.ui.hydra').debug:activate()
     end,
     { nargs = 0 },
   },

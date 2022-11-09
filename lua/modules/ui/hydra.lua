@@ -2,10 +2,12 @@ local Hydra = require('hydra')
 local cmd = require('hydra.keymap-util').cmd
 local pcmd = require('hydra.keymap-util').pcmd
 
+local Config = {}
+
 local buffers_hint = [[
 _[_: prev _]_: next _c_: close _C_: force close
 ]]
-local buffers = Hydra({
+Config.buffers = Hydra({
   name = 'BUFFERS',
   hint = buffers_hint,
   config = {
@@ -38,7 +40,7 @@ _J_: next hunk      _u_: undo last stage   _p_: preview hunk   _B_: blame show f
 ^ ^                 _S_: stage buffer      ^ ^                 _/_: show base file
 ]]
 
-local git = Hydra({
+Config.git = Hydra({
   name = 'GIT',
   hint = git_hint,
   config = {
@@ -124,7 +126,7 @@ _S_: swap ^  ^ ^^^^^^^ ^   ^^ ^          ^   _o_: remain only
 _b_: buffers ^^^^^^^^^^^    _f_: files   ^
 ]]
 
-local windows = Hydra({
+Config.windows = Hydra({
   name = 'WINDOWS',
   hint = window_hint,
   config = {
@@ -184,7 +186,7 @@ local windows = Hydra({
 local telescope_hint = [[
 _g_: grep _h_: help _k_: keymaps _/_: in file _<enter>_: all pickers
 ]]
-local telescope = Hydra({
+Config.telescope = Hydra({
   name = 'TELESCOPE',
   hint = telescope_hint,
   config = {
@@ -238,7 +240,7 @@ _c_: continue   _b_: breakpoint  _i_: step into  _e_: eval
 _t_: terminate  _s_: step over   _o_: step out   _q_: exit
 ]]
 
-local debug = Hydra({
+Config.debug = Hydra({
   name = 'DEBUG',
   hint = debug_hint,
   config = {
@@ -263,7 +265,7 @@ local session_hint = [[
 _l_: last _L_: load _c_: dir _s_: save _d_: delete
 ]]
 
-local session = Hydra({
+Config.session = Hydra({
   name = 'SESSIONS',
   hint = session_hint,
   config = {
@@ -282,13 +284,4 @@ local session = Hydra({
   },
 })
 
-local config = {
-  buffers = buffers,
-  git = git,
-  windows = windows,
-  telescope = telescope,
-  dap = debug,
-  session = session,
-}
-
-return config
+return Config
