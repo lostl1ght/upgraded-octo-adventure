@@ -104,6 +104,14 @@ function config.noice()
         },
       },
     },
+    views = {
+      cmdline_popup = {
+        position = {
+          row = '10%',
+          col = '50%',
+        },
+      },
+    },
   })
 end
 
