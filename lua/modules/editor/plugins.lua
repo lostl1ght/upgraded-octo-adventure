@@ -56,6 +56,14 @@ plugin({ 'aserowy/tmux.nvim', config = conf.tmux })
 plugin({ 'dstein64/vim-startuptime', cmd = 'StartupTime' })
 
 plugin({
+  'iamcco/markdown-preview.nvim',
+  run = function()
+    vim.fn['mkdp#util#install']()
+  end,
+  ft = 'markdown',
+})
+
+plugin({
   'folke/persistence.nvim',
   event = 'BufReadPre',
   module = 'persistence',
@@ -63,10 +71,3 @@ plugin({
 })
 
 plugin({ 'NvChad/nvim-colorizer.lua', config = conf.colorizer, cmd = 'ColorizerToggle' })
-
-plugin({
-  'toppair/peek.nvim',
-  run = 'deno task --quiet build:fast',
-  config = conf.peek,
-  module = 'peek',
-})

@@ -184,8 +184,4 @@ function config.colorizer()
   })
 end
 
-function config.peek()
-  require('peek').setup({})
-end
-
 return config
