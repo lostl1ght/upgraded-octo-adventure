@@ -140,6 +140,7 @@ function config.whichkey()
       G = { name = 'git' },
       t = { name = 'telescope' },
       d = { name = 'debug' },
+      q = { name = 'persistence' },
     },
   }, {})
 end

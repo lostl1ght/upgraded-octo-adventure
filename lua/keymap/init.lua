@@ -337,8 +337,17 @@ nmap({
     '<leader>qd',
     function()
       require('persistence').stop()
+      vim.notify('stopped', vim.log.levels.INFO, { title = 'Persistence' })
     end,
     opts('Stop'),
+  },
+  {
+    '<leader>qD',
+    function()
+      require('persistence').start()
+      vim.notify('started', vim.log.levels.INFO, { title = 'Persistence' })
+    end,
+    opts('Start'),
   },
   -- +-------+
   -- + Tools +
