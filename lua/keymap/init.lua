@@ -190,6 +190,24 @@ nmap({
   { 'gW', cmd('TroubleToggle workspace_diagnostics'), opts('Workspace diagnostics') },
   { 'gs', cmd('AerialToggle'), opts('Document symbols') },
   { 'ga', cmd('CodeActionMenu'), opts('Code actions') },
+  {
+    '<c-d>',
+    function()
+      if not require('noice.lsp').scroll(4) then
+        return '<c-d>'
+      end
+    end,
+    opts(expr, 'Scroll down'),
+  },
+  {
+    '<c-u>',
+    function()
+      if not require('noice.lsp').scroll(-4) then
+        return '<c-u>'
+      end
+    end,
+    opts(expr, 'Scroll up'),
+  },
   -- +-----+
   -- + Git +
   -- +-----+
