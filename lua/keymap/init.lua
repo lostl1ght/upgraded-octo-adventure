@@ -151,14 +151,6 @@ nmap({
   -- +-----+
   -- + LSP +
   -- +-----+
-  { 'K', vim.lsp.buf.hover, opts('Hover') },
-  { 'gr', vim.lsp.buf.rename, opts('Rename') },
-  { 'gd', cmd('TroubleToggle lsp_definitions'), opts('Definitions') },
-  { 'ge', cmd('TroubleToggle lsp_references'), opts('References') },
-  { 'gy', cmd('TroubleToggle lsp_type_definitions'), opts('Type definitions') },
-  { 'gi', cmd('TroubleToggle lsp_implementations'), opts('Type definitions') },
-  { 'gw', cmd('TroubleToggle document_diagnostics'), opts('Document diagnostics') },
-  { 'gW', cmd('TroubleToggle workspace_diagnostics'), opts('Workspace diagnostics') },
   {
     '<plug>(LspFormat)',
     function()
@@ -171,10 +163,8 @@ nmap({
     end,
     opts(),
   },
-  { 'gf', '<plug>(LspFormat)', opts('Format') },
-  { 'gs', cmd('AerialToggle'), opts('Document symbols') },
   {
-    'gl',
+    '<plug>(ToggleDiagnostics)',
     function()
       vim.g.lsplines_enabled = not vim.g.lsplines_enabled
       vim.diagnostic.config({
@@ -184,8 +174,19 @@ nmap({
         string.format('Line diagnostics %s', vim.g.lsplines_enabled and 'enabled' or 'disabled')
       )
     end,
-    opts('Toggle diagnostics'),
+    opts(),
   },
+  { 'K', vim.lsp.buf.hover, opts('Hover') },
+  { 'gr', vim.lsp.buf.rename, opts('Rename') },
+  { 'gl', '<plug>(ToggleDiagnostics)', opts('Toggle diagnostics') },
+  { 'gf', '<plug>(LspFormat)', opts('Format') },
+  { 'gd', cmd('TroubleToggle lsp_definitions'), opts('Definitions') },
+  { 'ge', cmd('TroubleToggle lsp_references'), opts('References') },
+  { 'gy', cmd('TroubleToggle lsp_type_definitions'), opts('Type definitions') },
+  { 'gi', cmd('TroubleToggle lsp_implementations'), opts('Implementations') },
+  { 'gw', cmd('TroubleToggle document_diagnostics'), opts('Document diagnostics') },
+  { 'gW', cmd('TroubleToggle workspace_diagnostics'), opts('Workspace diagnostics') },
+  { 'gs', cmd('AerialToggle'), opts('Document symbols') },
   { 'ga', cmd('CodeActionMenu'), opts('Code actions') },
   -- +-----+
   -- + Git +
