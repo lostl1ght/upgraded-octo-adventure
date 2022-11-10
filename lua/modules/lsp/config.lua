@@ -35,6 +35,9 @@ function config.lspconfig()
         },
         completion = { autoRequire = false, keywordSnippet = 'Disable' },
         telemetry = { enable = false },
+        workspace = {
+          checkThirdParty = false
+        }
       },
     },
   })
