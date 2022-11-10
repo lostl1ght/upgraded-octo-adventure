@@ -8,7 +8,7 @@ plugin({
   requires = {
     'nvim-tree/nvim-web-devicons',
     'nvim-langmap-switch',
-    'noice.nvim',
+    'folke/noice.nvim',
   },
   after = { 'nvim-langmap-switch' },
   config = conf.heirline,
