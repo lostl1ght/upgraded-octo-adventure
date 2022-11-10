@@ -169,12 +169,8 @@ function config.tmux()
 end
 
 -- Other tools
-function config.session()
-  require('session_manager').setup({
-    sessions_dir = vim.fn.stdpath('cache') .. '/sessions/',
-    autoload_mode = require('session_manager.config').AutoloadMode.CurrentDir,
-    autosave_only_in_session = true,
-  })
+function config.persistence()
+  require('persistence').setup({ dir = vim.fs.normalize(vim.fn.stdpath('data') .. '/sessions/') })
 end
 
 function config.colorizer()

@@ -47,7 +47,12 @@ plugin({ 'aserowy/tmux.nvim', config = conf.tmux })
 -- Other tools
 plugin({ 'dstein64/vim-startuptime', cmd = 'StartupTime' })
 
-plugin({ 'Shatur/neovim-session-manager', config = conf.session })
+plugin({
+  'folke/persistence.nvim',
+  event = 'BufReadPre',
+  module = 'persistence',
+  config = conf.persistence,
+})
 
 plugin({ 'NvChad/nvim-colorizer.lua', config = conf.colorizer, cmd = 'ColorizerToggle' })
 

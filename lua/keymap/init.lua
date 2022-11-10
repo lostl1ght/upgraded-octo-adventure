@@ -316,6 +316,30 @@ nmap({
   { '<leader>di', cmd('DapStepInto'), opts('Step into') },
   { '<leader>do', cmd('DapStepOut'), opts('Step out') },
   { '<leader>de', cmd('DapEval'), opts('Evaluate') },
+  -- +-------------+
+  -- + Persistence +
+  -- +-------------+
+  {
+    '<leader>qs',
+    function()
+      require('persistence').load()
+    end,
+    opts('Load current directory'),
+  },
+  {
+    '<leader>ql',
+    function()
+      require('persistence').load({ last = true })
+    end,
+    opts('Load last'),
+  },
+  {
+    '<leader>qd',
+    function()
+      require('persistence').stop()
+    end,
+    opts('Stop'),
+  },
   -- +-------+
   -- + Tools +
   -- +-------+
