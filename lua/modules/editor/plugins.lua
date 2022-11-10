@@ -55,6 +55,8 @@ plugin({ 'aserowy/tmux.nvim', config = conf.tmux })
 -- Other tools
 plugin({ 'dstein64/vim-startuptime', cmd = 'StartupTime' })
 
+plugin({ 'samjwill/nvim-unception' })
+
 plugin({
   'iamcco/markdown-preview.nvim',
   run = function()
