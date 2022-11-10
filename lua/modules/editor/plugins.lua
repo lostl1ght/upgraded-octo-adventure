@@ -32,7 +32,11 @@ plugin({ 'ggandor/lightspeed.nvim' })
 
 plugin({
   'nvim-telescope/telescope.nvim',
-  requires = { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+  requires = {
+    { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+    'nvim-tree/nvim-web-devicons',
+    'nvim-lua/plenary.nvim',
+  },
   config = conf.telescope,
 })
 
@@ -40,7 +44,11 @@ plugin({ '~/dev/plugins/nvim-lf', config = conf.lf })
 
 plugin({ 'sindrets/winshift.nvim', config = conf.winshift, cmd = 'WinShift' })
 
-plugin({ 'ghillb/cybu.nvim', config = conf.cybu })
+plugin({
+  'ghillb/cybu.nvim',
+  requires = { 'nvim-tree/nvim-web-devicons', 'nvim-lua/plenary.nvim' },
+  config = conf.cybu,
+})
 
 plugin({ 'aserowy/tmux.nvim', config = conf.tmux })
 
