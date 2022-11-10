@@ -21,7 +21,7 @@ nmap({
   -- +-------+
   { ' ', '' },
   { '<f1>', '', opts(remap) },
-  { 'Q', 'q', opts('Record macro') },
+  { 'Q', 'q', opts('Macro') },
   { 'q', '', opts(remap) },
   {
     '<leader>h',
@@ -72,14 +72,62 @@ nmap({
   -- +---------+
   -- + Windows +
   -- +---------+
-  { '<c-l>', require('tmux').move_right, opts('Right window') },
-  { '<c-k>', require('tmux').move_top, opts('Upper window') },
-  { '<c-j>', require('tmux').move_bottom, opts('Lower windwo') },
-  { '<c-h>', require('tmux').move_left, opts('Left window') },
-  { '<m-l>', require('tmux').resize_right, opts('Resize right window') },
-  { '<m-k>', require('tmux').resize_top, opts('Resize upper window') },
-  { '<m-j>', require('tmux').resize_bottom, opts('Resize lower windwo') },
-  { '<m-h>', require('tmux').resize_left, opts('Resize left window') },
+  {
+    '<c-l>',
+    function()
+      require('tmux').move_right()
+    end,
+    opts('Right window'),
+  },
+  {
+    '<c-k>',
+    function()
+      require('tmux').move_top()
+    end,
+    opts('Upper window'),
+  },
+  {
+    '<c-j>',
+    function()
+      require('tmux').move_bottom()
+    end,
+    opts('Lower windwo'),
+  },
+  {
+    '<c-h>',
+    function()
+      require('tmux').move_left()
+    end,
+    opts('Left window'),
+  },
+  {
+    '<m-l>',
+    function()
+      require('tmux').resize_right()
+    end,
+    opts('Resize right window'),
+  },
+  {
+    '<m-k>',
+    function()
+      require('tmux').resize_top()
+    end,
+    opts('Resize upper window'),
+  },
+  {
+    '<m-j>',
+    function()
+      require('tmux').resize_bottom()
+    end,
+    opts('Resize lower windwo'),
+  },
+  {
+    '<m-h>',
+    function()
+      require('tmux').resize_left()
+    end,
+    opts('Resize left window'),
+  },
   { '<leader>w=', '<c-w>=', opts('Equalize') },
   { '<leader>ws', cmd('split'), opts('Split horizontaly') },
   { '<leader>wv', cmd('vsplit'), opts('Split vertically') },
@@ -189,14 +237,62 @@ nmap({
     end,
     opts(expr, 'Previous hunk'),
   },
-  { '<leader>Gs', require('gitsigns').stage_hunk, opts('Stage hunk') },
-  { '<leader>Gu', require('gitsigns').undo_stage_hunk, opts('Undo last stage') },
-  { '<leader>GS', require('gitsigns').stage_buffer, opts('Stage buffer') },
-  { '<leader>Gp', require('gitsigns').preview_hunk, opts('Preview hunk') },
-  { '<leader>Gd', require('gitsigns').toggle_deleted, opts('Toggle deleted') },
-  { '<leader>Gb', require('gitsigns').blame_line, opts('Blame line') },
-  { '<leader>GR', require('gitsigns').reset_buffer, opts('Reset buffer') },
-  { '<leader>Gr', require('gitsigns').reset_hunk, opts('Reset hunk') },
+  {
+    '<leader>Gs',
+    function()
+      require('gitsigns').stage_hunk()
+    end,
+    opts('Stage hunk'),
+  },
+  {
+    '<leader>Gu',
+    function()
+      require('gitsigns').undo_stage_hunk()
+    end,
+    opts('Undo last stage'),
+  },
+  {
+    '<leader>GS',
+    function()
+      require('gitsigns').stage_buffer()
+    end,
+    opts('Stage buffer'),
+  },
+  {
+    '<leader>Gp',
+    function()
+      require('gitsigns').preview_hunk()
+    end,
+    opts('Preview hunk'),
+  },
+  {
+    '<leader>Gd',
+    function()
+      require('gitsigns').toggle_deleted()
+    end,
+    opts('Toggle deleted'),
+  },
+  {
+    '<leader>Gb',
+    function()
+      require('gitsigns').blame_line()
+    end,
+    opts('Blame line'),
+  },
+  {
+    '<leader>GR',
+    function()
+      require('gitsigns').reset_buffer()
+    end,
+    opts('Reset buffer'),
+  },
+  {
+    '<leader>Gr',
+    function()
+      require('gitsigns').reset_hunk()
+    end,
+    opts('Reset hunk'),
+  },
   {
     '<leader>GB',
     function()
@@ -223,7 +319,13 @@ nmap({
   -- +-------------+
   -- + Persistence +
   -- +-------------+
-  { '<leader>qs', require('persistence').load, opts('Load current directory') },
+  {
+    '<leader>qs',
+    function()
+      require('persistence').load()
+    end,
+    opts('Load current directory'),
+  },
   {
     '<leader>ql',
     function()
