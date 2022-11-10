@@ -16,8 +16,6 @@ plugin({ 'windwp/nvim-autopairs', config = conf.autopairs })
 
 plugin({ 'kylechui/nvim-surround', config = conf.surround })
 
-plugin({ 'tversteeg/registers.nvim', config = conf.registers })
-
 plugin({
   'abecodes/tabout.nvim',
   require = 'nvim-treesitter',

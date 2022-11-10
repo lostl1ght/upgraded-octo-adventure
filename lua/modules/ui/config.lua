@@ -41,11 +41,6 @@ function config.dressing()
   })
 end
 
-function config.hydra()
-  vim.api.nvim_set_hl(0, 'HydraHint', { link = 'Normal' })
-  vim.api.nvim_set_hl(0, 'HydraBorder', { link = 'FloatermBorder' })
-end
-
 function config.illum()
   require('illuminate').configure({
     filetypes_denylist = { 'noice', 'registers' },
@@ -117,6 +112,27 @@ end
 
 function config.indentscope()
   require('mini.indentscope').setup({})
+end
+
+function config.whichkey()
+  local wk = require('which-key')
+  wk.setup({
+    show_help = false,
+    show_keys = false,
+    triggers_blacklist = {
+      i = { 'j', 'k', 'i' },
+      v = { 'j', 'k', 'i' },
+    },
+  })
+  wk.register({
+    ['<leader>'] = {
+      p = { name = 'packer' },
+      w = { name = 'window' },
+      G = { name = 'git' },
+      t = { name = 'telescope' },
+      d = { name = 'debug' },
+    },
+  }, {})
 end
 
 return config

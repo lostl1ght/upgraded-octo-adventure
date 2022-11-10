@@ -46,14 +46,6 @@ function config.surround()
   require('nvim-surround').setup()
 end
 
-function config.registers()
-  require('registers').setup({
-    window = {
-      border = 'single',
-    },
-  })
-end
-
 function config.tabout()
   require('tabout').setup({
     tabkey = '<Tab>',
@@ -169,7 +161,7 @@ function config.tmux()
       enable_default_keybindings = false,
     },
     resize = {
-      enable_default_keybindings = true,
+      enable_default_keybindings = false,
       resize_step_x = 3,
       resize_step_y = 3,
     },

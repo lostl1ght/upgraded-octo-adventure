@@ -15,12 +15,6 @@ plugin({
 
 plugin({ 'stevearc/dressing.nvim', config = conf.dressing })
 
-plugin({
-  'anuvyklack/hydra.nvim',
-  requires = { 'lewis6991/gitsigns.nvim', 'aserowy/tmux.nvim' },
-  config = conf.hydra,
-})
-
 plugin({ 'RRethy/vim-illuminate', config = conf.illum })
 
 plugin({
@@ -44,3 +38,5 @@ plugin({
   'echasnovski/mini.indentscope',
   config = conf.indentscope,
 })
+
+plugin({ 'folke/which-key.nvim', config = conf.whichkey })

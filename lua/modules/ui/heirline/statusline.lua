@@ -48,36 +48,11 @@ local NormalModeIndicator = {
   Space,
 }
 
-local hydra = require('hydra.statusline')
-local HydraActive = {
-  condition = hydra.is_active,
-  heirline.surround({ icons.powerline.left_rounded, icons.powerline.right_rounded }, function()
-    return hl.Hydra[hydra.get_color()]
-  end, {
-    {
-      fallthrough = false,
-      ReadOnly,
-      { provider = icons.circle },
-    },
-    Space,
-    {
-      provider = function()
-        return hydra.get_name() or 'HYDRA'
-      end,
-    },
-    hl = { fg = hl.StatusLine.bg, force = true },
-  }),
-}
-
 local VimModeNormal = {
   condition = function(self)
     return self.mode == 'normal' or not conditions.is_active()
   end,
-  {
-    fallthrough = false,
-    HydraActive,
-    NormalModeIndicator,
-  },
+  NormalModeIndicator,
 }
 
 local VimModeActive = {
@@ -274,6 +249,7 @@ local ScrollBar = {
     null,
   },
   hl = hl.ScrollBar,
+  Space,
 }
 
 local langmap = require('langmap_switch')
@@ -302,7 +278,6 @@ local statusline = {
   Layout,
   Ruler,
   ScrollBar,
-  Space,
 }
 
 return { StatusLine = statusline }

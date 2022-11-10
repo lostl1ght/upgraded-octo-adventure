@@ -46,6 +46,10 @@ local hl = {
     fg = colors.oldWhite,
   },
 
+  Recording = {
+    fg = colors.roninYellow,
+  },
+
   -- winbar
   CurrentPath = { fg = colors.autumnGreen, bold = true },
 
@@ -141,13 +145,5 @@ hl.ModeColors = setmetatable({
     }
   end,
 })
-
-hl.Hydra = {
-  red = colors.autumnRed,
-  amaranth = colors.samuraiRed,
-  teal = colors.lightBlue,
-  pink = colors.sakuraPink,
-  blue = colors.crystalBlue,
-}
 
 return hl

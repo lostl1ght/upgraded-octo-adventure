@@ -52,6 +52,7 @@ vim.opt.breakindent = true
 vim.opt.breakindentopt = { shift = 2, min = 20 }
 vim.opt.fillchars = { diff = '╱' }
 vim.opt.cmdheight = 0
+vim.opt.timeoutlen = 500
 vim.g.tex_flavor = 'latex'
 vim.g.python3_host_prog = os.getenv('HOME') .. '/.pyenv/versions/neovim/bin/python3'
 vim.g.loaded_ruby_provider = 0
