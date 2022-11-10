@@ -178,12 +178,14 @@ nmap({
   },
   { 'K', vim.lsp.buf.hover, opts('Hover') },
   { 'gr', vim.lsp.buf.rename, opts('Rename') },
+  { ']e', vim.diagnostic.goto_next, opts('Next diagnostic') },
+  { '[e', vim.diagnostic.goto_prev, opts('Next diagnostic') },
   { 'gl', '<plug>(ToggleDiagnostics)', opts('Toggle diagnostics') },
-  { 'gf', '<plug>(LspFormat)', opts('Format') },
+  { 'gf', '<plug>(LspFormat)', opts('Format') }, -- Not displayed
+  { 'ge', cmd('TroubleToggle lsp_references'), opts('References') }, -- Not displayed
+  { 'gi', cmd('TroubleToggle lsp_implementations'), opts('Implementations') }, -- Not displayed
   { 'gd', cmd('TroubleToggle lsp_definitions'), opts('Definitions') },
-  { 'ge', cmd('TroubleToggle lsp_references'), opts('References') },
   { 'gy', cmd('TroubleToggle lsp_type_definitions'), opts('Type definitions') },
-  { 'gi', cmd('TroubleToggle lsp_implementations'), opts('Implementations') },
   { 'gw', cmd('TroubleToggle document_diagnostics'), opts('Document diagnostics') },
   { 'gW', cmd('TroubleToggle workspace_diagnostics'), opts('Workspace diagnostics') },
   { 'gs', cmd('AerialToggle'), opts('Document symbols') },
