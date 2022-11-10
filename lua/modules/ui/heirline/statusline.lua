@@ -260,6 +260,14 @@ local Layout = {
   Space,
 }
 
+local noice = require('noice')
+local Recording = {
+  condition = noice.api.status.mode.has,
+  provider = noice.api.status.mode.get,
+  hl = hl.Recording,
+  Space,
+}
+
 local statusline = {
   init = function(self)
     local current_path = vim.api.nvim_buf_get_name(0)
@@ -275,6 +283,7 @@ local statusline = {
   GitBranch,
   Align,
   Lsp,
+  Recording,
   Layout,
   Ruler,
   ScrollBar,
