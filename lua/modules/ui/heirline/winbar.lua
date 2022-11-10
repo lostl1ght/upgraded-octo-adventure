@@ -103,7 +103,16 @@ local FileModified = {
 
 local FileNameBlock = {
   {
-    CurrentPath,
+    {
+      fallthrough = false,
+      {
+        condition = function()
+          return vim.bo['buftype'] == 'help'
+        end,
+        null,
+      },
+      CurrentPath,
+    },
     FileName,
     FileIcon,
     FileType,
@@ -233,7 +242,7 @@ local winbar = {
   {
     condition = function()
       return conditions.buffer_matches({
-        buftype = { 'nofile', 'prompt', 'help', 'quickfix' },
+        buftype = { 'nofile', 'prompt', 'quickfix' },
         filetype = {},
       })
     end,
@@ -257,7 +266,6 @@ vim.api.nvim_create_autocmd('User', {
     local buftype = vim.tbl_contains({
       'prompt',
       'nofile',
-      'help',
       'quickfix',
     }, vim.bo[buf].buftype)
     local filetype = vim.tbl_contains({}, vim.bo[buf].filetype)
