@@ -7,6 +7,7 @@ plugin({ 'nvim-lua/plenary.nvim' })
 -- Treesitter
 plugin({
   'nvim-treesitter/nvim-treesitter',
+  run = ':TSUpdate',
   requires = 'IndianBoy42/tree-sitter-just',
   config = conf.treesitter,
 })
@@ -73,3 +74,5 @@ plugin({
 })
 
 plugin({ 'NvChad/nvim-colorizer.lua', config = conf.colorizer, cmd = 'ColorizerToggle' })
+
+plugin({ 'akinsho/toggleterm.nvim', config = conf.term })

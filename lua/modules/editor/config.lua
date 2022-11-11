@@ -184,4 +184,34 @@ function config.colorizer()
   })
 end
 
+function config.term()
+  require('toggleterm').setup()
+  local Terminal = require('toggleterm.terminal').Terminal
+  local lazygit = Terminal:new({
+    cmd = 'lazygit',
+    direction = 'float',
+    float_opts = {
+      border = 'none',
+    },
+    on_open = function(term)
+      vim.cmd.startinsert()
+      vim.keymap.set('n', 'q', '<cmd>close<cr>', { buffer = term.bufnr })
+    end,
+    on_close = function(_)
+      vim.cmd.startinsert()
+    end,
+  })
+
+  vim.api.nvim_create_autocmd('User', {
+    pattern = 'UnceptionEditRequestReceived',
+    callback = function()
+      lazygit:close()
+    end,
+  })
+
+  vim.api.nvim_create_user_command('Lazygit', function()
+    lazygit:toggle()
+  end, {})
+end
+
 return config
