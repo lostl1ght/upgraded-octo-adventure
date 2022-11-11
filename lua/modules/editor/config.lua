@@ -195,11 +195,7 @@ function config.term()
         link = 'Normal',
       },
     },
-    on_open = function(term)
-      vim.cmd.startinsert()
-      vim.keymap.set('n', 'q', '<cmd>close<cr>', { buffer = term.bufnr })
-    end,
-    on_close = function(_)
+    on_open = function(_)
       vim.cmd.startinsert()
     end,
   })
