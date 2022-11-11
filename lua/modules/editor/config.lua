@@ -184,25 +184,4 @@ function config.colorizer()
   })
 end
 
-function config.term()
-  require('toggleterm').setup()
-  local Terminal = require('toggleterm.terminal').Terminal
-  local lazygit = Terminal:new({
-    cmd = 'lazygit',
-    direction = 'tab',
-    highlights = {
-      NormalFloat = {
-        link = 'Normal',
-      },
-    },
-    on_open = function(_)
-      vim.cmd.startinsert()
-    end,
-  })
-
-  vim.api.nvim_create_user_command('Lazygit', function()
-    lazygit:toggle()
-  end, {})
-end
-
 return config

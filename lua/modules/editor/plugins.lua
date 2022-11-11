@@ -74,5 +74,3 @@ plugin({
 })
 
 plugin({ 'NvChad/nvim-colorizer.lua', config = conf.colorizer, cmd = 'ColorizerToggle' })
-
-plugin({ 'akinsho/toggleterm.nvim', config = conf.term })

@@ -355,5 +355,4 @@ nmap({
   { '<leader>f', cmd('Telescope find_files'), opts('Files') },
   { '<leader>b', cmd('Telescope buffers'), opts('Buffers') },
   { '<leader>e', cmd('LfToggle'), opts('File manager') },
-  { '<leader>g', cmd('Lazygit'), opts('Lazygit') },
 })
