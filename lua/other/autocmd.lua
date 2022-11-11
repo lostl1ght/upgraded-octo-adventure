@@ -27,7 +27,7 @@ local autocmds = {
     {
       callback = function(arg)
         if vim.v.event.status == 0 then
-          vim.api.nvim_cmd({ cmd = 'bdelete', bang = true, args = { arg.buf } }, {})
+          vim.api.nvim_cmd({ cmd = 'bdelete', args = { arg.buf } }, {})
         end
       end,
       group = 'TermOptions',
