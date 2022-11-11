@@ -189,9 +189,11 @@ function config.term()
   local Terminal = require('toggleterm.terminal').Terminal
   local lazygit = Terminal:new({
     cmd = 'lazygit',
-    direction = 'float',
-    float_opts = {
-      border = 'none',
+    direction = 'tab',
+    highlights = {
+      NormalFloat = {
+        link = 'Normal',
+      },
     },
     on_open = function(term)
       vim.cmd.startinsert()
@@ -199,13 +201,6 @@ function config.term()
     end,
     on_close = function(_)
       vim.cmd.startinsert()
-    end,
-  })
-
-  vim.api.nvim_create_autocmd('User', {
-    pattern = 'UnceptionEditRequestReceived',
-    callback = function()
-      lazygit:close()
     end,
   })
 
