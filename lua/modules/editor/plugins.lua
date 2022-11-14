@@ -13,6 +13,8 @@ plugin({
 })
 
 -- Editing
+plugin({ 'tpope/vim-commentary' })
+
 plugin({ 'windwp/nvim-autopairs', config = conf.autopairs })
 
 plugin({ 'kylechui/nvim-surround', config = conf.surround })
@@ -23,8 +25,6 @@ plugin({
   after = 'nvim-cmp',
   config = conf.tabout,
 })
-
-plugin({ 'numToStr/Comment.nvim', config = conf.comment })
 
 plugin({ 'echasnovski/mini.ai', config = conf.ai })
 

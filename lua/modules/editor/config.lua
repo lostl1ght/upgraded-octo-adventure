@@ -70,10 +70,6 @@ function config.tabout()
   })
 end
 
-function config.comment()
-  require('Comment').setup({ ignore = '^$' })
-end
-
 function config.ai()
   require('mini.ai').setup()
 end
