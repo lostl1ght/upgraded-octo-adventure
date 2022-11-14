@@ -91,7 +91,7 @@ nmap({
     function()
       require('tmux').move_bottom()
     end,
-    opts('Lower windwo'),
+    opts('Lower window'),
   },
   {
     '<c-h>',
@@ -119,7 +119,7 @@ nmap({
     function()
       require('tmux').resize_bottom()
     end,
-    opts('Resize lower windwo'),
+    opts('Resize lower window'),
   },
   {
     '<m-h>',
@@ -238,63 +238,63 @@ nmap({
     opts(expr, 'Previous hunk'),
   },
   {
-    '<leader>Gs',
+    '<leader>gs',
     function()
       require('gitsigns').stage_hunk()
     end,
     opts('Stage hunk'),
   },
   {
-    '<leader>Gu',
+    '<leader>gu',
     function()
       require('gitsigns').undo_stage_hunk()
     end,
     opts('Undo last stage'),
   },
   {
-    '<leader>GS',
+    '<leader>gS',
     function()
       require('gitsigns').stage_buffer()
     end,
     opts('Stage buffer'),
   },
   {
-    '<leader>Gp',
+    '<leader>gp',
     function()
       require('gitsigns').preview_hunk()
     end,
     opts('Preview hunk'),
   },
   {
-    '<leader>Gd',
+    '<leader>gd',
     function()
       require('gitsigns').toggle_deleted()
     end,
     opts('Toggle deleted'),
   },
   {
-    '<leader>Gb',
+    '<leader>gb',
     function()
       require('gitsigns').blame_line()
     end,
     opts('Blame line'),
   },
   {
-    '<leader>GR',
+    '<leader>gR',
     function()
       require('gitsigns').reset_buffer()
     end,
     opts('Reset buffer'),
   },
   {
-    '<leader>Gr',
+    '<leader>gr',
     function()
       require('gitsigns').reset_hunk()
     end,
     opts('Reset hunk'),
   },
   {
-    '<leader>GB',
+    '<leader>gB',
     function()
       require('gitsigns').blame_line({ full = true })
     end,
@@ -355,5 +355,4 @@ nmap({
   { '<leader>f', cmd('Telescope find_files'), opts('Files') },
   { '<leader>b', cmd('Telescope buffers'), opts('Buffers') },
   { '<leader>e', cmd('LfToggle'), opts('File manager') },
-  { '<leader>g', cmd('Lazygit'), opts('Lazygit') },
 })
