@@ -63,6 +63,17 @@ end
 
 function config.noice()
   require('noice').setup({
+    cmdline = {
+      view = 'cmdline',
+      format = {
+        search_down = {
+          view = 'cmdline',
+        },
+        search_up = {
+          view = 'cmdline',
+        },
+      },
+    },
     messages = {
       view = 'mini',
       view_error = 'mini',
