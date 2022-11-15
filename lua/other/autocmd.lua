@@ -1,6 +1,6 @@
-vim.api.nvim_create_augroup('YankHighlight', {})
-vim.api.nvim_create_augroup('TermOptions', {})
-vim.api.nvim_create_augroup('BufModifiable', {})
+local yank = vim.api.nvim_create_augroup('YankHighlight', {})
+local term = vim.api.nvim_create_augroup('TermOptions', {})
+local bufmod = vim.api.nvim_create_augroup('BufModifiable', {})
 local autocmds = {
   {
     'TextYankPost',
@@ -8,7 +8,7 @@ local autocmds = {
       callback = function()
         vim.highlight.on_yank({ higroup = 'YankHighlight', timeout = 350 })
       end,
-      group = 'YankHighlight',
+      group = yank,
     },
   },
   {
@@ -19,7 +19,7 @@ local autocmds = {
         vim.opt_local.relativenumber = false
         vim.b.miniindentscope_disable = true
       end,
-      group = 'TermOptions',
+      group = term,
     },
   },
   {
@@ -30,7 +30,7 @@ local autocmds = {
           vim.api.nvim_cmd({ cmd = 'bdelete', args = { arg.buf } }, {})
         end
       end,
-      group = 'TermOptions',
+      group = term,
     },
   },
   {
@@ -41,7 +41,7 @@ local autocmds = {
           vim.bo.modifiable = false
         end
       end,
-      group = 'BufModifiable',
+      group = bufmod,
     },
   },
 }
