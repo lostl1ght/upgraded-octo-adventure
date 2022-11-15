@@ -10,4 +10,7 @@ vim.filetype.add({
     ['.zshrc'] = 'bash',
     ['.zshenv'] = 'bash',
   },
+  pattern = {
+    ['${HOME}/.config/tmux/.*%.conf'] = 'tmux'
+  }
 })
