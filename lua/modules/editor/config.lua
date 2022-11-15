@@ -166,7 +166,10 @@ end
 
 -- Other tools
 function config.persistence()
-  require('persistence').setup({ dir = vim.fs.normalize(vim.fn.stdpath('data') .. '/sessions/') })
+  require('persistence').setup({
+    dir = vim.fs.normalize(vim.fn.stdpath('data') .. '/sessions/'),
+    options = { 'buffers', 'curdir', 'help', 'tabpages', 'winsize' },
+  })
 end
 
 function config.colorizer()
