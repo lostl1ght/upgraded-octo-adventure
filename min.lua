@@ -1,5 +1,5 @@
-vim.cmd([[set runtimepath=$VIMRUNTIME]])
-vim.cmd([[set packpath=/tmp/nvim/site]])
+vim.o.runtimepath = '$VIMRUNTIME'
+vim.o.packpath = '/tmp/nvim/site'
 local package_root = '/tmp/nvim/site/pack'
 local install_path = package_root .. '/packer/start/packer.nvim'
 local function load_plugins()
@@ -12,13 +12,12 @@ local function load_plugins()
     config = {
       package_root = package_root,
       compile_path = install_path .. '/plugin/packer_compiled.lua',
-      display = { non_interactive = true },
     },
   })
 end
-_G.load_config = function()
+local function load_config()
   vim.opt.termguicolors = true
-  vim.cmd([[colorscheme kanagawa]])
+  vim.cmd.colorscheme('kanagawa')
   -- config
 end
 if vim.fn.isdirectory(install_path) == 0 then
@@ -33,4 +32,11 @@ if vim.fn.isdirectory(install_path) == 0 then
 end
 load_plugins()
 require('packer').sync()
-vim.cmd([[autocmd User PackerComplete ++once lua print('Ready'); load_config()]])
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'PackerComplete',
+  once = true,
+  callback = function()
+    load_config()
+    print('Ready')
+  end,
+})
