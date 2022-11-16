@@ -3,13 +3,13 @@ local icons = require('modules.ui.heirline.icons').icons
 
 local Space = setmetatable({
   provider = function(self)
-    return self.tablabel(' ')
+    return self.tablabel({ ' ' })
   end,
 }, {
   __call = function(_, n)
     return {
       provider = function(self)
-        return self.tablabel(string.rep(' ', n))
+        return self.tablabel({ string.rep(' ', n) })
       end,
     }
   end,
@@ -23,7 +23,7 @@ local VerticalLine = {
 
 local TabNumber = {
   provider = function(self)
-    return self.tablabel(self.tabnr)
+    return self.tablabel({ self.tabnr })
   end,
   hl = hl.TabpageClose,
   Space,
@@ -34,7 +34,7 @@ local WinCount = {
     return self.win_count > 1
   end,
   provider = function(self)
-    return self.tablabel('(', self.win_count, ')')
+    return self.tablabel({ '(', self.win_count, ')' })
   end,
   hl = hl.WinCount,
   Space,
@@ -42,7 +42,7 @@ local WinCount = {
 
 local ActiveFile = {
   provider = function(self)
-    return self.tablabel(self.filename)
+    return self.tablabel({ self.filename })
   end,
   hl = hl.ActiveFile,
   Space,
@@ -53,7 +53,7 @@ local WinModified = {
     return self.modified
   end,
   provider = function(self)
-    return self.tablabel(icons.small_circle)
+    return self.tablabel({ icons.small_circle })
   end,
   hl = hl.ModeColors.modified,
   Space,
@@ -88,8 +88,8 @@ local TabPage = {
     local filename = f ~= '' and vim.fn.fnamemodify(f, ':t') or '[No File]'
     self.filename = filename
 
-    self.tablabel = function(...)
-      return '%' .. self.tabnr .. 'T' .. table.concat({ ... }) .. '%T'
+    self.tablabel = function(list, sep)
+      return '%' .. self.tabnr .. 'T' .. table.concat(list, sep) .. '%T'
     end
   end,
   VerticalLine,
