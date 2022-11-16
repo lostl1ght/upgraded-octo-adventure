@@ -168,7 +168,7 @@ end
 function config.persistence()
   require('persistence').setup({
     dir = vim.fs.normalize(vim.fn.stdpath('data') .. '/sessions/'),
-    options = { 'buffers', 'curdir', 'help', 'tabpages', 'winsize' },
+    options = { 'buffers', 'curdir', 'tabpages', 'winsize' },
   })
 end
 
