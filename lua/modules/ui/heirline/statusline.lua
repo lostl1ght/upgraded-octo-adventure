@@ -284,7 +284,7 @@ local statusline = {
   Lsp,
   Layout,
   Ruler,
-  ScrollBar,
+  -- ScrollBar,
 }
 
 return { StatusLine = statusline }
