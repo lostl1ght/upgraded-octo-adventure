@@ -252,18 +252,16 @@ local ScrollBar = {
   Space,
 }
 
-local langmap = require('langmap_switch')
 local Layout = {
-  condition = langmap.condition,
-  provider = langmap.provider,
+  condition = require('langmap_switch').condition,
+  provider = require('langmap_switch').provider,
   hl = hl.Layout,
   Space,
 }
 
-local noice = require('noice')
 local Recording = {
-  condition = noice.api.status.mode.has,
-  provider = noice.api.status.mode.get,
+  condition = require('noice').api.status.mode.has,
+  provider = require('noice').api.status.mode.get,
   hl = hl.Recording,
   Space,
 }
