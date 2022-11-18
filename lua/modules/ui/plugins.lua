@@ -10,7 +10,6 @@ plugin({
     'nvim-langmap-switch',
     'folke/noice.nvim',
   },
-  after = { 'nvim-langmap-switch' },
   config = conf.heirline,
 })
 
@@ -25,7 +24,11 @@ plugin({
   config = conf.matchup,
 })
 
-plugin({ '~/dev/plugins/nvim-langmap-switch', config = conf.langmap_switch })
+plugin({
+  '~/dev/plugins/nvim-langmap-switch',
+  module = 'langmap_switch',
+  config = conf.langmap_switch,
+})
 
 plugin({
   'folke/noice.nvim',

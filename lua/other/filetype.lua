@@ -3,6 +3,7 @@ vim.filetype.add({
     zsh = 'bash',
     json = 'jsonc',
     h = 'cpp',
+    html = 'htmldjango',
   },
   filename = {
     ['.clang-format'] = 'yaml',
