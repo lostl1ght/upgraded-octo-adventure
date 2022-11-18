@@ -140,7 +140,9 @@ function config.null_ls()
         },
       }),
       null.builtins.formatting.clang_format,
-      null.builtins.formatting.prettier,
+      null.builtins.formatting.prettier.with({
+        filetypes = { 'htmldjango' },
+      }),
     },
   })
 end
