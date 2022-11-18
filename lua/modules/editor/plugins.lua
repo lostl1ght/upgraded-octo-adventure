@@ -8,7 +8,7 @@ plugin({ 'nvim-lua/plenary.nvim' })
 plugin({
   'nvim-treesitter/nvim-treesitter',
   run = ':TSUpdate',
-  requires = 'IndianBoy42/tree-sitter-just',
+  requires = { 'IndianBoy42/tree-sitter-just', 'nvim-treesitter/playground' },
   config = conf.treesitter,
 })
 
