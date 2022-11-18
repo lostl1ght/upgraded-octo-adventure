@@ -5,7 +5,7 @@ plugin({ 'stevearc/aerial.nvim', cmd = 'AerialToggle', config = conf.aerial })
 
 plugin({
   'neovim/nvim-lspconfig',
-  requires = { 'folke/neodev.nvim' },
+  requires = { 'folke/neodev.nvim', module = 'neodev' },
   ft = {
     'bib',
     'c',
@@ -25,8 +25,6 @@ plugin({
   'jose-elias-alvarez/null-ls.nvim',
   requires = 'nvim-lua/plenary.nvim',
   config = conf.null_ls,
-  after = 'nvim-lspconfig',
-  ft = { 'json', 'jsonc', 'yaml', 'markdown' },
 })
 
 plugin({
