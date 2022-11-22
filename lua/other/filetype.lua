@@ -3,7 +3,6 @@ vim.filetype.add({
     zsh = 'bash',
     json = 'jsonc',
     h = 'cpp',
-    html = 'htmldjango',
   },
   filename = {
     ['.clang-format'] = 'yaml',
@@ -12,6 +11,6 @@ vim.filetype.add({
     ['.zshenv'] = 'bash',
   },
   pattern = {
-    ['${HOME}/.config/tmux/.*%.conf'] = 'tmux'
-  }
+    ['${HOME}/.config/tmux/.*%.conf'] = 'tmux',
+  },
 })
