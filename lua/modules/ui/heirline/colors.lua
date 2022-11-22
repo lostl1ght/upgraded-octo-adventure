@@ -31,7 +31,7 @@ local hl = {
 
   ReadOnly = { fg = colors.samuraiRed },
 
-  SearchResults = { fg = colors.sumiInk0, bg = colors.waveAqua2 },
+  SearchResults = { fg = colors.sumiInk0, bg = colors.waveAqua2, bold = false },
 
   WorkDir = { fg = colors.fujiGray, bold = true },
 

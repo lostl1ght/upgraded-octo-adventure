@@ -82,7 +82,7 @@ local VimModeActive = {
 
 local VimMode = {
   init = function(self)
-    self.mode = util.mode[vim.fn.mode(1)]
+    self.mode = util.mode[vim.api.nvim_get_mode().mode]
   end,
   VimModeActive,
   VimModeNormal,
@@ -121,20 +121,16 @@ local SearchResults = {
     self.count = search_count
     return true
   end,
-  {
-    provider = function(self)
-      return table.concat({
-        ' ',
-        self.query,
-        ' [',
-        self.count.current,
-        '/',
-        self.count.total,
-        '] ',
-      })
-    end,
-    hl = hl.SearchResults,
-  },
+  heirline.surround(
+    { icons.powerline.left_rounded, icons.powerline.right_rounded },
+    hl.SearchResults.bg,
+    {
+      provider = function(self)
+        return table.concat({ self.query, ' [', self.count.current, '/', self.count.total, ']' })
+      end,
+      hl = hl.SearchResults,
+    }
+  ),
   Space,
 }
 
@@ -268,10 +264,7 @@ local Recording = {
 
 local statusline = {
   init = function(self)
-    local current_path = vim.api.nvim_buf_get_name(0)
-
     self.pwd = vim.fn.fnamemodify(vim.loop.cwd(), ':~')
-    self.filename = vim.fn.fnamemodify(current_path, ':t')
   end,
   hl = hl.StatusLine,
   Space,
@@ -284,7 +277,7 @@ local statusline = {
   Lsp,
   Layout,
   Ruler,
-  -- ScrollBar,
+  ScrollBar,
 }
 
 return { StatusLine = statusline }
