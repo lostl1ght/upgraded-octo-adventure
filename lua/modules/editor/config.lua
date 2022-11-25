@@ -25,6 +25,7 @@ function config.treesitter()
       'fish',
       'git_rebase',
       'gitattributes',
+      'gitcommit',
       'gitignore',
       'http',
       'proto',
