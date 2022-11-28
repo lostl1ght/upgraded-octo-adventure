@@ -28,7 +28,7 @@ plugin({
 plugin({ 'echasnovski/mini.ai', config = conf.ai })
 
 -- Navitaion
-plugin({ 'ggandor/lightspeed.nvim' })
+plugin({ 'ggandor/leap.nvim', config = conf.leap })
 
 plugin({
   'nvim-telescope/telescope.nvim',

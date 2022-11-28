@@ -78,6 +78,10 @@ function config.ai()
 end
 
 -- Navigation
+function config.leap()
+  require('leap').add_default_mappings()
+end
+
 function config.telescope()
   require('telescope').setup({
     pickers = {
