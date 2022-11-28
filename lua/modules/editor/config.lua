@@ -146,12 +146,9 @@ function config.winshift()
   require('winshift').setup({ focused_hl_group = 'Visual' })
 end
 
-function config.cybu()
-  require('cybu').setup({
-    style = {
-      border = 'single',
-    },
-    display_time = 1250,
+function config.reach()
+  require('reach').setup({
+    notifications = true,
   })
 end
 

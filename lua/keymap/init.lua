@@ -67,8 +67,7 @@ nmap({
     end,
     opts('Force close buffer'),
   },
-  { ']b', '<Plug>(CybuNext)', opts('Next buffer') },
-  { '[b', '<Plug>(CybuPrev)', opts('Previous buffer') },
+  { '<leader>b', cmd('ReachOpen buffers'), opts('Buffers') },
   -- +---------+
   -- + Windows +
   -- +---------+
@@ -353,6 +352,5 @@ nmap({
   -- + Tools +
   -- +-------+
   { '<leader>f', cmd('Telescope find_files'), opts('Files') },
-  { '<leader>b', cmd('Telescope buffers'), opts('Buffers') },
   { '<leader>e', cmd('LfToggle'), opts('File manager') },
 })

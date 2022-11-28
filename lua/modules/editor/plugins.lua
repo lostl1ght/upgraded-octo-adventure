@@ -44,11 +44,7 @@ plugin({ '~/dev/plugins/nvim-lf', config = conf.lf })
 
 plugin({ 'sindrets/winshift.nvim', config = conf.winshift, cmd = 'WinShift' })
 
-plugin({
-  'ghillb/cybu.nvim',
-  requires = { 'nvim-tree/nvim-web-devicons', 'nvim-lua/plenary.nvim' },
-  config = conf.cybu,
-})
+plugin({ 'toppair/reach.nvim', config = conf.reach })
 
 plugin({ 'aserowy/tmux.nvim', config = conf.tmux })
 
