@@ -177,19 +177,19 @@ nmap({
     opts(),
   },
   { 'K', vim.lsp.buf.hover, opts('Hover') },
-  { 'gr', vim.lsp.buf.rename, opts('Rename') },
-  { ']e', vim.diagnostic.goto_next, opts('Next diagnostic') },
-  { '[e', vim.diagnostic.goto_prev, opts('Next diagnostic') },
-  { 'gl', '<plug>(ToggleDiagnostics)', opts('Toggle diagnostics') },
-  { 'gf', '<plug>(LspFormat)', opts('Format') }, -- Not displayed
-  { 'ge', cmd('TroubleToggle lsp_references'), opts('References') }, -- Not displayed
-  { 'gi', cmd('TroubleToggle lsp_implementations'), opts('Implementations') }, -- Not displayed
-  { 'gd', cmd('TroubleToggle lsp_definitions'), opts('Definitions') },
-  { 'gy', cmd('TroubleToggle lsp_type_definitions'), opts('Type definitions') },
-  { 'gw', cmd('TroubleToggle document_diagnostics'), opts('Document diagnostics') },
-  { 'gW', cmd('TroubleToggle workspace_diagnostics'), opts('Workspace diagnostics') },
-  { 'gs', cmd('AerialToggle'), opts('Document symbols') },
-  { 'ga', cmd('CodeActionMenu'), opts('Code actions') },
+  { ']d', vim.diagnostic.goto_next, opts('Next diagnostic') },
+  { '[d', vim.diagnostic.goto_prev, opts('Next diagnostic') },
+  { '<leader>lr', vim.lsp.buf.rename, opts('Rename') },
+  { '<leader>ll', '<plug>(ToggleDiagnostics)', opts('Toggle diagnostics') },
+  { '<leader>lf', '<plug>(LspFormat)', opts('Format') },
+  { '<leader>le', cmd('TroubleToggle lsp_references'), opts('References') },
+  { '<leader>li', cmd('TroubleToggle lsp_implementations'), opts('Implementations') },
+  { '<leader>ld', cmd('TroubleToggle lsp_definitions'), opts('Definitions') },
+  { '<leader>ly', cmd('TroubleToggle lsp_type_definitions'), opts('Type definitions') },
+  { '<leader>lw', cmd('TroubleToggle document_diagnostics'), opts('Document diagnostics') },
+  { '<leader>lW', cmd('TroubleToggle workspace_diagnostics'), opts('Workspace diagnostics') },
+  { '<leader>ls', cmd('AerialToggle'), opts('Document symbols') },
+  { '<leader>la', cmd('CodeActionMenu'), opts('Code actions') },
   {
     '<c-d>',
     function()

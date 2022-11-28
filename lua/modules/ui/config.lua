@@ -148,10 +148,11 @@ function config.whichkey()
     ['<leader>'] = {
       p = { name = 'packer' },
       w = { name = 'window' },
-      G = { name = 'git' },
+      g = { name = 'git' },
       t = { name = 'telescope' },
       d = { name = 'debug' },
       q = { name = 'persistence' },
+      l = { name = 'lsp' },
     },
   }, {})
 end
