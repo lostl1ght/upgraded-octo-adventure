@@ -42,7 +42,6 @@ vim.opt.equalalways = false
 vim.opt.whichwrap = '<,>,[,]'
 vim.opt.splitbelow = true
 vim.opt.splitright = true
-vim.opt.jumpoptions = 'stack'
 vim.opt.scrolloff = 3
 vim.opt.sidescrolloff = 5
 vim.opt.ruler = false
