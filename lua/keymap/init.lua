@@ -67,7 +67,18 @@ nmap({
     end,
     opts('Force close buffer'),
   },
-  { '<leader>b', cmd('ReachOpen buffers'), opts('Buffers') },
+  {
+    '<plug>(ReachBuffers)',
+    function()
+      require('reach').buffers({
+        show_current = true,
+        modified_icon = '●',
+        force_delete = { 'terminal' },
+      })
+    end,
+    opts(),
+  },
+  { '<leader>b', '<plug>(ReachBuffers)', opts('Buffers') },
   -- +---------+
   -- + Windows +
   -- +---------+
