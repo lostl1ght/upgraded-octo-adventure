@@ -363,5 +363,11 @@ nmap({
   -- + Tools +
   -- +-------+
   { '<leader>f', cmd('Telescope find_files'), opts('Files') },
-  { '<leader>e', cmd('LfToggle'), opts('File manager') },
+  {
+    '<leader>e',
+    function()
+      require('lir.float').toggle(vim.loop.cwd())
+    end,
+    opts('File manager'),
+  },
 })

@@ -40,7 +40,7 @@ plugin({
   config = conf.telescope,
 })
 
-plugin({ '~/dev/plugins/nvim-lf', config = conf.lf })
+plugin({ 'tamago324/lir.nvim', requires = 'tamago324/lir-git-status.nvim', config = conf.lir })
 
 plugin({ 'sindrets/winshift.nvim', config = conf.winshift, cmd = 'WinShift' })
 
