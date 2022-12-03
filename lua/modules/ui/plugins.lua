@@ -9,6 +9,7 @@ plugin({
     'nvim-tree/nvim-web-devicons',
     'nvim-langmap-switch',
     'folke/noice.nvim',
+    'SmiteshP/nvim-navic',
   },
   config = conf.heirline,
 })

@@ -199,7 +199,23 @@ local Diagnostics = {
     end,
     hl = hl.Diagnostic.hint,
   },
-  Space,
+}
+
+local navic = require('nvim-navic')
+local Navic = {
+  condition = navic.is_available,
+  {
+
+    flexible = priority.Navic,
+    {
+      Space,
+      {
+        provider = navic.get_location,
+      },
+      Space,
+    },
+    { provider = '' },
+  },
 }
 
 local os_sep = package.config:sub(1, 1)
@@ -225,18 +241,8 @@ local winbar = {
       current_path = vim.fn.fnamemodify(current_path, ':~:.:h') .. os_sep
     end
 
-    if vim.o.filetype == 'lazygit' or vim.o.filetype == 'lf' then
-      self.current_path = nil
-    else
-      self.current_path = current_path
-    end
-    if vim.o.filetype == 'lazygit' then
-      self.filename = 'Lazygit'
-    elseif vim.o.filetype == 'lf' then
-      self.filename = 'Lf'
-    else
-      self.filename = filename
-    end
+    self.current_path = current_path
+    self.filename = filename
   end,
   fallthrough = false,
   {
@@ -251,6 +257,7 @@ local winbar = {
     end,
   },
   {
+    Navic,
     Align,
     Diagnostics,
     GitChanges,
