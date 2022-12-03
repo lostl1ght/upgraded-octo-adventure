@@ -28,7 +28,7 @@ end
 
 function Packer:load_packer()
   if not packer then
-    api.nvim_command('packadd packer.nvim')
+    api.nvim_cmd({ cmd = 'packadd', args = { 'packer.nvim' } }, {})
     packer = require('packer')
   end
   packer.init({
