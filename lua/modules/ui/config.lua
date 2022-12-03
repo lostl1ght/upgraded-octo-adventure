@@ -43,7 +43,7 @@ end
 
 function config.illum()
   require('illuminate').configure({
-    filetypes_denylist = { 'noice', 'registers', 'lir' },
+    filetypes_denylist = { 'noice', 'registers', 'lir', 'Glance' },
   })
 end
 

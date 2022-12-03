@@ -161,20 +161,12 @@ nmap({
   -- +-----+
   -- + LSP +
   -- +-----+
+  { 'K', vim.lsp.buf.hover, opts('Hover') },
+  { ']d', vim.diagnostic.goto_next, opts('Next diagnostic') },
+  { '[d', vim.diagnostic.goto_prev, opts('Next diagnostic') },
+  { '<leader>lr', vim.lsp.buf.rename, opts('Rename') },
   {
-    '<plug>(LspFormat)',
-    function()
-      vim.lsp.buf.format({
-        filter = function(client)
-          return client.name == 'null-ls'
-        end,
-      })
-      pcall(vim.api.nvim_cmd, { cmd = 'write', mods = { silent = true } }, {})
-    end,
-    opts(),
-  },
-  {
-    '<plug>(ToggleDiagnostics)',
+    '<leader>ll',
     function()
       vim.g.lsplines_enabled = not vim.g.lsplines_enabled
       vim.diagnostic.config({
@@ -184,14 +176,20 @@ nmap({
         string.format('Line diagnostics %s', vim.g.lsplines_enabled and 'enabled' or 'disabled')
       )
     end,
-    opts(),
+    opts('Toggle diagnostics'),
   },
-  { 'K', vim.lsp.buf.hover, opts('Hover') },
-  { ']d', vim.diagnostic.goto_next, opts('Next diagnostic') },
-  { '[d', vim.diagnostic.goto_prev, opts('Next diagnostic') },
-  { '<leader>lr', vim.lsp.buf.rename, opts('Rename') },
-  { '<leader>ll', '<plug>(ToggleDiagnostics)', opts('Toggle diagnostics') },
-  { '<leader>lf', '<plug>(LspFormat)', opts('Format') },
+  {
+    '<leader>lf',
+    function()
+      vim.lsp.buf.format({
+        filter = function(client)
+          return client.name == 'null-ls'
+        end,
+      })
+      pcall(vim.api.nvim_cmd, { cmd = 'write', mods = { silent = true } }, {})
+    end,
+    opts('Format'),
+  },
   { '<leader>le', cmd('Glance references'), opts('References') },
   { '<leader>li', cmd('Glance implementations'), opts('Implementations') },
   { '<leader>ld', cmd('Glance definitions'), opts('Definitions') },
