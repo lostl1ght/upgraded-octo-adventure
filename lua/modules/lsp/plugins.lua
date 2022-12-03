@@ -46,3 +46,5 @@ plugin({
 })
 
 plugin({ 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu', config = conf.codeaction })
+
+plugin({ 'dnlhc/glance.nvim', config = conf.glance, after = 'nvim-lspconfig'})
