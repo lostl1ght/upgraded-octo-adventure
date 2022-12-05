@@ -13,10 +13,10 @@ local hl = require('modules.ui.heirline.colors')
 local devicons = require('nvim-web-devicons')
 
 local priority = {
-  CurrentPath = 10,
+  CurrentPath = 40,
   FileIcon = 60,
   FileType = 25,
-  Navic = 40,
+  Navic = 10,
 }
 
 local FileIcon = {
