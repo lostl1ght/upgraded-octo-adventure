@@ -1,27 +1,9 @@
 local config = {}
 
 function config.kanagawa()
-  -- stylua: ignore
-  local colors = {
-    FoldColumn = {
-      fg = 3552838,   -- #363646
-    },
-    YankHighlight = {
-      fg = 14460257,  -- #dca561
-      bg = 4801596,   -- #49443c
-    },
-    MiniIndentscopeSymbol = {
-      fg = 2969447,   -- #2D4F67
-    },
-  }
   require('kanagawa').setup({
     undercurl = false,
     globalStatus = true,
-    overrides = {
-      FoldColumn = colors.FoldColumn,
-      YankHighlight = colors.YankHighlight,
-      MiniIndentscopeSymbol = colors.MiniIndentscopeSymbol,
-    },
   })
   vim.cmd.colorscheme('kanagawa')
 end

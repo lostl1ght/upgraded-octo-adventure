@@ -44,4 +44,3 @@ vim.g.loaded_netrwFileHandlers = 1
 require('core.options')
 require('core.packer').init()
 require('keymap')
-require('other')
