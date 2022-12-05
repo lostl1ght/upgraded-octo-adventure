@@ -174,7 +174,6 @@ function config.lightbulb()
     },
     autocmd = { enabled = true },
   })
-  vim.api.nvim_set_hl(0, 'LightBulbVirtualText', { fg = '#dca561' })
 end
 
 function config.codeaction()

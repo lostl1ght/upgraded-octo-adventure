@@ -98,7 +98,6 @@ function config.lir()
   require('lir.git_status').setup({
     show_ignored = false,
   })
-  vim.api.nvim_set_hl(0, 'LirFloatBorder', { link = 'FloatermBorder' })
 end
 
 function config.winshift()
