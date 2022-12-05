@@ -34,6 +34,7 @@ function Packer:load_packer()
     config = {
       compile_path = packer_compiled,
       git = { clone_timeout = 120 },
+      display = { open_cmd = 'topleft 65vnew \\[packer\\]' },
     },
   })
 end
