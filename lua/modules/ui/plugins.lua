@@ -1,4 +1,4 @@
-local plugin = require('core.pack').register_plugin
+local plugin = require('core.packer').register_plugin
 local conf = require('modules.ui.config')
 
 plugin({ 'rebelot/kanagawa.nvim', config = conf.kanagawa })

@@ -1,4 +1,4 @@
-local plugin = require('core.pack').register_plugin
+local plugin = require('core.packer').register_plugin
 local conf = require('modules.completion.config')
 
 plugin({ 'L3MON4D3/LuaSnip', config = conf.luasnip, module = 'luasnip' })
