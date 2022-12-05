@@ -2,7 +2,7 @@ local uv, api = vim.loop, vim.api
 local vim_path = vim.fn.stdpath('config')
 local data_dir = vim.fn.stdpath('data') .. '/site/'
 local modules_dir = vim_path .. '/lua/modules'
-local packer_compiled = data_dir .. 'lua/packer_compiled.lua'
+local packer_compiled = data_dir .. 'plugin/packer_compiled.lua'
 
 local Packer = {}
 
@@ -73,9 +73,7 @@ local plugins = {}
 function plugins.init()
   Packer:init()
 
-  if vim.fn.filereadable(packer_compiled) == 1 then
-    require('packer_compiled')
-  else
+  if vim.fn.filereadable(packer_compiled) == 0 then
     vim.notify('Run PackerSync or PackerCompile', vim.log.levels.WARN, { title = 'Packer' })
   end
   local PackerHooks = vim.api.nvim_create_augroup('PackerHooks', {})
