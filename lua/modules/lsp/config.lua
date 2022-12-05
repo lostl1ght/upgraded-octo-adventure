@@ -26,7 +26,7 @@ function config.lspconfig()
         '.stylua.toml',
         'stylua.toml',
         '.git',
-      }, { upward = true })[1])
+      }, { upward = true })[1]) or vim.loop.cwd()
     end,
     settings = {
       Lua = {
@@ -68,7 +68,7 @@ function config.lspconfig()
         'compile_commands.json',
         'compile_flags.txt',
         '.git',
-      }, { upward = true })[1])
+      }, { upward = true })[1]) or vim.loop.cwd()
     end,
     capabilities = capabilities,
   })
@@ -80,7 +80,7 @@ function config.lspconfig()
       return vim.fs.dirname(vim.fs.find({
         '.latexmkrc',
         '.git',
-      }, { upward = true })[1])
+      }, { upward = true })[1]) or vim.loop.cwd()
     end,
     settings = {
       texlab = {
