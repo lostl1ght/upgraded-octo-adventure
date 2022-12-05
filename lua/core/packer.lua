@@ -6,20 +6,20 @@ local packer_compiled = data_dir .. 'lua/packer_compiled.lua'
 
 local Packer = {}
 
+local function get_list()
+  local list = {}
+  local tmp = vim.fs.find('plugins.lua', { path = modules_dir, type = 'file', limit = math.huge })
+  for _, f in ipairs(tmp) do
+    table.insert(list, string.match(f, 'lua/(.+).lua$'))
+  end
+  return list
+end
+
 function Packer:load_plugins()
   self.repos = {
     { 'wbthomason/packer.nvim' },
     { 'lewis6991/impatient.nvim' },
   }
-
-  local function get_list()
-    local list = {}
-    local tmp = vim.fs.find('plugins.lua', { path = modules_dir, type = 'file', limit = math.huge })
-    for _, f in ipairs(tmp) do
-      table.insert(list, string.match(f, 'lua/(.+).lua$'))
-    end
-    return list
-  end
 
   local plugins_file = get_list()
   for _, m in ipairs(plugins_file) do
@@ -38,7 +38,7 @@ function Packer:load_packer()
   })
 end
 
-function Packer:init()
+function Packer:bootstrap()
   local packer_dir = data_dir .. 'pack/packer/start/packer.nvim'
   if not uv.fs_stat(packer_dir) then
     api.nvim_cmd({
@@ -56,7 +56,13 @@ function Packer:init()
     vim.cmd.packadd('packer.nvim')
     self:load_packer()
     require('packer').sync()
-  else
+    return true
+  end
+  return false
+end
+
+function Packer:init()
+  if not Packer:bootstrap() then
     self:load_packer()
   end
 end
