@@ -7,7 +7,10 @@ local packer_compiled = data_dir .. 'lua/packer_compiled.lua'
 local Packer = {}
 
 function Packer:load_plugins()
-  self.repos = {}
+  self.repos = {
+    { 'wbthomason/packer.nvim' },
+    { 'lewis6991/impatient.nvim' },
+  }
 
   local function get_list()
     local list = {}
@@ -27,13 +30,7 @@ end
 function Packer:load_packer()
   self:load_plugins()
   require('packer').startup({
-    function(use)
-      use({ 'wbthomason/packer.nvim' })
-      use({ 'lewis6991/impatient.nvim' })
-      for _, v in ipairs(self.repos) do
-        use(v)
-      end
-    end,
+    self.repos,
     config = {
       compile_path = packer_compiled,
       git = { clone_timeout = 120 },
