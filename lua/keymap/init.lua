@@ -6,14 +6,14 @@ local remap, expr = keymap.remap, keymap.expr
 
 vim.g.mapleader = ' '
 
-xmap({ ' ', '' })
+xmap({ { ' ', '' } })
 
 imap({
   { 'ii', '<esc>' },
   { '<f1>', '', opts(remap) },
 })
 
-tmap({ 'ii', '<c-\\><c-n>' })
+tmap({ { 'ii', '<c-\\><c-n>' } })
 
 nmap({
   -- +-------+
