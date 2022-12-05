@@ -150,14 +150,6 @@ nmap({
     end,
     opts('Close'),
   },
-  -- +--------+
-  -- + Packer +
-  -- +--------+
-  { '<Leader>pu', cmd('PackerUpdate'), opts('Update') },
-  { '<Leader>pi', cmd('PackerInstall'), opts('Install') },
-  { '<Leader>pc', cmd('PackerCompile'), opts('Compile') },
-  { '<Leader>ps', cmd('PackerSync'), opts('Sync') },
-  { '<Leader>pS', cmd('PackerStatus'), opts('Status') },
   -- +-----+
   -- + LSP +
   -- +-----+

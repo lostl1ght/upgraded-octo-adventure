@@ -151,7 +151,6 @@ function config.whichkey()
   })
   wk.register({
     ['<leader>'] = {
-      p = { name = 'packer' },
       w = { name = 'window' },
       g = { name = 'git' },
       t = { name = 'telescope' },
