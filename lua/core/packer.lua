@@ -1,8 +1,8 @@
 local uv, api = vim.loop, vim.api
 local vim_path = vim.fn.stdpath('config')
-local data_dir = vim.fn.stdpath('data') .. '/site/'
+local data_dir = vim.fn.stdpath('data') .. '/site'
 local modules_dir = vim_path .. '/lua/modules'
-local packer_compiled = data_dir .. 'plugin/packer_compiled.lua'
+local packer_compiled = data_dir .. '/plugin/packer_compiled.lua'
 
 local Packer = {}
 
@@ -40,7 +40,7 @@ function Packer:load_packer()
 end
 
 function Packer:bootstrap()
-  local packer_dir = data_dir .. 'pack/packer/start/packer.nvim'
+  local packer_dir = data_dir .. '/pack/packer/start/packer.nvim'
   if not uv.fs_stat(packer_dir) then
     api.nvim_cmd({
       cmd = '!',
@@ -51,9 +51,6 @@ function Packer:bootstrap()
         packer_dir,
       },
     }, {})
-    uv.fs_mkdir(data_dir .. 'lua', 511, function()
-      assert('make compile path dir faield')
-    end)
     vim.cmd.packadd('packer.nvim')
     self:load_packer()
     require('packer').sync()
