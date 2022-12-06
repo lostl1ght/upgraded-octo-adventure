@@ -3,7 +3,7 @@ local config = {}
 -- Other tools
 function config.persistence()
   require('persistence').setup({
-    dir = vim.fs.normalize(vim.fn.stdpath('data') .. '/sessions/'),
+    dir = vim.fn.stdpath('cache') .. '/session/',
     options = { 'buffers', 'curdir', 'tabpages', 'winsize' },
   })
 end
