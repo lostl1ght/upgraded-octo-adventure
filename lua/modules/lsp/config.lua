@@ -19,15 +19,6 @@ function config.lspconfig()
     name = 'sumneko-lua',
     cmd = { 'lua-language-server' },
     before_init = require('neodev.lsp').before_init,
-    root_dir = function()
-      return vim.fs.dirname(vim.fs.find({
-        '.luarc.json',
-        '.luacheckrc',
-        '.stylua.toml',
-        'stylua.toml',
-        '.git',
-      }, { upward = true })[1]) or vim.loop.cwd()
-    end,
     settings = {
       Lua = {
         hint = {
@@ -45,13 +36,6 @@ function config.lspconfig()
   lspconfig.rust_analyzer.setup({
     name = 'rust-analyzer',
     cmd = { 'rust-analyzer' },
-    root_dir = function()
-      return vim.fs.dirname(vim.fs.find({
-        'Cargo.toml',
-        'rust-project.json',
-        '.git',
-      }, { upward = true })[1])
-    end,
     settings = { ['rust-analyzer'] = { completion = { postfix = { enable = false } } } },
   })
 
@@ -60,28 +44,12 @@ function config.lspconfig()
   lspconfig.clangd.setup({
     name = 'clangd',
     cmd = { 'clangd' },
-    root_dir = function()
-      return vim.fs.dirname(vim.fs.find({
-        '.clangd',
-        '.clang-tidy',
-        '.clang-format',
-        'compile_commands.json',
-        'compile_flags.txt',
-        '.git',
-      }, { upward = true })[1]) or vim.loop.cwd()
-    end,
     capabilities = capabilities,
   })
 
   lspconfig.texlab.setup({
     name = 'texlab',
     cmd = { 'texlab' },
-    root_dir = function()
-      return vim.fs.dirname(vim.fs.find({
-        '.latexmkrc',
-        '.git',
-      }, { upward = true })[1]) or vim.loop.cwd()
-    end,
     settings = {
       texlab = {
         auxDirectory = 'latex.out',
