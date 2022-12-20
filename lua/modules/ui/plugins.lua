@@ -1,47 +1,50 @@
-local plugin = require('core.packer').register_plugin
+local plugin = require('core.lazy').register_plugin
 local conf = require('modules.ui.config')
 
-plugin({ 'rebelot/kanagawa.nvim', config = conf.kanagawa })
+plugin({ 'rebelot/kanagawa.nvim', lazy = false, config = conf.kanagawa })
 
 plugin({
   'rebelot/heirline.nvim',
-  requires = {
+  lazy = false,
+  dependencies = {
     'nvim-tree/nvim-web-devicons',
-    'nvim-langmap-switch',
+    { 'nvim-langmap-switch', dev = true },
     'folke/noice.nvim',
     'SmiteshP/nvim-navic',
   },
   config = conf.heirline,
 })
 
-plugin({ 'stevearc/dressing.nvim', config = conf.dressing })
+plugin({ 'stevearc/dressing.nvim', event = 'VeryLazy', config = conf.dressing })
 
-plugin({ 'RRethy/vim-illuminate', config = conf.illum })
+plugin({ 'RRethy/vim-illuminate', event = 'VeryLazy', config = conf.illum })
 
 plugin({
   'andymass/vim-matchup',
-  requires = 'nvim-treesitter',
-  after = 'nvim-treesitter',
+  event = 'VeryLazy',
+  dependencies = { 'nvim-treesitter/nvim-treesitter' },
   config = conf.matchup,
 })
 
 plugin({
-  '~/dev/plugins/nvim-langmap-switch',
-  module = 'langmap_switch',
+  'nvim-langmap-switch',
+  event = 'VeryLazy',
+  dev = true,
   config = conf.langmap_switch,
 })
 
 plugin({
   'folke/noice.nvim',
   config = conf.noice,
-  requires = {
+  dependencies = {
     'MunifTanjim/nui.nvim',
   },
 })
 
 plugin({
   'echasnovski/mini.indentscope',
+  event = 'VeryLazy',
   config = conf.indentscope,
 })
 
-plugin({ 'folke/which-key.nvim', config = conf.whichkey })
+plugin({ 'folke/which-key.nvim', event = 'VeryLazy', config = conf.whichkey })

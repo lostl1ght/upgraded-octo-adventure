@@ -1,31 +1,32 @@
-local plugin = require('core.packer').register_plugin
+local plugin = require('core.lazy').register_plugin
 local conf = require('modules.debug.config')
+
+local cmd = {
+  'DapContinue',
+  'DapTerminate',
+  'DapToggleBreakpoint',
+  'DapStepOver',
+  'DapStepInto',
+  'DapStepOut',
+  'DapEval',
+  'DapRun',
+}
 
 plugin({
   'mfussenegger/nvim-dap',
-  cmd = {
-    'DapContinue',
-    'DapTerminate',
-    'DapToggleBreakpoint',
-    'DapStepOver',
-    'DapStepInto',
-    'DapStepOut',
-    'DapEval',
-    'DapRun',
-  },
   config = conf.dap,
 })
 
 plugin({
   'rcarriga/nvim-dap-ui',
-  requires = 'mfussenegger/nvim-dap',
+  cmd = cmd,
+  dependencies = { 'mfussenegger/nvim-dap' },
   config = conf.dapui,
-  after = 'nvim-dap',
 })
 
 plugin({
   'lostl1ght/dap-json.nvim',
-  requires = 'mfussenegger/nvim-dap',
+  cmd = cmd,
+  dependencies = { 'mfussenegger/nvim-dap' },
   config = conf.dapjson,
-  after = 'nvim-dap',
 })

@@ -1,4 +1,4 @@
-local plugin = require('core.packer').register_plugin
+local plugin = require('core.lazy').register_plugin
 local conf = require('modules.other.config')
 
 -- Other tools
@@ -6,7 +6,7 @@ plugin({ 'dstein64/vim-startuptime', cmd = 'StartupTime' })
 
 plugin({
   'iamcco/markdown-preview.nvim',
-  run = function()
+  build = function()
     vim.fn['mkdp#util#install']()
   end,
   ft = 'markdown',
@@ -15,7 +15,6 @@ plugin({
 plugin({
   'folke/persistence.nvim',
   event = 'BufReadPre',
-  module = 'persistence',
   config = conf.persistence,
 })
 

@@ -1,28 +1,24 @@
-local plugin = require('core.packer').register_plugin
+local plugin = require('core.lazy').register_plugin
 local conf = require('modules.editor.config')
 
 -- Plenary
-plugin({ 'nvim-lua/plenary.nvim' })
+plugin({ 'nvim-lua/plenary.nvim', lazy = false, })
 
 -- Treesitter
-plugin({
-  'nvim-treesitter/nvim-treesitter',
-  requires = { 'IndianBoy42/tree-sitter-just', 'nvim-treesitter/playground' },
-  config = conf.treesitter,
+plugin({ 'nvim-treesitter/nvim-treesitter',
+  dependencies = {
+    { 'IndianBoy42/tree-sitter-just', lazy  = false },
+  },
+  config = conf.treesitter
 })
 
 -- Editing
-plugin({ 'tpope/vim-commentary' })
+plugin({ 'tpope/vim-commentary', lazy = false, })
 
-plugin({ 'windwp/nvim-autopairs', config = conf.autopairs })
+plugin({ 'windwp/nvim-autopairs', lazy = false, config = conf.autopairs })
 
-plugin({ 'kylechui/nvim-surround', config = conf.surround })
+plugin({ 'kylechui/nvim-surround', lazy = false, config = conf.surround })
 
-plugin({
-  'abecodes/tabout.nvim',
-  require = 'nvim-treesitter',
-  after = 'nvim-cmp',
-  config = conf.tabout,
-})
+plugin({ 'abecodes/tabout.nvim', lazy = false,config = conf.tabout })
 
-plugin({ 'echasnovski/mini.ai', config = conf.ai })
+plugin({ 'echasnovski/mini.ai', lazy = false, config = conf.ai })

@@ -3,9 +3,6 @@ local config = {}
 -- Treesitter
 function config.treesitter()
   require('nvim-treesitter.configs').setup({
-    playground = {
-      enable = true,
-    },
     ensure_installed = {
       -- basic
       'bash',

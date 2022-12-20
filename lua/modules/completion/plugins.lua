@@ -1,19 +1,18 @@
-local plugin = require('core.packer').register_plugin
+local plugin = require('core.lazy').register_plugin
 local conf = require('modules.completion.config')
 
-plugin({ 'L3MON4D3/LuaSnip', config = conf.luasnip, module = 'luasnip' })
+plugin({ 'L3MON4D3/LuaSnip', config = conf.luasnip })
 
 plugin({
   'hrsh7th/nvim-cmp',
-  requires = {
-    { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' },
-    { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
-    { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },
-    { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
-    { 'hrsh7th/cmp-buffer', module = 'cmp_buffer' },
-    { 'onsails/lspkind.nvim', module = 'lspkind' },
+  dependencies = {
+    { 'hrsh7th/cmp-nvim-lsp' },
+    { 'hrsh7th/cmp-path' },
+    { 'hrsh7th/cmp-cmdline' },
+    { 'saadparwaiz1/cmp_luasnip' },
+    { 'hrsh7th/cmp-buffer' },
+    { 'onsails/lspkind.nvim' },
   },
   event = { 'InsertEnter', 'CmdLineEnter' },
-  module = 'cmp',
   config = conf.cmp,
 })
