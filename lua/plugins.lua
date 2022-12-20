@@ -2,7 +2,7 @@ return {
   { 'lewis6991/impatient.nvim', lazy = false },
   { 'nvim-lua/plenary.nvim' },
   { 'tpope/vim-commentary', event = 'BufReadPost' },
-  { 'tpope/vim-fugitive', event = 'BufReadPre' },
+  { 'tpope/vim-fugitive', lazy = false },
   { 'dstein64/vim-startuptime', cmd = 'StartupTime' },
   {
     'iamcco/markdown-preview.nvim',
