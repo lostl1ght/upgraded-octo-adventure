@@ -19,6 +19,7 @@ require('lazy').setup('plugins', {
   defaults = {
     lazy = true,
   },
+  lockfile = vim.fn.stdpath('state') .. '/lazy-lock.json',
   dev = {
     path = '~/dev/plugins',
   },
