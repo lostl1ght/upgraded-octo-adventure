@@ -1,7 +1,5 @@
 local lazy_path = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
-if vim.loop.fs_stat(lazy_path) then
-  vim.opt.runtimepath:prepend(lazy_path)
-else
+if not vim.loop.fs_stat(lazy_path) then
   vim.api.nvim_cmd({
     cmd = '!',
     args = {
@@ -13,9 +11,9 @@ else
       lazy_path,
     },
   }, {})
-  vim.opt.runtimepath:prepend(lazy_path)
-  require('lazy').install()
 end
+
+vim.opt.runtimepath:prepend(lazy_path)
 
 require('lazy').setup('plugins', {
   defaults = {
@@ -25,7 +23,7 @@ require('lazy').setup('plugins', {
     path = '~/dev/plugins',
   },
   ui = {
-    border = 'single'
+    border = 'single',
   },
   performance = {
     rtp = {
