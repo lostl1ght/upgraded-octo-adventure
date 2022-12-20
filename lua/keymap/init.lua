@@ -316,11 +316,5 @@ nmap({
   -- + Tools +
   -- +-------+
   { '<leader>f', cmd('Telescope find_files'), opts('Files') },
-  {
-    '<leader>e',
-    function()
-      require('lir.float').toggle(vim.loop.cwd())
-    end,
-    opts('File manager'),
-  },
+  { '<leader>e', cmd('Neotree'), opts('Neotree') },
 })
