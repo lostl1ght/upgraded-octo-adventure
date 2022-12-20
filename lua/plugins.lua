@@ -1,5 +1,4 @@
 return {
-  { 'lewis6991/impatient.nvim', lazy = false },
   { 'nvim-lua/plenary.nvim' },
   { 'tpope/vim-commentary', event = 'BufReadPost' },
   { 'tpope/vim-fugitive', lazy = false },
