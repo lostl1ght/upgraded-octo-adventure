@@ -1,6 +1,6 @@
 local M = { 'nvim-treesitter/nvim-treesitter' }
 
-M.event = 'BufReadPost'
+M.event = 'BufReadPre'
 
 M.dependencies = {
   {
