@@ -6,6 +6,7 @@ M.dependencies = {
   'nvim-lua/plenary.nvim',
   'nvim-tree/nvim-web-devicons',
   'MunifTanjim/nui.nvim',
+  's1n7ax/nvim-window-picker',
 }
 
 M.init = function()
