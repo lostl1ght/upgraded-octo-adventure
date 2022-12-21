@@ -4,8 +4,6 @@ local opts = keymap.new_opts
 local cmd = keymap.cmd
 local remap, expr = keymap.remap, keymap.expr
 
-vim.g.mapleader = ' '
-
 xmap({ { ' ', '' } })
 
 imap({

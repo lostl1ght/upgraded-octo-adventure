@@ -58,3 +58,4 @@ vim.g.python3_host_prog = os.getenv('HOME') .. '/.pyenv/versions/neovim/bin/pyth
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
+vim.g.mapleader = ' '
