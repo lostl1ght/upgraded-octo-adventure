@@ -2,6 +2,12 @@ local M = { 'nvim-neo-tree/neo-tree.nvim' }
 
 M.cmd = 'Neotree'
 
+M.dependencies = {
+  'nvim-lua/plenary.nvim',
+  'nvim-tree/nvim-web-devicons',
+  'MunifTanjim/nui.nvim',
+}
+
 M.init = function()
   vim.g.neo_tree_remove_legacy_commands = 1
 end
