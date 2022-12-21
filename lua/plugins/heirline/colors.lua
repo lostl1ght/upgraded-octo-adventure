@@ -72,6 +72,15 @@ local hl = {
     hint = { fg = colors.dragonBlue },
   },
 
+  TerminalIcon = {
+    fg = colors.fujiGray
+  },
+
+  TerminalName = {
+    fg = colors.oldWhite,
+    bold = true,
+  },
+
   -- tabline
   TabNumber = function(self)
     if not self.is_active then

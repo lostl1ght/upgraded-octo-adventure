@@ -32,7 +32,7 @@ local FileIcon = {
         return self.icon
       end,
     },
-    { provider = '' },
+    null,
   },
   hl = function(self)
     return { fg = self.icon_color }
@@ -55,7 +55,7 @@ local FileType = {
         return self.filetype
       end,
     },
-    { provider = '' },
+    null,
   },
   hl = function(self)
     return { fg = self.icon_color }
@@ -218,6 +218,31 @@ local Navic = {
   },
 }
 
+local TerminalIcon = {
+  {
+    flexible = priority.FileIcon,
+    {
+      provider = ' ',
+      hl = hl.TerminalIcon,
+    },
+    null,
+  },
+}
+
+local TerminalName = {
+  provider = function()
+    local tname, _ = vim.api.nvim_buf_get_name(0):gsub('.*:', '')
+    return tname
+  end,
+  hl = hl.TerminalName,
+  Space,
+}
+
+local TerminalBlock = {
+  TerminalName,
+  TerminalIcon,
+}
+
 local os_sep = package.config:sub(1, 1)
 local winbar = {
   init = function(self)
@@ -249,12 +274,19 @@ local winbar = {
     condition = function()
       return conditions.buffer_matches({
         buftype = { 'nofile', 'prompt', 'quickfix' },
-        filetype = {},
+        filetype = { '^git.*', 'fugitive' },
       })
     end,
     init = function()
       vim.opt_local.winbar = nil
     end,
+  },
+  {
+    condition = function()
+      return conditions.buffer_matches({ buftype = { 'terminal' } })
+    end,
+    Align,
+    TerminalBlock,
   },
   {
     Navic,
@@ -275,7 +307,7 @@ vim.api.nvim_create_autocmd('User', {
       'nofile',
       'quickfix',
     }, vim.bo[buf].buftype)
-    local filetype = vim.tbl_contains({}, vim.bo[buf].filetype)
+    local filetype = vim.tbl_contains({ 'gitcommit', 'fugitive' }, vim.bo[buf].filetype)
     if buftype or filetype then
       vim.opt_local.winbar = nil
     end
