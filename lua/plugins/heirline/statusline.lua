@@ -262,6 +262,13 @@ local Recording = {
   Space,
 }
 
+local LazyUpdates = {
+  condition = require('lazy.status').has_updates,
+  provider = require('lazy.status').updates,
+  hl = { fg = '#ff9e64' },
+  Space,
+}
+
 local statusline = {
   init = function(self)
     self.pwd = vim.fn.fnamemodify(vim.loop.cwd(), ':~')
@@ -273,6 +280,7 @@ local statusline = {
   WorkDir,
   GitBranch,
   Align,
+  LazyUpdates,
   Recording,
   Lsp,
   Layout,
