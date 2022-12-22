@@ -1,5 +1,18 @@
 local M = { 'neovim/nvim-lspconfig' }
 
+M.ft = {
+  'bib',
+  'c',
+  'cpp',
+  'css',
+  'html',
+  'htmldjango',
+  'lua',
+  'python',
+  'rust',
+  'tex',
+}
+
 M.dependencies = {
   { 'folke/neodev.nvim' },
   {
@@ -14,7 +27,6 @@ M.dependencies = {
     end,
   },
   {
-
     'kosayoda/nvim-lightbulb',
     config = function()
       require('nvim-lightbulb').setup({

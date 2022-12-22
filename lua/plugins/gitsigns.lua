@@ -4,6 +4,7 @@ M.event = 'BufReadPre'
 
 M.config = function()
   require('gitsigns').setup({
+    trouble = false,
     signs = {
       add = {
         hl = 'GitSignsAdd',
