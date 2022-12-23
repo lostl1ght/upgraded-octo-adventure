@@ -1,6 +1,6 @@
 local M = { 'folke/noice.nvim' }
 
-M.event = 'VeryLazy'
+M.lazy = false
 
 M.dependencies = {
   'MunifTanjim/nui.nvim',
