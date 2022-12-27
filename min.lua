@@ -1,42 +1,34 @@
-vim.o.runtimepath = '$VIMRUNTIME'
-vim.o.packpath = '/tmp/nvim/site'
-local package_root = '/tmp/nvim/site/pack'
-local install_path = package_root .. '/packer/start/packer.nvim'
-local function load_plugins()
-  require('packer').startup({
-    {
-      { 'wbthomason/packer.nvim' },
-      { 'rebelot/kanagawa.nvim' },
-      -- plugins
+local root = '/tmp/nvim'
+
+for _, name in ipairs({ 'config', 'data', 'state', 'cache' }) do
+  vim.env[('XDG_%s_HOME'):format(name:upper())] = root .. '/' .. name
+end
+
+local lazy_path = root .. '/plugins/lazy.nvim'
+if not vim.loop.fs_stat(lazy_path) then
+  vim.api.nvim_cmd({
+    cmd = '!',
+    args = {
+      'git',
+      'clone',
+      '--filter=blob:none',
+      '--single-branch',
+      'https://github.com/folke/lazy.nvim.git',
+      lazy_path,
     },
-    config = {
-      package_root = package_root,
-      compile_path = install_path .. '/plugin/packer_compiled.lua',
-    },
-  })
+  }, {})
 end
-local function load_config()
-  vim.opt.termguicolors = true
-  vim.cmd.colorscheme('kanagawa')
-  -- config
-end
-if vim.fn.isdirectory(install_path) == 0 then
-  print('Installing dependencies.')
-  vim.fn.system({
-    'git',
-    'clone',
-    '--depth=1',
-    'https://github.com/wbthomason/packer.nvim',
-    install_path,
-  })
-end
-load_plugins()
-require('packer').sync()
-vim.api.nvim_create_autocmd('User', {
-  pattern = 'PackerComplete',
-  once = true,
-  callback = function()
-    load_config()
-    print('Ready')
-  end,
+vim.opt.runtimepath:prepend(lazy_path)
+
+local plugins = {
+  { 'folke/lazy.nvim' },
+  { 'rebelot/kanagawa.nvim' },
+  -- plugins
+}
+
+require('lazy').setup(plugins, {
+  root = root .. '/plugins',
 })
+
+vim.opt.termguicolors = true
+vim.cmd.colorscheme('kanagawa')
