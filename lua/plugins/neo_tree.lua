@@ -20,6 +20,11 @@ M.config = function()
       follow_current_file = true,
       hijack_netrw_behavior = 'open_current',
     },
+    window = {
+      mappings = {
+        ['o'] = 'open',
+      },
+    },
   })
 end
 
