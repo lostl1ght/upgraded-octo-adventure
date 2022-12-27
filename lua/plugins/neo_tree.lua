@@ -15,6 +15,7 @@ end
 
 M.config = function()
   require('neo-tree').setup({
+    popup_border_style = 'single',
     filesystem = {
       follow_current_file = true,
       hijack_netrw_behavior = 'open_current',
