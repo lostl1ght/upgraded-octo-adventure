@@ -4,6 +4,8 @@ local M = {
 
 M.ft = 'markdown'
 
-M.build = vim.fn['mkdp#util#install']
+M.build = function()
+  vim.fn['mkdp#util#install']()
+end
 
 return M
