@@ -1,6 +1,6 @@
 local M = { 'abecodes/tabout.nvim' }
 
-M.event = 'BufReadPre'
+M.event = 'VeryLazy'
 
 M.config = function()
   require('tabout').setup({
